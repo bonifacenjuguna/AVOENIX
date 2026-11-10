@@ -1,5 +1,5 @@
 -- AVOENIX database schema, revision 0001 (platform v0.0.0)
--- PostgreSQL 14+. Applied by Alembic revision 0001 (database/migrations/versions/0001_initial.py)
+-- PostgreSQL 14+. Applied by services/intelligence-api/migrate.py (idempotent).
 -- or directly:  psql "$DATABASE_URL" -f database/schemas/0001_initial.sql
 --
 -- Isolation model: every user-owned row carries (project_id, user_id). The application layer ALWAYS

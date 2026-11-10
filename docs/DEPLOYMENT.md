@@ -4,16 +4,16 @@
 Vercel (Studio) → same-origin `/api/*` BFF → Railway (FastAPI) → PostgreSQL (Railway plugin or any PostgreSQL ≥ 14).
 
 ## 1. Database
-Provision PostgreSQL; set `DATABASE_URL` on the API service. Migrations: `alembic -c services/intelligence-api/alembic.ini upgrade head` (the Railway `preDeployCommand` runs this). Alternative: `psql "$DATABASE_URL" -f database/schemas/0001_initial.sql` (idempotent `CREATE … IF NOT EXISTS`). v0.0.0 has no downgrade; back up first.
+Provision PostgreSQL; set `DATABASE_URL` on the API service. The API container applies `database/schemas/0001_initial.sql` automatically at start (`services/intelligence-api/migrate.py`, idempotent; it stops the start if it fails). Manual alternative: `psql "$DATABASE_URL" -f database/schemas/0001_initial.sql`. v0.0.0 has no downgrade; back up first.
 
 ## 2. API on Railway
-Root of the repository, builder `DOCKERFILE` (`railway.json`). Variables (see `.env.example`): `AVOENIX_ENV=production`, `DATABASE_URL`, `AVOENIX_CORS_ORIGINS=https://<studio-domain>`, `AVOENIX_ADMIN_EMAIL`, `AVOENIX_ADMIN_PASSWORD` (≥ 12 chars; remove after first boot), `AVOENIX_COOKIE_SECURE=true`. Production startup fails fast on a missing `DATABASE_URL`/CORS list. Health check path: `/readyz`.
+Root of the repository; Railway finds the root `Dockerfile` and `railway.json` (health check `/readyz`). If your repo has everything inside an `AVOENIX/` folder, set the service Root Directory to `/AVOENIX`. Variables (see `.env.example`): `AVOENIX_ENV=production`, `DATABASE_URL`, `AVOENIX_CORS_ORIGINS=https://<studio-domain>`, `AVOENIX_ADMIN_EMAIL`, `AVOENIX_ADMIN_PASSWORD` (≥ 12 chars; remove after first boot), `AVOENIX_COOKIE_SECURE=true`. Production startup fails fast on a missing `DATABASE_URL`/CORS list. Health check path: `/readyz`.
 
 ## 3. Studio on Vercel
 Project root `apps/studio`; env `AVOENIX_API_URL=https://<railway-domain>` (server-side only). Build `next build`.
 
 ## 4. Local stack
-`cp .env.example .env`; set `AVOENIX_ADMIN_PASSWORD` and `POSTGRES_PASSWORD`; `docker compose up --build` → Studio http://localhost:3000, API http://localhost:8000/docs. Apply migrations once: `docker compose exec api alembic -c services/intelligence-api/alembic.ini upgrade head`.
+`cp .env.example .env`; set `AVOENIX_ADMIN_PASSWORD` and `POSTGRES_PASSWORD`; `docker compose up --build` → Studio http://localhost:3000, API http://localhost:8000/docs. Migrations run automatically when the API container starts.
 
 ## 5. Verify after deploy
 Follow "Manual acceptance" in `docs/TESTING.md`. Report any failure — the steps above are untested.

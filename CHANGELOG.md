@@ -14,7 +14,7 @@ First delivery. Everything listed was written in one build session; "verified" m
 - API service (FastAPI): `/v1` endpoints, scrypt passwords, opaque hashed sessions, lockout, rate limiting, audit log. *HTTP layer not executed in the build sandbox.*
 - AVOENIX Studio (Next.js): Milestone 1 (auth, chat, history, health/diagnostics, latency, errors); Milestones 2–4 partial read-only views. *Not built or run in the build sandbox.*
 - Evaluation dataset (57 cases, 12 categories, dev/holdout split) and runner.
-- Docker, docker-compose, Railway and Vercel configuration; `.env.example` with placeholders only.
+- Dockerfile, docker-compose, Railway and Vercel configuration, `migrate.py` startup migration; `.env.example` with placeholders only.
 
 ### Known issues
 See `docs/CAPABILITY_ASSESSMENT.md` (weaknesses) and `evaluation/results/latest.json` (7 failing evaluation cases, left unadjusted).

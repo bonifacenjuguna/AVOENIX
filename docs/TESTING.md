@@ -16,7 +16,7 @@ Contents: `tests/unit` (ACR, algorithms, reasoning, emotion, response, evaluatio
 PostgreSQL was exercised through a `psql`-subprocess adapter (`tests/support/psql_database.py`) because `psycopg` could not be installed. Each statement runs on its own connection, so **transaction atomicity is not tested**; `PsycopgDatabase` and `PostgresBackend` transactions are NOT TESTED. RLS policies are NOT TESTED (no non-owner role).
 
 ## NOT executed (BLOCKED BY ENVIRONMENT: package installation and Docker unavailable)
-FastAPI routes/middleware/CORS/cookies (`app/main.py` only `py_compile`d) · Alembic migration · Docker images and compose · Next.js build and runtime · Railway/Vercel deployment · browser behaviour of Studio · load/performance beyond the in-process timings in the evaluation report.
+FastAPI routes/middleware/CORS/cookies (`app/main.py` only `py_compile`d) · `migrate.py` (psycopg) · Docker images and compose · Next.js build and runtime · Railway/Vercel deployment · browser behaviour of Studio · load/performance beyond the in-process timings in the evaluation report.
 
 ## Evaluation dataset (`evaluation/datasets/core_v0.json`)
 57 developer-authored, differently worded cases in 12 categories; `holdout` cases were written with the dev cases and **not used to tune behaviour**. Targets are development goals only.

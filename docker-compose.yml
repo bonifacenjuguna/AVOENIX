@@ -14,7 +14,7 @@ services:
       timeout: 3s
       retries: 10
   api:
-    build: { context: ., dockerfile: services/intelligence-api/Dockerfile }
+    build: { context: ., dockerfile: Dockerfile }
     depends_on: { db: { condition: service_healthy } }
     environment:
       AVOENIX_ENV: development

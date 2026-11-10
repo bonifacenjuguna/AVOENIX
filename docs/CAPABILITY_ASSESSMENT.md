@@ -28,7 +28,7 @@ Legend: **Known** = verified by an executed test · **Inferred** = follows from 
 |---|---|
 | API business logic (`ApiCore`): auth, lockout, sessions, scoping, rate limit, audit | Known (tested without HTTP) |
 | FastAPI HTTP mapping, CORS, cookies | **Unknown** — written, `py_compile`d, never run |
-| Alembic migration, Docker, compose, Railway | **Unknown** — never run |
+| `migrate.py`, Docker, compose, Railway | **Unknown** — never run |
 | Studio Milestone 1 (login, chat, history, health, latency, errors) | **Unknown** — syntax-checked only; never built or rendered |
 | Studio Milestones 2–4 | Partial read-only pages, same caveat; Milestone 5 not implemented |
 | RLS policies | Not tested |
