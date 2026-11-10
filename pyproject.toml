@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "avoenix"
+version = "0.0.0"          # PEP 440 form of the official release label "v0.0.0"
+description = "AVOENIX - an Algorithmic Intelligence System (no LLMs, no neural networks)"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+# The intelligence core has NO third-party runtime dependencies (standard library only).
+dependencies = []
+
+[project.optional-dependencies]
+api = [
+  "fastapi>=0.115,<1",
+  "uvicorn[standard]>=0.30,<1",
+  "pydantic>=2.7,<3",
+  "PyJWT>=2.8,<3",
+  "psycopg[binary]>=3.2,<4",
+  "alembic>=1.13,<2",
+]
+dev = ["pytest>=8", "mypy>=1.10", "httpx>=0.27"]
+
+[tool.setuptools.packages.find]
+include = ["intelligence*", "services*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "services/intelligence-api/tests"]
+addopts = "-q"
+markers = [
+  "postgres: requires a reachable PostgreSQL (set AVOENIX_TEST_DATABASE_URL)",
+  "api: requires FastAPI and its test dependencies",
+  "slow: slower evaluation/benchmark tests",
+]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+warn_unused_ignores = false

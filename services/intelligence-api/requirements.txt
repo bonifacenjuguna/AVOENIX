@@ -1,0 +1,6 @@
+# Runtime dependencies of the API service (the intelligence core itself needs only the Python standard library).
+# Versions are minimum bounds chosen by the author; they were NOT installed or tested in the build sandbox (network blocked).
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.29,<1.0
+psycopg[binary,pool]>=3.1,<4.0
+alembic>=1.13,<2.0

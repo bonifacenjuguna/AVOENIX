@@ -1,0 +1,11 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "build": { "builder": "DOCKERFILE", "dockerfilePath": "services/intelligence-api/Dockerfile" },
+  "deploy": {
+    "healthcheckPath": "/readyz",
+    "healthcheckTimeout": 60,
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 5,
+    "preDeployCommand": ["alembic", "-c", "services/intelligence-api/alembic.ini", "upgrade", "head"]
+  }
+}

@@ -1,0 +1,34 @@
+# Local development stack. Credentials below are local-only placeholders; override them via a .env file (never commit real ones).
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: avoenix
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me-local-only}
+      POSTGRES_DB: avoenix
+    ports: ["127.0.0.1:5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U avoenix -d avoenix"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  api:
+    build: { context: ., dockerfile: services/intelligence-api/Dockerfile }
+    depends_on: { db: { condition: service_healthy } }
+    environment:
+      AVOENIX_ENV: development
+      DATABASE_URL: postgresql://avoenix:${POSTGRES_PASSWORD:-change-me-local-only}@db:5432/avoenix
+      AVOENIX_CORS_ORIGINS: http://localhost:3000
+      AVOENIX_ADMIN_EMAIL: ${AVOENIX_ADMIN_EMAIL:-admin@example.test}
+      AVOENIX_ADMIN_PASSWORD: ${AVOENIX_ADMIN_PASSWORD:?set AVOENIX_ADMIN_PASSWORD (min 12 chars) in .env}
+      AVOENIX_COOKIE_SECURE: "false"
+    ports: ["127.0.0.1:8000:8000"]
+  studio:
+    build: { context: apps/studio }
+    depends_on: [api]
+    environment:
+      AVOENIX_API_URL: http://api:8000
+    ports: ["127.0.0.1:3000:3000"]
+volumes:
+  pgdata: {}

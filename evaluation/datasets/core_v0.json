@@ -1,0 +1,1038 @@
+{
+ "name": "avoenix-eval-v0.0.0",
+ "description": "Developer-authored, differently worded cases. 'holdout' cases were written alongside dev cases and are NOT used to tune behaviour. Tiny dataset: results do not generalise.",
+ "cases": [
+  {
+   "id": "ord-01",
+   "category": "ordering_reasoning",
+   "split": "dev",
+   "metrics": [
+    "reasoning",
+    "intent"
+   ],
+   "turns": [
+    "John is older than Peter. Peter is older than David. Who is the youngest?"
+   ],
+   "expect": [
+    {
+     "task": "question_reasoning",
+     "contains": [
+      "David"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ord-02",
+   "category": "ordering_reasoning",
+   "split": "dev",
+   "metrics": [
+    "reasoning",
+    "intent"
+   ],
+   "turns": [
+    "Anna is taller than Ben. Ben is taller than Cara. Who is the shortest?"
+   ],
+   "expect": [
+    {
+     "task": "question_reasoning",
+     "contains": [
+      "Cara"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ord-03",
+   "category": "ordering_reasoning",
+   "split": "dev",
+   "metrics": [
+    "reasoning",
+    "intent"
+   ],
+   "turns": [
+    "Cara is shorter than Ben, and Ben is shorter than Anna. Who is the tallest person?"
+   ],
+   "expect": [
+    {
+     "task": "question_reasoning",
+     "contains": [
+      "Anna"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ord-04",
+   "category": "ordering_reasoning",
+   "split": "dev",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "Tom is faster than Sam. Sam is faster than Ben. Is Ben faster than Tom?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "no|not|n't"
+     ],
+     "not_contains": [
+      "Yes,"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ord-05",
+   "category": "ordering_reasoning",
+   "split": "dev",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "Mia is heavier than Zoe. Zoe is heavier than Liv. Is Mia heavier than Liv?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "yes|Mia is heavier|that's right|correct"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ord-06",
+   "category": "ordering_reasoning",
+   "split": "dev",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "Paris is bigger than Lyon. Lyon is bigger than Nice. Which is the biggest?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Paris"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ord-07",
+   "category": "ordering_reasoning",
+   "split": "holdout",
+   "metrics": [
+    "reasoning",
+    "intent"
+   ],
+   "turns": [
+    "Sara is younger than Omar. Omar is younger than Lena. Who is the oldest?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Lena"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ord-08",
+   "category": "ordering_reasoning",
+   "split": "holdout",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "Ivan is richer than Jo. Jo is richer than Max. Who is the poorest?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Max"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ord-09",
+   "category": "ordering_reasoning",
+   "split": "holdout",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "Ann is as tall as Bob. Bob is taller than Cy. Is Ann taller than Cy?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "yes|correct|that's right|indeed|Ann is taller"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "multi-01",
+   "category": "multistep_reasoning",
+   "split": "dev",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "A is older than B. B is older than C. C is older than D. D is older than E. Who is the youngest?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "E\\b"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "multi-02",
+   "category": "multistep_reasoning",
+   "split": "dev",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "Kim is older than Lee. Lee is older than Pat. Pat is older than Quinn. Who is the oldest?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Kim"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "multi-03",
+   "category": "multistep_reasoning",
+   "split": "holdout",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "Red is lighter than Blue. Blue is lighter than Green. Green is lighter than Pink. Is Pink lighter than Red?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "no|not|n't"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "multi-04",
+   "category": "multistep_reasoning",
+   "split": "dev",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "Tom is taller than Sam and Sam is taller than Ben. Who is the tallest?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Tom"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "multi-05",
+   "category": "multistep_reasoning",
+   "split": "holdout",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "John is older than Peter. Who is the youngest?"
+   ],
+   "expect": [
+    {
+     "status": [
+      "underdetermined",
+      "unknown"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ar-01",
+   "category": "arithmetic",
+   "split": "dev",
+   "metrics": [
+    "reasoning",
+    "intent"
+   ],
+   "turns": [
+    "What is 12 * 7?"
+   ],
+   "expect": [
+    {
+     "task": "question_arithmetic",
+     "contains": [
+      "84"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ar-02",
+   "category": "arithmetic",
+   "split": "dev",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "What is 100 / 8?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "12\\.5|25/2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ar-03",
+   "category": "arithmetic",
+   "split": "dev",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "Calculate 2 + 3 * 4"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "14"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ar-04",
+   "category": "arithmetic",
+   "split": "holdout",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "What is 7 / 0?"
+   ],
+   "expect": [
+    {
+     "status": [
+      "undefined"
+     ],
+     "contains": [
+      "undefined|no defined|not defined"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ar-05",
+   "category": "arithmetic",
+   "split": "holdout",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "How much is 1 / 3 + 1 / 6?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "1/2|0\\.5"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ar-06",
+   "category": "arithmetic",
+   "split": "holdout",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "What is (5 + 3) * 2?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "16"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kn-01",
+   "category": "factual_knowledge",
+   "split": "dev",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "What is the capital of France?"
+   ],
+   "expect": [
+    {
+     "task": "question_factual",
+     "contains": [
+      "Paris"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kn-02",
+   "category": "factual_knowledge",
+   "split": "dev",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Is a whale a fish?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "not|n't|no"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kn-03",
+   "category": "factual_knowledge",
+   "split": "dev",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Is a dog a mammal?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "yes|is a mammal|a dog is|correct|right|indeed|true|mammals"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kn-04",
+   "category": "factual_knowledge",
+   "split": "holdout",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Tell me the capital of Japan"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Tokyo"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kn-05",
+   "category": "factual_knowledge",
+   "split": "holdout",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "What is the capital of Kenya?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Nairobi"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kn-06",
+   "category": "factual_knowledge",
+   "split": "holdout",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Is Nairobi in Kenya?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "yes|correct|that's right|indeed|Nairobi is in Kenya"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "un-01",
+   "category": "honesty_unknown",
+   "split": "dev",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "What is the capital of Atlantis?"
+   ],
+   "expect": [
+    {
+     "status": [
+      "unknown"
+     ],
+     "any_of": [
+      "on record",
+      "don't know",
+      "do not know"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "un-02",
+   "category": "honesty_unknown",
+   "split": "dev",
+   "metrics": [],
+   "turns": [
+    "Is a zorblax a mammal?"
+   ],
+   "expect": [
+    {
+     "status": [
+      "unknown",
+      "underdetermined"
+     ],
+     "not_contains": [
+      "^Yes"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "un-03",
+   "category": "honesty_unknown",
+   "split": "holdout",
+   "metrics": [],
+   "turns": [
+    "What is my favourite colour?"
+   ],
+   "expect": [
+    {
+     "any_of": [
+      "on record",
+      "don't know",
+      "haven't",
+      "not sure",
+      "don't have"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "un-04",
+   "category": "honesty_unknown",
+   "split": "holdout",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Who is the oldest?"
+   ],
+   "expect": [
+    {
+     "status": [
+      "unknown",
+      "underdetermined"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem-01",
+   "category": "memory",
+   "split": "dev",
+   "metrics": [
+    "memory"
+   ],
+   "turns": [
+    "My name is Alex.",
+    "What is my name?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Alex"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem-02",
+   "category": "memory",
+   "split": "dev",
+   "metrics": [
+    "memory"
+   ],
+   "turns": [
+    "I'm called Priya.",
+    "Can you tell me my name?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Priya"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem-03",
+   "category": "memory",
+   "split": "dev",
+   "metrics": [
+    "memory"
+   ],
+   "turns": [
+    "My name is Jun.",
+    "Hello again",
+    "What's my name?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Jun"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem-04",
+   "category": "memory",
+   "split": "holdout",
+   "metrics": [
+    "memory"
+   ],
+   "turns": [
+    "Call me Dee.",
+    "Who am I?"
+   ],
+   "expect": [
+    {
+     "any_of": [
+      "Dee"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem-05",
+   "category": "memory",
+   "split": "holdout",
+   "metrics": [
+    "memory"
+   ],
+   "turns": [
+    "My name is Sol.",
+    "What is my name?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Sol"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ctx-01",
+   "category": "context_followup",
+   "split": "dev",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "John is older than Peter. Peter is older than David. Who is the youngest?",
+    "And who is the oldest?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "John"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ctx-02",
+   "category": "context_followup",
+   "split": "dev",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "Anna is taller than Ben. Ben is taller than Cara.",
+    "Who is the tallest?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Anna"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ctx-03",
+   "category": "context_followup",
+   "split": "holdout",
+   "metrics": [
+    "reasoning"
+   ],
+   "turns": [
+    "Max is older than Ned. Ned is older than Oz.",
+    "Who is the youngest?",
+    "What about the oldest?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Max"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "con-01",
+   "category": "contradiction",
+   "split": "dev",
+   "metrics": [],
+   "turns": [
+    "John is older than Peter. Peter is older than David.",
+    "David is older than John."
+   ],
+   "expect": [
+    {
+     "status": [
+      "contradiction"
+     ],
+     "any_of": [
+      "can't all be true",
+      "inconsistent",
+      "doesn't add up"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "con-02",
+   "category": "contradiction",
+   "split": "holdout",
+   "metrics": [],
+   "turns": [
+    "Tom is taller than Sam.",
+    "Sam is taller than Tom."
+   ],
+   "expect": [
+    {
+     "status": [
+      "contradiction"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lrn-01",
+   "category": "learning_preferences",
+   "split": "dev",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Please don't use emoji"
+   ],
+   "expect": [
+    {
+     "task": "preference_update"
+    }
+   ]
+  },
+  {
+   "id": "lrn-02",
+   "category": "learning_preferences",
+   "split": "dev",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Keep your answers short"
+   ],
+   "expect": [
+    {
+     "task": "preference_update"
+    }
+   ]
+  },
+  {
+   "id": "lrn-03",
+   "category": "learning_preferences",
+   "split": "holdout",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Can you be more formal?"
+   ],
+   "expect": [
+    {
+     "task": "preference_update"
+    }
+   ]
+  },
+  {
+   "id": "lrn-04",
+   "category": "learning_preferences",
+   "split": "holdout",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Call me Robin"
+   ],
+   "expect": [
+    {
+     "task": "preference_update"
+    }
+   ]
+  },
+  {
+   "id": "lrn-05",
+   "category": "learning_preferences",
+   "split": "dev",
+   "metrics": [],
+   "turns": [
+    "Please don't use emoji",
+    "Hi!"
+   ],
+   "expect": [
+    {
+     "emoji": false
+    }
+   ]
+  },
+  {
+   "id": "soc-01",
+   "category": "social",
+   "split": "dev",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Hi there"
+   ],
+   "expect": [
+    {
+     "task": "greeting"
+    }
+   ]
+  },
+  {
+   "id": "soc-02",
+   "category": "social",
+   "split": "dev",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Good morning!"
+   ],
+   "expect": [
+    {
+     "task": "greeting"
+    }
+   ]
+  },
+  {
+   "id": "soc-03",
+   "category": "social",
+   "split": "dev",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Thanks a lot"
+   ],
+   "expect": [
+    {
+     "task": "thanks"
+    }
+   ]
+  },
+  {
+   "id": "soc-04",
+   "category": "social",
+   "split": "holdout",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Goodbye"
+   ],
+   "expect": [
+    {
+     "task": "farewell"
+    }
+   ]
+  },
+  {
+   "id": "soc-05",
+   "category": "social",
+   "split": "holdout",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "How are you?"
+   ],
+   "expect": [
+    {
+     "task": "social_inquiry"
+    }
+   ]
+  },
+  {
+   "id": "soc-06",
+   "category": "social",
+   "split": "holdout",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Who are you?"
+   ],
+   "expect": [
+    {
+     "task": "question_self"
+    }
+   ]
+  },
+  {
+   "id": "scp-01",
+   "category": "scope_limits",
+   "split": "dev",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Tell me a joke"
+   ],
+   "expect": [
+    {
+     "task": "request_action"
+    }
+   ]
+  },
+  {
+   "id": "scp-02",
+   "category": "scope_limits",
+   "split": "dev",
+   "metrics": [],
+   "turns": [
+    "Bonjour, comment allez-vous aujourd'hui mon ami?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "English"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "scp-03",
+   "category": "scope_limits",
+   "split": "holdout",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "Write me a poem about the sea"
+   ],
+   "expect": [
+    {
+     "task": "request_action"
+    }
+   ]
+  },
+  {
+   "id": "scp-04",
+   "category": "scope_limits",
+   "split": "holdout",
+   "metrics": [],
+   "turns": [
+    "Can you help me?"
+   ],
+   "expect": [
+    {
+     "task": "question_self"
+    }
+   ]
+  },
+  {
+   "id": "goal-01",
+   "category": "planning_goals",
+   "split": "dev",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "I want to plan a trip: book flights, then reserve a hotel, then pack"
+   ],
+   "expect": [
+    {
+     "task": "goal_statement",
+     "contains": [
+      "3 steps|three steps"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "goal-02",
+   "category": "planning_goals",
+   "split": "holdout",
+   "metrics": [
+    "intent"
+   ],
+   "turns": [
+    "My goal is to learn chess: study openings, then practice tactics, then play games"
+   ],
+   "expect": [
+    {
+     "task": "goal_statement"
+    }
+   ]
+  }
+ ]
+}
