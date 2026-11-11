@@ -24,7 +24,7 @@ class InputError(AvoenixError):
 
 
 class UnsupportedLanguageError(InputError):
-    """Input does not look like English, the only supported language in v0.0.0."""
+    """Input does not look like English, the only supported language in v0.0.1."""
 
     code = "unsupported_language"
 

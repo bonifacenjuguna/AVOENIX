@@ -1,4 +1,4 @@
-# Learning Engine (`learning`) — v0.0.0
+# Learning Engine (`learning`) — v0.0.1
 
 **Status:** partial  
 **Depends on:** memory, knowledge, language

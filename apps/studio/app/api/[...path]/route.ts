@@ -20,6 +20,8 @@ async function proxy(req: NextRequest, { params }: { params: { path: string[] } 
     const out = new NextResponse(upstream.body, { status: upstream.status });
     out.headers.set("content-type", upstream.headers.get("content-type") ?? "application/json");
     out.headers.set("cache-control", "no-store");
+    for (const h of ["content-disposition", "x-message-count"]) { const v = upstream.headers.get(h); if (v) out.headers.set(h, v); }      // conversation export
+    out.headers.set("x-content-type-options", "nosniff");
     const cookies = (upstream.headers as any).getSetCookie?.() as string[] | undefined;
     (cookies ?? []).forEach((c) => out.headers.append("set-cookie", c));
     return out;

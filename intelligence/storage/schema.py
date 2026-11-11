@@ -44,9 +44,14 @@ TABLES: dict[str, Table] = {t.name: t for t in [
        "created_at updated_at last_accessed_at expires_at", json=("data", "acr"), scoped=True,
        ts=("created_at", "updated_at", "last_accessed_at", "expires_at")),
     _t("knowledge_facts", "id project_id user_id conversation_id predicate args polarity quantifier qualifiers statement confidence "
-       "source_type source_id status superseded_by version created_at updated_at", json=("args", "qualifiers"),
+       "source_type source_id status superseded_by version created_at updated_at provenance claim_type verification assessment memory_id",
+       json=("args", "qualifiers", "assessment"),
        ts=("created_at", "updated_at")),
     _t("knowledge_terms", "fact_id role term_key project_id", pk="fact_id,role"),
+    _t("knowledge_conflicts", "id project_id user_id kind fact_a fact_b status resolution note details created_at resolved_at resolved_by",
+       json=("details",), ts=("created_at", "resolved_at")),
+    _t("knowledge_revisions", "id project_id user_id fact_id new_fact_id previous updated source reason verified created_at",
+       json=("previous", "updated"), ts=("created_at",)),
     _t("feedback", "id project_id user_id conversation_id message_id kind rating comment payload status created_at", json=("payload",),
        scoped=True, ts=("created_at",)),
     _t("learning_records", "id project_id user_id kind status proposal evaluation applied_change reason source_feedback_id created_at "

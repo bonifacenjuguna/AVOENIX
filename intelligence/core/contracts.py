@@ -17,7 +17,7 @@ from ..representation import ACRDocument
 class InputPacket:
     original: str
     text: str                                   # normalised text handed to language understanding
-    language: str                               # always "en" in v0.0.0
+    language: str                               # always "en" in v0.0.1
     language_confidence: float
     language_method: str
     received_at: datetime

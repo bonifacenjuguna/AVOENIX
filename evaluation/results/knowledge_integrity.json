@@ -1,0 +1,481 @@
+{
+ "label": "knowledge_integrity_v1",
+ "platform_version": "v0.0.1",
+ "started_at": "2026-11-11T00:02:10.760312+00:00",
+ "summary": {
+  "overall": {
+   "passed": 10,
+   "total": 10,
+   "accuracy": 1.0
+  },
+  "by_category": {
+   "knowledge_integrity": {
+    "passed": 10,
+    "total": 10,
+    "accuracy": 1.0
+   }
+  },
+  "by_split": {
+   "dev": {
+    "passed": 8,
+    "total": 8,
+    "accuracy": 1.0
+   },
+   "holdout": {
+    "passed": 2,
+    "total": 2,
+    "accuracy": 1.0
+   }
+  },
+  "metrics": {
+   "intent_accuracy": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": 0.85,
+    "status": "not_evaluated"
+   },
+   "memory_retrieval": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": 0.9,
+    "status": "not_evaluated"
+   },
+   "deterministic_reasoning": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": 0.9,
+    "status": "not_evaluated"
+   },
+   "claim_classification": {
+    "passed": 5,
+    "total": 5,
+    "accuracy": 1.0,
+    "target": null,
+    "status": "measured_on_this_dataset"
+   },
+   "provenance_preserved": {
+    "passed": 4,
+    "total": 4,
+    "accuracy": 1.0,
+    "target": null,
+    "status": "measured_on_this_dataset"
+   },
+   "contradiction_detected": {
+    "passed": 4,
+    "total": 4,
+    "accuracy": 1.0,
+    "target": null,
+    "status": "measured_on_this_dataset"
+   },
+   "unsupported_presented_as_fact": {
+    "passed": 4,
+    "total": 4,
+    "accuracy": 1.0,
+    "target": null,
+    "status": "measured_on_this_dataset"
+   },
+   "confidence_calibration_claims": {
+    "passed": 1,
+    "total": 1,
+    "accuracy": 1.0,
+    "target": null,
+    "status": "measured_on_this_dataset"
+   },
+   "revision_history_preserved": {
+    "passed": 1,
+    "total": 1,
+    "accuracy": 1.0,
+    "target": null,
+    "status": "measured_on_this_dataset"
+   }
+  },
+  "latency_ms": {
+   "p50": 9.85,
+   "max": 16.04
+  }
+ },
+ "failures": [],
+ "cases": [
+  {
+   "id": "ki-01",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Washington/ not in response: \"I've kept a record that you said the capital of United States is New York, but that doesn't match what I know: the capital of United States is Washington, D.C. \"",
+     "turn": 0
+    },
+    {
+     "check": "claim",
+     "ok": true,
+     "detail": "{'object': 'New York', 'verification': ['contradicted', 'conflicting'], 'provenance': 'user_provided', 'memory_linked': True}: got [('New York', 'contradicted', 'user_provided')]",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Washington/ not in response: \"The capital of United States is Washington, D.C. (You earlier said New York; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/New York is the capital/ unexpectedly present: \"The capital of United States is Washington, D.C. (You earlier said New York; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/probably/ unexpectedly present: \"The capital of United States is Washington, D.C. (You earlier said New York; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 13.29,
+   "metric_tags": [
+    "claim_classification",
+    "unsupported_as_fact",
+    "provenance"
+   ],
+   "error": null,
+   "response": "The capital of United States is Washington, D.C. (You earlier said New York; I could not verify that, so I'm not treating it as fact.)"
+  },
+  {
+   "id": "ki-02",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/unverified claim/ not in response: \"I've kept a record that you said the capital of Kenya is Mombasa, but that doesn't match what I know: the capital of Kenya is Nairobi. I'm treating your stateme\"",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: \"I've kept a record that you said the capital of Kenya is Mombasa, but that doesn't match what I know: the capital of Kenya is Nairobi. I'm treating your stateme\"",
+     "turn": 0
+    },
+    {
+     "check": "claim",
+     "ok": true,
+     "detail": "{'object': 'Mombasa', 'verification': 'contradicted'}: got [('Mombasa', 'contradicted', 'user_provided')]",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 1.0,
+   "latency_ms": 5.25,
+   "metric_tags": [
+    "claim_classification",
+    "contradiction_detection"
+   ],
+   "error": null,
+   "response": "I've kept a record that you said the capital of Kenya is Mombasa, but that doesn't match what I know: the capital of Kenya is Nairobi. I'm treating your statement as an unverified claim, not a fact."
+  },
+  {
+   "id": "ki-03",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/unverified/ not in response: \"I've recorded that you said the capital of Atlantis is Poseidonis, but I can't verify it, so it's an unverified claim rather than something I know.\"",
+     "turn": 0
+    },
+    {
+     "check": "claim",
+     "ok": true,
+     "detail": "{'object': 'Poseidonis', 'verification': 'unverified'}: got [('Poseidonis', 'unverified', 'user_provided')]",
+     "turn": 0
+    },
+    {
+     "check": "status",
+     "ok": true,
+     "detail": "expected ['unverified_claim'], got 'unverified_claim'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/The capital of Atlantis is Poseidonis\\.$/ unexpectedly present: \"I don't have an established answer for the capital of Atlantis. You told me Poseidonis, but I couldn't verify that.\"",
+     "turn": 1
+    },
+    {
+     "check": "max_confidence",
+     "ok": true,
+     "detail": "confidence None above 0.5",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": null,
+   "latency_ms": 9.06,
+   "metric_tags": [
+    "claim_classification",
+    "unsupported_as_fact",
+    "claim_confidence"
+   ],
+   "error": null,
+   "response": "I don't have an established answer for the capital of Atlantis. You told me Poseidonis, but I couldn't verify that."
+  },
+  {
+   "id": "ki-04",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "passed": true,
+   "checks": [
+    {
+     "check": "claim",
+     "ok": true,
+     "detail": "{'object': 'Marinus', 'verification': 'conflicting', 'provenance': 'user_provided'}: got [('Marinus', 'conflicting', 'user_provided'), ('Poseidonis', 'conflicting', 'user_provided')]",
+     "turn": 1
+    },
+    {
+     "check": "open_conflicts",
+     "ok": true,
+     "detail": "expected 1, got 1",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 1.0,
+   "latency_ms": 9.85,
+   "metric_tags": [
+    "contradiction_detection",
+    "provenance"
+   ],
+   "error": null,
+   "response": "I've recorded that you said the capital of Atlantis is Marinus, but it conflicts with other claims I hold and I can't verify either, so I'm not treating it as fact."
+  },
+  {
+   "id": "ki-05",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "passed": true,
+   "checks": [
+    {
+     "check": "revisions",
+     "ok": true,
+     "detail": "expected >= 1, got 1",
+     "turn": 1
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Marinus/ not in response: \"I don't have an established answer for the capital of Atlantis. You told me Marinus, but I couldn't verify that.\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/The capital of Atlantis is Marinus\\.$/ unexpectedly present: \"I don't have an established answer for the capital of Atlantis. You told me Marinus, but I couldn't verify that.\"",
+     "turn": 2
+    }
+   ],
+   "failures": [],
+   "confidence": null,
+   "latency_ms": 16.04,
+   "metric_tags": [
+    "revision_history",
+    "provenance"
+   ],
+   "error": null,
+   "response": "I don't have an established answer for the capital of Atlantis. You told me Marinus, but I couldn't verify that."
+  },
+  {
+   "id": "ki-06",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/matches|agrees/ not in response: 'That matches what I know: the capital of United States is Washington, D.C.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 1.0,
+   "latency_ms": 4.68,
+   "metric_tags": [
+    "claim_classification"
+   ],
+   "error": null,
+   "response": "That matches what I know: the capital of United States is Washington, D.C."
+  },
+  {
+   "id": "ki-07",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'The capital of Kenya is Nairobi. \ud83d\ude42'",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: \"I've kept a record that you said the capital of Kenya is Mombasa, but that doesn't match what I know: the capital of Kenya is Nairobi. I'm treating your stateme\"",
+     "turn": 1
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: \"Same answer as before: Nairobi is the capital of Kenya. (You earlier said Mombasa; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 2
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Mombasa/ not in response: \"Same answer as before: Nairobi is the capital of Kenya. (You earlier said Mombasa; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 2
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/not treating it as fact/ not in response: \"Same answer as before: Nairobi is the capital of Kenya. (You earlier said Mombasa; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 2
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 13.59,
+   "metric_tags": [
+    "unsupported_as_fact",
+    "contradiction_detection"
+   ],
+   "error": null,
+   "response": "Same answer as before: Nairobi is the capital of Kenya. (You earlier said Mombasa; I could not verify that, so I'm not treating it as fact.)"
+  },
+  {
+   "id": "ki-08",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Savah/ not in response: 'Savah is your name.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 6.87,
+   "metric_tags": [
+    "claim_classification"
+   ],
+   "error": null,
+   "response": "Savah is your name."
+  },
+  {
+   "id": "ki-09",
+   "category": "knowledge_integrity",
+   "split": "holdout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/unverified|can't verify|couldn't verify/ not in response: \"I've kept a record that you said the capital of Germany is Paris, but that doesn't match what I know: the capital of Germany is Berlin. I'm treating your statem\"",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Berlin/ not in response: \"As far as I know, the capital of Germany is Berlin. (You earlier said Paris; I could not verify that, so I'm not treating it as fact.) \ud83d\udc4d\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/Paris is the capital/ unexpectedly present: \"As far as I know, the capital of Germany is Berlin. (You earlier said Paris; I could not verify that, so I'm not treating it as fact.) \ud83d\udc4d\"",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 9.77,
+   "metric_tags": [
+    "unsupported_as_fact"
+   ],
+   "error": null,
+   "response": "As far as I know, the capital of Germany is Berlin. (You earlier said Paris; I could not verify that, so I'm not treating it as fact.) \ud83d\udc4d"
+  },
+  {
+   "id": "ki-10",
+   "category": "knowledge_integrity",
+   "split": "holdout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'Nairobi is the capital of Kenya.'",
+     "turn": 0
+    },
+    {
+     "check": "claim",
+     "ok": true,
+     "detail": "{'object': 'Mombasa', 'provenance': 'user_provided'}: got [('Mombasa', 'contradicted', 'user_provided')]",
+     "turn": 1
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Washington/ not in response: 'The capital of United States is Washington, D.C.'",
+     "turn": 2
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 14.39,
+   "metric_tags": [
+    "contradiction_detection",
+    "provenance"
+   ],
+   "error": null,
+   "response": "The capital of United States is Washington, D.C."
+  }
+ ],
+ "calibration": {
+  "status": "measured",
+  "n": 8,
+  "expected_calibration_error": 0.0425,
+  "bins": [
+   {
+    "range": "[0.90, 1.00)",
+    "n": 8,
+    "mean_confidence": 0.958,
+    "accuracy": 1.0
+   }
+  ],
+  "note": "Confidence is an evidence-support score; a large error means it should not be read as a probability."
+ },
+ "environment": {
+  "python": "3.13.18",
+  "backend": "memory",
+  "platform": "Linux-6.18.44-fc-v338-x86_64-with-glibc2.39"
+ },
+ "caveats": [
+  "Targets are development goals, not claims of achievement.",
+  "Dataset is small and developer-authored; results do not generalise beyond it."
+ ]
+}

@@ -13,6 +13,7 @@ from ...core.contracts import Evidence
 from ...core.types import Scope
 from ...representation import ACRDocument, Intention
 from ..knowledge.engine import Fact, KnowledgeEngine
+from ..knowledge.integrity import classify_claim
 from ..knowledge.terms import render_term
 
 ASSERTING_ACTS = {"assert", "inform", "correct", "confirm"}
@@ -56,7 +57,8 @@ def fact_data(f: Fact) -> dict:
             args[r] = "you"
         else:
             args[r] = render_term(t)
-    return {"predicate": f.predicate, "args": args, "polarity": f.polarity, "quantifier": f.quantifier, "pole": f.qualifiers.get("pole")}
+    return {"predicate": f.predicate, "args": args, "polarity": f.polarity, "quantifier": f.quantifier, "pole": f.qualifiers.get("pole"),
+            "provenance": f.provenance, "verification": f.verification, "claim_type": f.claim_type}
 
 
 def evidence_for(f: Fact) -> Evidence:
@@ -85,12 +87,31 @@ class FactBase:
                     fb.skipped += problems
                     for pred, args, pol, quant, qual in facts:
                         n += 1
+                        ctype = classify_claim(pred, args)
                         fb.current.append(Fact(id=f"turn:{n}", predicate=pred, args=args, polarity=pol, quantifier=quant,
                                                statement="", confidence=0.9, source_type="user_statement", source_id="turn", status="active",
-                                               level="turn", conversation_id=conversation_id, qualifiers=qual))
+                                               level="turn", conversation_id=conversation_id, qualifiers=qual, provenance="user_provided", claim_type=ctype,
+                                               verification="not_applicable" if ctype == "personal" else "unverified"))
         return fb
 
     def get(self, predicate: str) -> list[Fact]:
+        """The *knowledge basis* for reasoning: established (curated / verified) facts, self-reports and scenario premises.
+        A user's claim about the world is NOT part of it until validation finds it supported; see ``claims``."""
+        return [f for f in self._all(predicate) if not self._is_unestablished_world_claim(f)]
+
+    @staticmethod
+    def _is_unestablished_world_claim(f: Fact) -> bool:
+        return f.claim_type == "world" and not f.established
+
+    def claims(self, predicate: str) -> list[Fact]:
+        """World claims that are recorded but not established (unverified, contradicted, conflicting), including this turn's statements."""
+        out = [f for f in self._all(predicate) if self._is_unestablished_world_claim(f) and f.level in ("turn", "user")]
+        for f in self.knowledge.query(self.scope, predicate, conversation_id=self.conversation_id, statuses=("disputed",), include_self=False):
+            if f.level == "user" and f.claim_type == "world" and f.id not in {o.id for o in out}:
+                out.append(f)
+        return out
+
+    def _all(self, predicate: str) -> list[Fact]:
         if predicate not in self._cache:
             stored = self.knowledge.query(self.scope, predicate, conversation_id=self.conversation_id)
             merged: dict[tuple, Fact] = {fact_key(f): f for f in stored}

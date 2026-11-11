@@ -7,7 +7,7 @@ export default function Memory() {
   const [applied, setApplied] = useState("");
   const { loading, data, error } = useGet(`/v1/memory${applied ? `?q=${encodeURIComponent(applied)}` : ""}`);
   return (
-    <div className="space-y-3">
+    <div className="mx-auto max-w-5xl space-y-3 p-4 sm:p-6">
       <h1 className="text-xl font-semibold">Memory</h1>
       <Status level="partial">Read-only inspection of your own memory (admin scope). Editing and deletion are not implemented in the Studio yet.</Status>
       <form className="flex gap-2" onSubmit={(e) => { e.preventDefault(); setApplied(q.trim()); }}>
@@ -15,7 +15,7 @@ export default function Memory() {
         <button className="btn">Search</button>
       </form>
       {loading && <p className="muted">Loading…</p>}
-      {error && <p role="alert" className="text-red-600">{error}</p>}
+      {error && <p role="alert" style={{ color: "var(--danger)" }}>{error}</p>}
       {data && (
         <>
           <div className="card p-3 text-sm"><b>Preferences</b><pre className="mt-1 text-xs">{Object.keys(data.preferences).length ? JSON.stringify(data.preferences, null, 1) : "none stored"}</pre></div>

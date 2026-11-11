@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "avoenix"
-version = "0.0.0"          # PEP 440 form of the official release label "v0.0.0"
+version = "0.0.1"          # PEP 440 form of the official release label "v0.0.1"
 description = "AVOENIX - an Algorithmic Intelligence System (no LLMs, no neural networks)"
 readme = "README.md"
 requires-python = ">=3.12"

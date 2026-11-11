@@ -1,0 +1,42 @@
+{
+ "backend": "memory",
+ "python": "3.13.18",
+ "platform": "Linux-6.18.44-fc-v338-x86_64-with-glibc2.39",
+ "results": {
+  "question_established": {
+   "n": 100,
+   "p50_ms": 3.61,
+   "p95_ms": 6.82,
+   "max_ms": 7.28,
+   "mean_ms": 4.07
+  },
+  "claim_contradicting": {
+   "n": 100,
+   "p50_ms": 5.45,
+   "p95_ms": 9.27,
+   "max_ms": 12.42,
+   "mean_ms": 5.98
+  },
+  "claim_unknown": {
+   "n": 100,
+   "p50_ms": 6.38,
+   "p95_ms": 7.78,
+   "max_ms": 16.35,
+   "mean_ms": 6.49
+  },
+  "ordering": {
+   "n": 100,
+   "p50_ms": 8.5,
+   "p95_ms": 12.32,
+   "max_ms": 13.59,
+   "mean_ms": 8.94
+  },
+  "personal": {
+   "n": 100,
+   "p50_ms": 5.7,
+   "p95_ms": 6.74,
+   "max_ms": 7.37,
+   "mean_ms": 5.84
+  }
+ }
+}

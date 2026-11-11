@@ -7,6 +7,8 @@ registered at runtime (``register``), so new inference methods can be added with
 
 from __future__ import annotations
 
+from ...version import PLATFORM_VERSION
+
 import time
 
 from ...core.contracts import Conclusion, LanguageResult, ReasoningResult
@@ -31,6 +33,7 @@ class ReasoningEngine(Engine):
                       "is-a / property inheritance syllogisms and located_in chains",
                       "exact rational arithmetic", "contradiction detection (negation, single-valued attributes, ordering cycles)",
                       "Laplace-based inductive generalisation (tentative)", "unknown / underdetermined reporting with the missing information",
+                      "unverified user claims are reported as claims (status 'unverified_claim'), never used as established facts",
                       "runtime registration of additional strategies"),
         limitations=("Coverage is limited to the predicates the English front-end can produce; unsupported constructions yield 'unsupported', not guesses.",
                      "No temporal reasoning, no numeric word problems with state, no probabilistic inference.",
@@ -98,7 +101,7 @@ class ReasoningEngine(Engine):
 
     # ---- helpers -----------------------------------------------------------------------------------------------------------
     def _queries(self, lr: LanguageResult) -> list[Query]:
-        doc, out = lr.doc, []
+        doc, out, seen = lr.doc, [], set()
         for rid in doc.roots:
             node = doc.nodes[rid]
             if not isinstance(node, Intention):
@@ -112,7 +115,13 @@ class ReasoningEngine(Engine):
                 for pid in node.content:
                     n = doc.nodes.get(pid)
                     if isinstance(n, Proposition):
-                        out.append(build_query("question", doc, n, question_kind=qk, wh=node.features.get("wh")))
+                        q = build_query("question", doc, n, question_kind=qk, wh=node.features.get("wh"))
+                        sig = (q.predicate, tuple(sorted((r, (t or {}).get("key")) for r, t in (q.terms or {}).items())), tuple(sorted(q.variables or ())))
+                        if sig in seen:             # an elliptical follow-up can resolve to the same question twice; answer it once
+                            made += 1
+                            continue
+                        seen.add(sig)
+                        out.append(q)
                         made += 1
                 if not made:       # the question could not be turned into a proposition: say so instead of staying silent
                     out.append(Query(kind="question", doc=doc, prop=None, question_kind=qk))
@@ -146,13 +155,13 @@ class ReasoningEngine(Engine):
         results = [c for c in results if c.status != "unsupported"] or results
         if not results:
             return Conclusion(status="unsupported", strategy="none", steps=["No reasoning strategy applies to this kind of statement or question."],
-                              notes=["This is outside what AVOENIX v0.0.0 can reason about."], query=q.summary()), runs
+                              notes=[f"This is outside what AVOENIX {PLATFORM_VERSION} can reason about."], query=q.summary()), runs
         if q.kind == "assertion":
             bad = [c for c in results if c.status == "contradiction"]
             chosen = bad[0] if bad else results[0]
             chosen.query = q.summary()
             return chosen, runs
-        for pool in (DECISIVE, ("likely",), ("underdetermined",), ("unknown",)):
+        for pool in (DECISIVE, ("likely",), ("unverified_claim",), ("underdetermined",), ("unknown",)):
             pick = next((c for c in results if c.status in pool), None)
             if pick:
                 break

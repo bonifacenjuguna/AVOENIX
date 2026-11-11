@@ -1,4 +1,4 @@
-# Evaluation & Confidence Engine (`evaluation`) — v0.0.0
+# Evaluation & Confidence Engine (`evaluation`) — v0.0.1
 
 **Status:** partial  
 **Depends on:** language, reasoning

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { api } from "@/lib/api";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Login() {
   const router = useRouter();
@@ -20,15 +21,19 @@ export default function Login() {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center gap-4 px-4">
-      <h1 className="text-2xl font-semibold">AVOENIX Studio</h1>
-      <p className="muted text-sm">Admin sign-in. Platform v0.0.0 — an algorithmic intelligence system, not a language model.</p>
-      <form onSubmit={submit} className="card flex flex-col gap-3 p-4">
-        <label className="text-sm">Email<input className="input mt-1" type="email" autoComplete="username" required value={email} onChange={(e) => setEmail(e.target.value)} /></label>
-        <label className="text-sm">Password<input className="input mt-1" type="password" autoComplete="current-password" required value={password} onChange={(e) => setPassword(e.target.value)} /></label>
-        {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
+    <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center gap-5 px-4">
+      <div className="absolute right-3 top-3"><ThemeToggle /></div>
+      <div>
+        <h1 className="text-2xl font-semibold tracking-tight">AVOENIX</h1>
+        <p className="muted mt-1 text-sm">Algorithmic Intelligence, Engineered to Evolve.</p>
+      </div>
+      <form onSubmit={submit} className="card flex flex-col gap-3 p-5" aria-describedby={error ? "login-error" : undefined}>
+        <label className="text-sm font-medium">Email<input className="input mt-1 font-normal" type="email" autoComplete="username" required value={email} onChange={(e) => setEmail(e.target.value)} /></label>
+        <label className="text-sm font-medium">Password<input className="input mt-1 font-normal" type="password" autoComplete="current-password" required value={password} onChange={(e) => setPassword(e.target.value)} /></label>
+        {error && <p id="login-error" role="alert" className="text-sm" style={{ color: "var(--danger)" }}>{error}</p>}
         <button className="btn" disabled={busy}>{busy ? "Signing in…" : "Sign in"}</button>
       </form>
+      <p className="muted text-xs">Admin sign-in · platform v0.0.1 · an algorithmic system, not a language model.</p>
     </main>
   );
 }

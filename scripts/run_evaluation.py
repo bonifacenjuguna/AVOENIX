@@ -32,6 +32,13 @@ def main() -> int:
     app = Avoenix(MemoryBackend(), AvoenixConfig())
     counter = {"n": 0}
 
+    def claim_state(scope: Scope) -> dict:
+        cl = app.knowledge.claims(scope)
+        return {"claims": [{"object": (c.object or {}).get("label") if isinstance(c.object, dict) else str(c.object), "verification": c.verification, "provenance": c.provenance,
+                            "memory_linked": bool(c.memory_id)} for c in cl],
+                "open_conflicts": len(app.knowledge.conflicts(scope, status="open")),
+                "revisions": len(app.backend.select("knowledge_revisions", {"project_id": scope.project_id, "user_id": scope.user_id}))}
+
     def respond(case: dict) -> list[dict]:
         counter["n"] += 1
         scope = Scope("eval", f"eval_user_{counter['n']}")
@@ -40,7 +47,8 @@ def main() -> int:
             r = app.process_turn(scope, text, cid)
             cid = r.conversation_id
             turns.append({"response": r.response, "understanding": r.understanding, "reasoning_status": (r.response_meta or {}).get("reasoning_status"),
-                          "emoji": (r.response_meta or {}).get("emoji"), "confidence": (r.confidence or {}).get("overall")})
+                          "emoji": (r.response_meta or {}).get("emoji"), "confidence": (r.confidence or {}).get("overall"),
+                          **claim_state(scope)})
         return turns
 
     report = app.evaluation.run_suite(cases, respond, label=Path(args.dataset).stem, environment={"python": platform.python_version(), "backend": "memory", "platform": platform.platform()})

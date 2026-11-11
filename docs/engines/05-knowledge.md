@@ -1,4 +1,4 @@
-# Knowledge Engine (`knowledge`) — v0.0.0
+# Knowledge Engine (`knowledge`) — v0.0.1
 
 **Status:** implemented  
 **Depends on:** storage

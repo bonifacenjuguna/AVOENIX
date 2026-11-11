@@ -16,11 +16,11 @@ export default function Evaluation() {
     if (r.ok) { setReport(r.data); runs.reload(); } else setError(`${r.error.code}: ${r.error.message}`);
   }
   return (
-    <div className="space-y-3">
+    <div className="mx-auto max-w-5xl space-y-3 p-4 sm:p-6">
       <h1 className="text-xl font-semibold">Evaluation</h1>
       <Status level="partial">Runs the bundled developer-authored dataset against this deployment. Targets are development goals, not achievements; the dataset is small and does not generalise.</Status>
       <button className="btn" onClick={run} disabled={running}>{running ? "Running…" : "Run evaluation now"}</button>
-      {error && <p role="alert" className="text-red-600">{error}</p>}
+      {error && <p role="alert" style={{ color: "var(--danger)" }}>{error}</p>}
       {report && (
         <div className="card space-y-1 p-3 text-sm">
           <p>Overall: <b>{report.summary.overall.passed}/{report.summary.overall.total}</b> · splits: {JSON.stringify(report.summary.by_split)}</p>
@@ -29,7 +29,7 @@ export default function Evaluation() {
         </div>
       )}
       <h2 className="font-semibold">Stored runs</h2>
-      {runs.loading ? <p className="muted">Loading…</p> : runs.error ? <p className="text-red-600">{runs.error}</p> : (
+      {runs.loading ? <p className="muted">Loading…</p> : runs.error ? <p style={{ color: "var(--danger)" }}>{runs.error}</p> : (
         <ul className="card divide-y p-3 text-sm">
           {runs.data.runs.length === 0 && <li className="muted">No stored runs.</li>}
           {runs.data.runs.map((r: any) => <li key={r.id} className="py-1">{r.started_at} · {r.suite} · {r.summary?.overall?.passed}/{r.summary?.overall?.total}</li>)}

@@ -14,7 +14,7 @@ CAPITALS = [
     ("Denmark", "Copenhagen"), ("Finland", "Helsinki"), ("Greece", "Athens"), ("Russia", "Moscow"), ("Turkey", "Ankara"),
     ("Egypt", "Cairo"), ("Kenya", "Nairobi"), ("Uganda", "Kampala"), ("Tanzania", "Dodoma"), ("Rwanda", "Kigali"),
     ("Ethiopia", "Addis Ababa"), ("Nigeria", "Abuja"), ("Ghana", "Accra"), ("Morocco", "Rabat"), ("Japan", "Tokyo"),
-    ("China", "Beijing"), ("India", "New Delhi"), ("South Korea", "Seoul"), ("Canada", "Ottawa"), ("United States", "Washington"),
+    ("China", "Beijing"), ("India", "New Delhi"), ("South Korea", "Seoul"), ("Canada", "Ottawa"), ("United States", "Washington, D.C."),
     ("Mexico", "Mexico City"), ("Brazil", "Brasilia"), ("Argentina", "Buenos Aires"), ("Chile", "Santiago"), ("Peru", "Lima"),
     ("Colombia", "Bogota"), ("Australia", "Canberra"), ("New Zealand", "Wellington"),
 ]

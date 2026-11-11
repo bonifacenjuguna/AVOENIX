@@ -1,7 +1,7 @@
 """Input Processing Engine.
 
 Receives raw input, validates it, normalises it, identifies whether it is within the supported
-language scope (English only in v0.0.0), records input metadata and hands a structured packet to
+language scope (English only in v0.0.1), records input metadata and hands a structured packet to
 language understanding. Independent of any frontend or transport.
 """
 
@@ -118,7 +118,7 @@ class InputProcessingEngine(Engine):
         lang, conf, method = self.identify_language(text)
         if self.enforce_language and lang not in ("en", "und"):
             raise UnsupportedLanguageError(
-                "AVOENIX v0.0.0 supports English only", details={"detected": lang, "confidence": round(conf, 2), "method": method})
+                "AVOENIX v0.0.1 supports English only", details={"detected": lang, "confidence": round(conf, 2), "method": method})
         if lang == "und":
             warnings.append("no alphabetic content detected")
         # collapse shouting for downstream analysis but keep the evidence in metadata

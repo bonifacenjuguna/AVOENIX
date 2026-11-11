@@ -1,4 +1,5 @@
-"""Apply database/schemas/0001_initial.sql (idempotent: IF NOT EXISTS / guarded blocks). Run before the API starts.
+"""Apply every database/schemas/NNNN_*.sql migration in order (idempotent: IF NOT EXISTS / guarded blocks; ``*_down.sql`` files are never applied).
+Each file is sent as one multi-statement simple query, which PostgreSQL runs in a single implicit transaction. Run before the API starts.
 
     DATABASE_URL=postgresql://... python services/intelligence-api/migrate.py
 
@@ -12,7 +13,12 @@ import sys
 import time
 from pathlib import Path
 
-SQL = Path(__file__).resolve().parents[2] / "database" / "schemas" / "0001_initial.sql"
+SCHEMAS = Path(__file__).resolve().parents[2] / "database" / "schemas"
+
+
+def migration_files(directory: Path = SCHEMAS) -> list[Path]:
+    """Forward migrations in numeric order; rollback scripts (``*_down.sql``) are excluded."""
+    return sorted(p for p in directory.glob("[0-9][0-9][0-9][0-9]_*.sql") if not p.stem.endswith("_down"))
 
 
 def main() -> int:
@@ -26,8 +32,9 @@ def main() -> int:
     for attempt in range(1, 16):                      # the database service may still be starting
         try:
             with psycopg.connect(url, autocommit=True, connect_timeout=5) as conn:
-                conn.execute(SQL.read_text())
-            print(f"migrate: schema applied from {SQL.name}")
+                for f in migration_files():
+                    conn.execute(f.read_text())
+                    print(f"migrate: applied {f.name}")
             return 0
         except psycopg.OperationalError as exc:
             last = exc

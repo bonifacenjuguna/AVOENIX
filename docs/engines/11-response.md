@@ -1,4 +1,4 @@
-# Response Generation Engine (`response`) — v0.0.0
+# Response Generation Engine (`response`) — v0.0.1
 
 **Status:** partial  
 **Depends on:** personality, emotion, reasoning

@@ -1,4 +1,4 @@
-# Planning / Goal Engine (`planning`) — v0.0.0
+# Planning / Goal Engine (`planning`) — v0.0.1
 
 **Status:** partial  
 **Depends on:** memory

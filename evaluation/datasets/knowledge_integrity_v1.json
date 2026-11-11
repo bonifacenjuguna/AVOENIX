@@ -1,0 +1,295 @@
+{
+ "name": "avoenix-eval-knowledge-integrity-v0.0.1",
+ "description": "Developer-authored knowledge-integrity cases (claims, provenance, contradictions, revisions). Small; results do not generalise. 'holdout' cases not used to tune behaviour.",
+ "cases": [
+  {
+   "id": "ki-01",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "metrics": [
+    "claim_classification",
+    "unsupported_as_fact",
+    "provenance"
+   ],
+   "turns": [
+    "The capital of the USA is New York.",
+    "What is the capital of the USA?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Washington"
+     ],
+     "claims": [
+      {
+       "object": "New York",
+       "verification": [
+        "contradicted",
+        "conflicting"
+       ],
+       "provenance": "user_provided",
+       "memory_linked": true
+      }
+     ]
+    },
+    {
+     "contains": [
+      "Washington"
+     ],
+     "not_contains": [
+      "New York is the capital",
+      "probably"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-02",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "metrics": [
+    "claim_classification",
+    "contradiction_detection"
+   ],
+   "turns": [
+    "The capital of Kenya is Mombasa."
+   ],
+   "expect": [
+    {
+     "contains": [
+      "unverified claim",
+      "Nairobi"
+     ],
+     "claims": [
+      {
+       "object": "Mombasa",
+       "verification": "contradicted"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-03",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "metrics": [
+    "claim_classification",
+    "unsupported_as_fact",
+    "claim_confidence"
+   ],
+   "turns": [
+    "The capital of Atlantis is Poseidonis.",
+    "What is the capital of Atlantis?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "unverified"
+     ],
+     "claims": [
+      {
+       "object": "Poseidonis",
+       "verification": "unverified"
+      }
+     ]
+    },
+    {
+     "status": "unverified_claim",
+     "not_contains": [
+      "The capital of Atlantis is Poseidonis\\.$"
+     ],
+     "max_confidence": 0.5
+    }
+   ]
+  },
+  {
+   "id": "ki-04",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "metrics": [
+    "contradiction_detection",
+    "provenance"
+   ],
+   "turns": [
+    "The capital of Atlantis is Poseidonis.",
+    "The capital of Atlantis is Marinus."
+   ],
+   "expect": [
+    {},
+    {
+     "open_conflicts": 1,
+     "claims": [
+      {
+       "object": "Marinus",
+       "verification": "conflicting",
+       "provenance": "user_provided"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-05",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "metrics": [
+    "revision_history",
+    "provenance"
+   ],
+   "turns": [
+    "The capital of Atlantis is Poseidonis.",
+    "No, the capital of Atlantis is Marinus.",
+    "What is the capital of Atlantis?"
+   ],
+   "expect": [
+    {},
+    {
+     "revisions": 1
+    },
+    {
+     "contains": [
+      "Marinus"
+     ],
+     "not_contains": [
+      "The capital of Atlantis is Marinus\\.$"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-06",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "metrics": [
+    "claim_classification"
+   ],
+   "turns": [
+    "The capital of the USA is Washington, D.C."
+   ],
+   "expect": [
+    {
+     "contains": [
+      "matches|agrees"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-07",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "metrics": [
+    "unsupported_as_fact",
+    "contradiction_detection"
+   ],
+   "turns": [
+    "What is the capital of Kenya?",
+    "The capital of Kenya is Mombasa.",
+    "What is the capital of Kenya?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Nairobi"
+     ]
+    },
+    {
+     "contains": [
+      "Nairobi"
+     ]
+    },
+    {
+     "contains": [
+      "Nairobi",
+      "Mombasa",
+      "not treating it as fact"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-08",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "metrics": [
+    "claim_classification"
+   ],
+   "turns": [
+    "My name is Savah.",
+    "What is my name?"
+   ],
+   "expect": [
+    {
+     "claims": []
+    },
+    {
+     "contains": [
+      "Savah"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-09",
+   "category": "knowledge_integrity",
+   "split": "holdout",
+   "metrics": [
+    "unsupported_as_fact"
+   ],
+   "turns": [
+    "Paris is the capital of Germany.",
+    "What is the capital of Germany?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "unverified|can't verify|couldn't verify"
+     ]
+    },
+    {
+     "contains": [
+      "Berlin"
+     ],
+     "not_contains": [
+      "Paris is the capital"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-10",
+   "category": "knowledge_integrity",
+   "split": "holdout",
+   "metrics": [
+    "contradiction_detection",
+    "provenance"
+   ],
+   "turns": [
+    "What is the capital of Kenya?",
+    "The capital of Kenya is Mombasa.",
+    "What about the USA?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Nairobi"
+     ]
+    },
+    {
+     "claims": [
+      {
+       "object": "Mombasa",
+       "provenance": "user_provided"
+      }
+     ]
+    },
+    {
+     "contains": [
+      "Washington"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,7 +1,7 @@
 {
  "label": "core_v0",
- "platform_version": "v0.0.0",
- "started_at": "2026-11-10T05:13:14.782466+00:00",
+ "platform_version": "v0.0.1",
+ "started_at": "2026-11-11T00:11:30.313552+00:00",
  "summary": {
   "overall": {
    "passed": 50,
@@ -103,11 +103,53 @@
     "accuracy": 0.913,
     "target": 0.9,
     "status": "target_met_on_this_dataset"
+   },
+   "claim_classification": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "provenance_preserved": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "contradiction_detected": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "unsupported_presented_as_fact": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "confidence_calibration_claims": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "revision_history_preserved": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
    }
   },
   "latency_ms": {
-   "p50": 4.48,
-   "max": 10.94
+   "p50": 6.75,
+   "max": 20.17
   }
  },
  "failures": [
@@ -124,7 +166,7 @@
    "category": "factual_knowledge",
    "split": "holdout",
    "reasons": [
-    "turn 0: contains: /Tokyo/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+    "turn 0: contains: /Tokyo/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
    ]
   },
   {
@@ -132,7 +174,7 @@
    "category": "memory",
    "split": "dev",
    "reasons": [
-    "turn 0: contains: /Priya/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+    "turn 0: contains: /Priya/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
    ]
   },
   {
@@ -140,7 +182,7 @@
    "category": "memory",
    "split": "holdout",
    "reasons": [
-    "turn 0: any_of: none of ['Dee'] in: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+    "turn 0: any_of: none of ['Dee'] in: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
    ]
   },
   {
@@ -148,7 +190,7 @@
    "category": "context_followup",
    "split": "holdout",
    "reasons": [
-    "turn 0: contains: /Max/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+    "turn 0: contains: /Max/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
    ]
   },
   {
@@ -184,19 +226,19 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/David/ not in response: 'Since John is older than Peter and Peter is older than David, the youngest is David.'",
+     "detail": "/David/ not in response: 'Since John is older than Peter and Peter is older than David, that would be David \u2014 the youngest.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.869,
-   "latency_ms": 8.49,
+   "latency_ms": 9.95,
    "metric_tags": [
     "reasoning",
     "intent"
    ],
    "error": null,
-   "response": "Since John is older than Peter and Peter is older than David, the youngest is David."
+   "response": "Since John is older than Peter and Peter is older than David, that would be David \u2014 the youngest."
   },
   {
    "id": "ord-02",
@@ -213,19 +255,19 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/Cara/ not in response: 'Given that Anna is taller than Ben and Ben is taller than Cara, Cara is the shortest among Anna, Ben and Cara.'",
+     "detail": "/Cara/ not in response: 'The shortest among Anna, Ben and Cara is Cara.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.869,
-   "latency_ms": 4.78,
+   "latency_ms": 6.67,
    "metric_tags": [
     "reasoning",
     "intent"
    ],
    "error": null,
-   "response": "Given that Anna is taller than Ben and Ben is taller than Cara, Cara is the shortest among Anna, Ben and Cara."
+   "response": "The shortest among Anna, Ben and Cara is Cara."
   },
   {
    "id": "ord-03",
@@ -242,19 +284,19 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/Anna/ not in response: 'Since Anna is taller than Ben and Ben is taller than Cara, the tallest is Anna.'",
+     "detail": "/Anna/ not in response: 'Since Anna is taller than Ben and Ben is taller than Cara, that would be Anna \u2014 the tallest among Ben, Cara and Anna.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.863,
-   "latency_ms": 6.32,
+   "latency_ms": 8.12,
    "metric_tags": [
     "reasoning",
     "intent"
    ],
    "error": null,
-   "response": "Since Anna is taller than Ben and Ben is taller than Cara, the tallest is Anna."
+   "response": "Since Anna is taller than Ben and Ben is taller than Cara, that would be Anna \u2014 the tallest among Ben, Cara and Anna."
   },
   {
    "id": "ord-04",
@@ -277,7 +319,7 @@
    ],
    "failures": [],
    "confidence": 0.869,
-   "latency_ms": 4.73,
+   "latency_ms": 7.13,
    "metric_tags": [
     "reasoning"
    ],
@@ -293,18 +335,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/yes|Mia is heavier|that's right|correct/ not in response: 'Correct \u2014 Mia is heavier than Liv. That follows from this: Mia is heavier than Zoe and Zoe is heavier than Liv.'",
+     "detail": "/yes|Mia is heavier|that's right|correct/ not in response: 'Yes, Mia is heavier than Liv.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.869,
-   "latency_ms": 4.61,
+   "latency_ms": 6.75,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "Correct \u2014 Mia is heavier than Liv. That follows from this: Mia is heavier than Zoe and Zoe is heavier than Liv."
+   "response": "Yes, Mia is heavier than Liv."
   },
   {
    "id": "ord-06",
@@ -315,18 +357,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/Paris/ not in response: 'Given that Paris is bigger than Lyon, Paris is the biggest.'",
+     "detail": "/Paris/ not in response: 'Paris is the biggest. \ud83d\ude42'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.917,
-   "latency_ms": 5.43,
+   "latency_ms": 8.11,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "Given that Paris is bigger than Lyon, Paris is the biggest."
+   "response": "Paris is the biggest. \ud83d\ude42"
   },
   {
    "id": "ord-07",
@@ -337,19 +379,19 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/Lena/ not in response: 'Since Lena is older than Omar and Omar is older than Sara, the answer is Lena \u2014 the oldest.'",
+     "detail": "/Lena/ not in response: 'So the oldest is Lena.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.869,
-   "latency_ms": 4.86,
+   "latency_ms": 6.77,
    "metric_tags": [
     "reasoning",
     "intent"
    ],
    "error": null,
-   "response": "Since Lena is older than Omar and Omar is older than Sara, the answer is Lena \u2014 the oldest."
+   "response": "So the oldest is Lena."
   },
   {
    "id": "ord-08",
@@ -360,18 +402,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/Max/ not in response: 'Max is the poorest.'",
+     "detail": "/Max/ not in response: 'Given that Ivan is richer than Jo and Jo is richer than Max, Max is the poorest.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.869,
-   "latency_ms": 5.12,
+   "latency_ms": 6.95,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "Max is the poorest."
+   "response": "Given that Ivan is richer than Jo and Jo is richer than Max, Max is the poorest."
   },
   {
    "id": "ord-09",
@@ -382,18 +424,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/yes|correct|that's right|indeed|Ann is taller/ not in response: \"That's right: Ann is taller than Cy.\"",
+     "detail": "/yes|correct|that's right|indeed|Ann is taller/ not in response: 'Yes \u2014 Ann is taller than Cy.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 4.48,
+   "latency_ms": 6.56,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "That's right: Ann is taller than Cy."
+   "response": "Yes \u2014 Ann is taller than Cy."
   },
   {
    "id": "multi-01",
@@ -404,18 +446,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/E\\b/ not in response: 'Since B is older than C, C is older than D and D is older than E, it seems so the youngest is E.'",
+     "detail": "/E\\b/ not in response: 'Since B is older than C, C is older than D and D is older than E, it seems the youngest is E.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.767,
-   "latency_ms": 6.1,
+   "latency_ms": 9.46,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "Since B is older than C, C is older than D and D is older than E, it seems so the youngest is E."
+   "response": "Since B is older than C, C is older than D and D is older than E, it seems the youngest is E."
   },
   {
    "id": "multi-02",
@@ -426,18 +468,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/Kim/ not in response: 'Since Kim is older than Lee, Lee is older than Pat and Pat is older than Quinn, it seems that would be Kim \u2014 the oldest.'",
+     "detail": "/Kim/ not in response: 'I think the answer is Kim \u2014 the oldest.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.81,
-   "latency_ms": 7.35,
+   "latency_ms": 9.08,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "Since Kim is older than Lee, Lee is older than Pat and Pat is older than Quinn, it seems that would be Kim \u2014 the oldest."
+   "response": "I think the answer is Kim \u2014 the oldest."
   },
   {
    "id": "multi-03",
@@ -448,18 +490,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/no|not|n't/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "detail": "/no|not|n't/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.175,
-   "latency_ms": 2.07,
+   "latency_ms": 3.93,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
   },
   {
    "id": "multi-04",
@@ -470,18 +512,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/Tom/ not in response: 'Tom is the tallest among Tom, Sam and Ben.'",
+     "detail": "/Tom/ not in response: 'Tom is the tallest.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.863,
-   "latency_ms": 4.74,
+   "latency_ms": 7.08,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "Tom is the tallest among Tom, Sam and Ben."
+   "response": "Tom is the tallest."
   },
   {
    "id": "multi-05",
@@ -500,12 +542,12 @@
     "turn 0: status: expected ['underdetermined', 'unknown'], got 'answered'"
    ],
    "confidence": 0.932,
-   "latency_ms": 3.81,
+   "latency_ms": 7.5,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "Peter is the youngest among John and Peter."
+   "response": "So the youngest is Peter."
   },
   {
    "id": "ar-01",
@@ -522,19 +564,19 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/84/ not in response: '12 * 7 is 84.'",
+     "detail": "/84/ not in response: '12 * 7 = 84.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.993,
-   "latency_ms": 2.49,
+   "latency_ms": 4.42,
    "metric_tags": [
     "reasoning",
     "intent"
    ],
    "error": null,
-   "response": "12 * 7 is 84."
+   "response": "12 * 7 = 84."
   },
   {
    "id": "ar-02",
@@ -545,18 +587,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/12\\.5|25/2/ not in response: 'That comes to 12.5.'",
+     "detail": "/12\\.5|25/2/ not in response: '100 / 8 = 12.5.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.993,
-   "latency_ms": 1.97,
+   "latency_ms": 4.02,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "That comes to 12.5."
+   "response": "100 / 8 = 12.5."
   },
   {
    "id": "ar-03",
@@ -567,18 +609,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/14/ not in response: '2 + 3 * 4 is 14.'",
+     "detail": "/14/ not in response: 'That comes to 14.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.993,
-   "latency_ms": 3.93,
+   "latency_ms": 5.84,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "2 + 3 * 4 is 14."
+   "response": "That comes to 14."
   },
   {
    "id": "ar-04",
@@ -595,18 +637,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/undefined|no defined|not defined/ not in response: \"There's no defined answer \u2014 division by zero.\"",
+     "detail": "/undefined|no defined|not defined/ not in response: \"That's undefined: division by zero.\"",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.7,
-   "latency_ms": 2.1,
+   "latency_ms": 3.92,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "There's no defined answer \u2014 division by zero."
+   "response": "That's undefined: division by zero."
   },
   {
    "id": "ar-05",
@@ -617,18 +659,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/1/2|0\\.5/ not in response: 'That comes to 0.5.'",
+     "detail": "/1/2|0\\.5/ not in response: '1 / 3 + 1 / 6 = 0.5.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.993,
-   "latency_ms": 2.19,
+   "latency_ms": 4.21,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "That comes to 0.5."
+   "response": "1 / 3 + 1 / 6 = 0.5."
   },
   {
    "id": "ar-06",
@@ -639,18 +681,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/16/ not in response: 'That comes to 16.'",
+     "detail": "/16/ not in response: 'The answer is 16. \ud83d\ude42'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.993,
-   "latency_ms": 2.07,
+   "latency_ms": 3.96,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "That comes to 16."
+   "response": "The answer is 16. \ud83d\ude42"
   },
   {
    "id": "kn-01",
@@ -667,18 +709,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/Paris/ not in response: 'Paris is the capital of France.'",
+     "detail": "/Paris/ not in response: 'As far as I know, the capital of France is Paris.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.932,
-   "latency_ms": 3.04,
+   "latency_ms": 5.65,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "Paris is the capital of France."
+   "response": "As far as I know, the capital of France is Paris."
   },
   {
    "id": "kn-02",
@@ -689,18 +731,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/not|n't|no/ not in response: \"No, whales aren't fish.\"",
+     "detail": "/not|n't|no/ not in response: \"No \u2014 whales aren't fish.\"",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 2.96,
+   "latency_ms": 4.92,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "No, whales aren't fish."
+   "response": "No \u2014 whales aren't fish."
   },
   {
    "id": "kn-03",
@@ -717,7 +759,7 @@
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 2.9,
+   "latency_ms": 4.81,
    "metric_tags": [
     "intent"
    ],
@@ -733,20 +775,20 @@
     {
      "check": "contains",
      "ok": false,
-     "detail": "/Tokyo/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "detail": "/Tokyo/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
      "turn": 0
     }
    ],
    "failures": [
-    "turn 0: contains: /Tokyo/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+    "turn 0: contains: /Tokyo/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
    ],
    "confidence": 1.0,
-   "latency_ms": 3.78,
+   "latency_ms": 5.48,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
   },
   {
    "id": "kn-05",
@@ -763,7 +805,7 @@
    ],
    "failures": [],
    "confidence": 0.932,
-   "latency_ms": 5.0,
+   "latency_ms": 5.69,
    "metric_tags": [
     "intent"
    ],
@@ -779,18 +821,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/yes|correct|that's right|indeed|Nairobi is in Kenya/ not in response: 'Yes \u2014 Nairobi is in Kenya.'",
+     "detail": "/yes|correct|that's right|indeed|Nairobi is in Kenya/ not in response: 'Yes, Nairobi is in Kenya.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 2.97,
+   "latency_ms": 5.0,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "Yes \u2014 Nairobi is in Kenya."
+   "response": "Yes, Nairobi is in Kenya."
   },
   {
    "id": "un-01",
@@ -807,18 +849,18 @@
     {
      "check": "any_of",
      "ok": true,
-     "detail": "none of ['on record', \"don't know\", 'do not know'] in: \"I don't have the capital of Atlantis on record. I'd need capital of Atlantis.\"",
+     "detail": "none of ['on record', \"don't know\", 'do not know'] in: \"I don't know the capital of Atlantis. I'd need capital of Atlantis.\"",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 6.28,
+   "latency_ms": 8.92,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "I don't have the capital of Atlantis on record. I'd need capital of Atlantis."
+   "response": "I don't know the capital of Atlantis. I'd need capital of Atlantis."
   },
   {
    "id": "un-02",
@@ -841,7 +883,7 @@
    ],
    "failures": [],
    "confidence": 0.969,
-   "latency_ms": 4.23,
+   "latency_ms": 6.1,
    "metric_tags": [],
    "error": null,
    "response": "I don't know whether zorblaxes are mammals. I'd need is-a information connecting zorblax and mammal."
@@ -855,16 +897,16 @@
     {
      "check": "any_of",
      "ok": true,
-     "detail": "none of ['on record', \"don't know\", \"haven't\", 'not sure', \"don't have\"] in: \"I don't know your colour. If you tell me colour of you, I can work with it.\"",
+     "detail": "none of ['on record', \"don't know\", \"haven't\", 'not sure', \"don't have\"] in: \"I can't answer that \u2014 I don't know your colour. If you tell me colour of you, I can work with it.\"",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.985,
-   "latency_ms": 3.69,
+   "latency_ms": 7.37,
    "metric_tags": [],
    "error": null,
-   "response": "I don't know your colour. If you tell me colour of you, I can work with it."
+   "response": "I can't answer that \u2014 I don't know your colour. If you tell me colour of you, I can work with it."
   },
   {
    "id": "un-04",
@@ -881,12 +923,12 @@
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 2.62,
+   "latency_ms": 6.16,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "I don't know the answer to that. I'd need at least two entities compared on age."
+   "response": "I don't have the answer to that on record. I'd need at least two entities compared on age."
   },
   {
    "id": "mem-01",
@@ -897,18 +939,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/Alex/ not in response: 'You told me your name is Alex.'",
+     "detail": "/Alex/ not in response: 'Your name is Alex.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.932,
-   "latency_ms": 5.22,
+   "latency_ms": 10.39,
    "metric_tags": [
     "memory"
    ],
    "error": null,
-   "response": "You told me your name is Alex."
+   "response": "Your name is Alex."
   },
   {
    "id": "mem-02",
@@ -919,20 +961,20 @@
     {
      "check": "contains",
      "ok": false,
-     "detail": "/Priya/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "detail": "/Priya/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
      "turn": 0
     }
    ],
    "failures": [
-    "turn 0: contains: /Priya/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+    "turn 0: contains: /Priya/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
    ],
    "confidence": 1.0,
-   "latency_ms": 4.16,
+   "latency_ms": 8.28,
    "metric_tags": [
     "memory"
    ],
    "error": null,
-   "response": "I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
   },
   {
    "id": "mem-03",
@@ -943,18 +985,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/Jun/ not in response: 'You told me your name is Jun..'",
+     "detail": "/Jun/ not in response: 'Jun. is your name.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.932,
-   "latency_ms": 6.88,
+   "latency_ms": 17.71,
    "metric_tags": [
     "memory"
    ],
    "error": null,
-   "response": "You told me your name is Jun.."
+   "response": "Jun. is your name."
   },
   {
    "id": "mem-04",
@@ -965,20 +1007,20 @@
     {
      "check": "any_of",
      "ok": false,
-     "detail": "none of ['Dee'] in: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "detail": "none of ['Dee'] in: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
      "turn": 0
     }
    ],
    "failures": [
-    "turn 0: any_of: none of ['Dee'] in: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+    "turn 0: any_of: none of ['Dee'] in: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
    ],
    "confidence": 1.0,
-   "latency_ms": 9.35,
+   "latency_ms": 17.02,
    "metric_tags": [
     "memory"
    ],
    "error": null,
-   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
   },
   {
    "id": "mem-05",
@@ -989,18 +1031,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/Sol/ not in response: 'You told me your name is Sol.'",
+     "detail": "/Sol/ not in response: 'Your name is Sol.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.932,
-   "latency_ms": 5.43,
+   "latency_ms": 11.86,
    "metric_tags": [
     "memory"
    ],
    "error": null,
-   "response": "You told me your name is Sol."
+   "response": "Your name is Sol."
   },
   {
    "id": "ctx-01",
@@ -1011,18 +1053,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/John/ not in response: 'Since John is older than Peter and Peter is older than David, the answer is John \u2014 the oldest. \ud83d\ude42'",
+     "detail": "/John/ not in response: 'Since John is older than Peter and Peter is older than David, that would be John \u2014 the oldest.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.869,
-   "latency_ms": 9.04,
+   "latency_ms": 14.5,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "Since John is older than Peter and Peter is older than David, the answer is John \u2014 the oldest. \ud83d\ude42"
+   "response": "Since John is older than Peter and Peter is older than David, that would be John \u2014 the oldest."
   },
   {
    "id": "ctx-02",
@@ -1033,18 +1075,18 @@
     {
      "check": "contains",
      "ok": true,
-     "detail": "/Anna/ not in response: 'That would be Anna \u2014 the tallest.'",
+     "detail": "/Anna/ not in response: 'Given that Anna is taller than Ben and Ben is taller than Cara, the answer is Anna \u2014 the tallest.'",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 0.869,
-   "latency_ms": 7.64,
+   "latency_ms": 13.59,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "That would be Anna \u2014 the tallest."
+   "response": "Given that Anna is taller than Ben and Ben is taller than Cara, the answer is Anna \u2014 the tallest."
   },
   {
    "id": "ctx-03",
@@ -1055,20 +1097,20 @@
     {
      "check": "contains",
      "ok": false,
-     "detail": "/Max/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "detail": "/Max/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
      "turn": 0
     }
    ],
    "failures": [
-    "turn 0: contains: /Max/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+    "turn 0: contains: /Max/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
    ],
    "confidence": 1.0,
-   "latency_ms": 10.94,
+   "latency_ms": 20.17,
    "metric_tags": [
     "reasoning"
    ],
    "error": null,
-   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+   "response": "I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
   },
   {
    "id": "con-01",
@@ -1085,16 +1127,16 @@
     {
      "check": "any_of",
      "ok": true,
-     "detail": "none of [\"can't all be true\", 'inconsistent', \"doesn't add up\"] in: \"Something is inconsistent here: John is older than Peter, Peter is older than David and David is older than John can't all be true. Which one should I trust?\"",
+     "detail": "none of [\"can't all be true\", 'inconsistent', \"doesn't add up\"] in: \"That doesn't add up: John is older than Peter, Peter is older than David and David is older than John can't all be true. Which one should I trust?\"",
      "turn": 0
     }
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 7.84,
+   "latency_ms": 13.06,
    "metric_tags": [],
    "error": null,
-   "response": "Something is inconsistent here: John is older than Peter, Peter is older than David and David is older than John can't all be true. Which one should I trust?"
+   "response": "That doesn't add up: John is older than Peter, Peter is older than David and David is older than John can't all be true. Which one should I trust?"
   },
   {
    "id": "con-02",
@@ -1111,10 +1153,10 @@
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 6.36,
+   "latency_ms": 13.52,
    "metric_tags": [],
    "error": null,
-   "response": "That doesn't add up: Tom is taller than Sam and Sam is taller than Tom can't all be true. Which one should I trust?"
+   "response": "Something is inconsistent here: Tom is taller than Sam and Sam is taller than Tom can't all be true. Which one should I trust?"
   },
   {
    "id": "lrn-01",
@@ -1131,7 +1173,7 @@
    ],
    "failures": [],
    "confidence": 0.42,
-   "latency_ms": 8.62,
+   "latency_ms": 12.41,
    "metric_tags": [
     "intent"
    ],
@@ -1155,7 +1197,7 @@
     "turn 0: task: expected 'preference_update', got 'request_action'"
    ],
    "confidence": 0.814,
-   "latency_ms": 1.98,
+   "latency_ms": 4.22,
    "metric_tags": [
     "intent"
    ],
@@ -1179,7 +1221,7 @@
     "turn 0: task: expected 'preference_update', got 'question_factual'"
    ],
    "confidence": 0.826,
-   "latency_ms": 5.51,
+   "latency_ms": 7.86,
    "metric_tags": [
     "intent"
    ],
@@ -1201,7 +1243,7 @@
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 7.18,
+   "latency_ms": 11.22,
    "metric_tags": [
     "intent"
    ],
@@ -1223,10 +1265,10 @@
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 10.22,
+   "latency_ms": 16.41,
    "metric_tags": [],
    "error": null,
-   "response": "Hey there. What would you like to work on?"
+   "response": "Hi. How are you today?"
   },
   {
    "id": "soc-01",
@@ -1243,12 +1285,12 @@
    ],
    "failures": [],
    "confidence": 0.743,
-   "latency_ms": 1.74,
+   "latency_ms": 3.67,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "Hi! What's on your mind? I'm AVOENIX, an algorithmic assistant \u2014 not a language model."
+   "response": "Hey! I'm AVOENIX; I work with structured reasoning rather than a language model."
   },
   {
    "id": "soc-02",
@@ -1265,12 +1307,12 @@
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 1.79,
+   "latency_ms": 3.83,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "Welcome. What would you like to work on? I'm AVOENIX; I work with structured reasoning rather than a language model."
+   "response": "Nice to meet you! How are you today? I'm AVOENIX, an algorithmic assistant \u2014 not a language model. \ud83d\udc4b"
   },
   {
    "id": "soc-03",
@@ -1287,12 +1329,12 @@
    ],
    "failures": [],
    "confidence": 0.944,
-   "latency_ms": 2.42,
+   "latency_ms": 4.37,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "No problem."
+   "response": "Glad to help. \ud83d\ude4c"
   },
   {
    "id": "soc-04",
@@ -1309,12 +1351,12 @@
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 1.76,
+   "latency_ms": 4.06,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "Talk to you later \u2014 come back any time."
+   "response": "Take care \u2014 good luck with it."
   },
   {
    "id": "soc-05",
@@ -1331,12 +1373,12 @@
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 1.81,
+   "latency_ms": 3.96,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "Doing fine, thanks for asking \u2014 I'm software, so no mood to report, but everything's running. How are you?"
+   "response": "Doing fine, thanks for asking \u2014 I'm software, so no mood to report, but everything's running."
   },
   {
    "id": "soc-06",
@@ -1353,12 +1395,12 @@
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 2.16,
+   "latency_ms": 4.08,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "I'm AVOENIX, an algorithmic intelligence system \u2014 not a large language model, a neural network or a scripted chatbot. Version v0.0.0. Right now I work in English. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me and do exact arithmetic."
+   "response": "I'm AVOENIX, an algorithmic intelligence system \u2014 not a large language model, a neural network or a scripted chatbot. Version v0.0.1. Right now I work in English. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me and do exact arithmetic."
   },
   {
    "id": "scp-01",
@@ -1375,12 +1417,12 @@
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 2.2,
+   "latency_ms": 3.96,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
   },
   {
    "id": "scp-02",
@@ -1397,7 +1439,7 @@
    ],
    "failures": [],
    "confidence": null,
-   "latency_ms": 0.65,
+   "latency_ms": 2.42,
    "metric_tags": [],
    "error": null,
    "response": "I only understand English in this version, so I can't read that message."
@@ -1417,12 +1459,12 @@
    ],
    "failures": [],
    "confidence": 0.978,
-   "latency_ms": 3.22,
+   "latency_ms": 4.95,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
   },
   {
    "id": "scp-04",
@@ -1439,7 +1481,7 @@
    ],
    "failures": [],
    "confidence": 1.0,
-   "latency_ms": 2.22,
+   "latency_ms": 4.03,
    "metric_tags": [],
    "error": null,
    "response": "I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
@@ -1465,7 +1507,7 @@
    ],
    "failures": [],
    "confidence": 0.936,
-   "latency_ms": 6.55,
+   "latency_ms": 8.41,
    "metric_tags": [
     "intent"
    ],
@@ -1487,12 +1529,12 @@
    ],
    "failures": [],
    "confidence": 0.923,
-   "latency_ms": 7.71,
+   "latency_ms": 9.03,
    "metric_tags": [
     "intent"
    ],
    "error": null,
-   "response": "Goal saved: \u201cLearn chess\u201d. It has 3 steps: Study openings, Practice tactics and Play games. First up: Study openings."
+   "response": "I've set up the goal \u201cLearn chess\u201d. It has 3 steps: Study openings, Practice tactics and Play games. First up: Study openings."
   }
  ],
  "calibration": {

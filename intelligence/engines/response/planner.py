@@ -59,7 +59,7 @@ def conclusion_to_message(c: Conclusion, *, capabilities: list[str] | None = Non
             disputed = next((n for n in c.notes if n.startswith("Conflicting claims")), None)
             return {"type": "value_answer", "attribute": a["attribute"], "owner": "you" if a["owner"].get("key") == "@user" else a["owner"].get("label"),
                     "value": a["value"].get("label") or str(a["value"].get("value")), "confidence": c.confidence, "source": src,
-                    "alternatives": c.alternatives, "disputed_note": "(Other claims about this are on hold as disputed.)" if disputed else None, "query": q}
+                    "alternatives": c.alternatives, "user_claims": a.get("user_claims") or [], "disputed_note": "(Other claims about this are on hold as disputed.)" if disputed else None, "query": q}
         if t == "number":
             return {"type": "number_answer", "value": a["value"], "expression": a.get("expression"), "exact": a.get("exact"), "query": q}
         return {"type": "unsupported", "capabilities": capabilities or [], "query": q}
@@ -87,6 +87,9 @@ def conclusion_to_message(c: Conclusion, *, capabilities: list[str] | None = Non
         return {"type": "contradiction", "contradictions": c.contradictions}
     if st == "undefined":
         return {"type": "undefined_math", "error": (a or {}).get("error"), "expression": (a or {}).get("expression")}
+    if st == "unverified_claim":
+        return {"type": "claim_answer", "attribute": a.get("attribute"), "owner": "you" if a["owner"].get("key") == "@user" else a["owner"].get("label"),
+                "claims": a.get("claims", []), "asked": a.get("asked"), "query": q}
     if st == "likely":
         return {"type": "likely_answer", "generalisation": a, "confidence": c.confidence, "query": q}
     if st == "unsupported":
@@ -123,10 +126,10 @@ def build_plan(*, conclusions: list[Conclusion] | None = None, stored: list[dict
         m = conclusion_to_message(c, capabilities=capabilities)
         if m:
             messages.append(m)
-            objective = "answer" if c.status in ("answered", "yes", "no", "likely") else {"unknown": "inform_unknown", "underdetermined": "inform_unknown", "contradiction": "clarify"}.get(c.status, "refuse")
+            objective = "answer" if c.status in ("answered", "yes", "no", "likely") else {"unknown": "inform_unknown", "underdetermined": "inform_unknown", "unverified_claim": "inform_unknown", "contradiction": "clarify"}.get(c.status, "refuse")
             if c.status in ("answered", "yes", "no") and (c.confidence or 1) < 0.75:
                 certainty = "likely"
-            elif c.status in ("unknown", "underdetermined"):
+            elif c.status in ("unknown", "underdetermined", "unverified_claim"):
                 certainty = "unknown"
             elif c.status == "likely":
                 certainty = "likely"
@@ -134,6 +137,11 @@ def build_plan(*, conclusions: list[Conclusion] | None = None, stored: list[dict
                 explanation += c.steps
     answered = any(m["type"].endswith("_answer") or m["type"] in ("unknown", "underdetermined") for m in messages)
     for s in stored or []:
+        if s.get("claim"):
+            messages.append({"type": "claim_recorded", **s["claim"]})
+            if objective in ("acknowledge",):
+                objective = "acknowledge_claim"
+            continue
         if answered and s.get("ok", True):
             continue          # statements made alongside a question are stored silently; the answer is what the user asked for
         messages.append({"type": "stored", "facts": s["facts"], "status": s.get("status", "stored")} if s.get("ok", True) else {"type": "not_stored", "reason": s.get("reason", "unspecified")})

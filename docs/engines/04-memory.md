@@ -1,4 +1,4 @@
-# Memory Engine (`memory`) — v0.0.0
+# Memory Engine (`memory`) — v0.0.1
 
 **Status:** implemented  
 **Depends on:** storage

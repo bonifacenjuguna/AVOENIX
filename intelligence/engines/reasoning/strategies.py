@@ -18,6 +18,7 @@ from ...algorithms.constraint import rankings
 from ...algorithms.partial_order import PartialOrder
 from ...core.contracts import Conclusion, Evidence
 from ...representation import ACRDocument, Proposition, Variable
+from ..knowledge.integrity import classify_claim
 from ..knowledge.terms import SELF_USER, norm_key, render_term, term_from_node
 from .facts import FactBase, describe, evidence_for
 
@@ -651,16 +652,38 @@ class AttributeLookupStrategy(Strategy):
         facts.sort(key=lambda f: (f.level != "turn", -f.reliability))
         what = f"{q.predicate[5:]} of {_label(owner)}"
         disputed = [f for f in fb.disputed(q.predicate) if f.key_of("owner") == owner["key"]]
+        claims = [f for f in fb.claims(q.predicate) if f.key_of("owner") == owner["key"] and f.polarity == "positive"]
         notes = []
         if disputed:
             notes.append("Conflicting claims are held as disputed: " + "; ".join(render_term(f.args["value"]) + f" ({f.source_type})" for f in disputed))
+
+        def claim_dicts(only_other_than: str | None = None) -> list[dict]:
+            seen, out = set(), []
+            for f in claims:
+                if f.key_of("value") in seen or (only_other_than and f.key_of("value") == only_other_than):
+                    continue
+                seen.add(f.key_of("value"))
+                out.append({"label": render_term(f.args["value"]), "verification": f.verification, "provenance": f.provenance, "id": f.id,
+                            "level": (f.assessment or {}).get("level")})
+            return out
         if "value" in q.variables:
             if facts:
                 best = facts[0]
                 alts = [{"label": render_term(f.args["value"]), "source": f.source_type} for f in facts[1:] if f.key_of("value") != best.key_of("value")]
-                conf = best.confidence if (owner.get("key") == SELF_USER and best.source_type == "user_statement") else best.reliability   # users are the authority on themselves
-                return Conclusion(status="answered", strategy=self.name, confidence=round(conf, 3), answer={"type": "value", "value": best.args["value"], "attribute": q.predicate, "owner": owner},
-                                  steps=[describe(best)], evidence=[evidence_for(best)], alternatives=alts, notes=notes)
+                if owner.get("key") == SELF_USER and best.source_type == "user_statement":
+                    conf = best.confidence                                         # users are the authority on themselves
+                elif best.established:
+                    conf = best.reliability
+                else:
+                    conf = min(best.reliability, 0.5)                              # a scenario premise: conditional on what the user said
+                other_claims = claim_dicts(only_other_than=best.key_of("value"))
+                return Conclusion(status="answered", strategy=self.name, confidence=round(conf, 3), answer={"type": "value", "value": best.args["value"], "attribute": q.predicate,
+                                  "owner": owner, "user_claims": other_claims}, steps=[describe(best)], evidence=[evidence_for(best)], alternatives=alts, notes=notes)
+            if claims:
+                cl = claim_dicts()
+                return Conclusion(status="unverified_claim", strategy=self.name, confidence=0.0, answer={"type": "claims", "attribute": q.predicate, "owner": owner, "claims": cl},
+                                  steps=[f"I have no established {what}.", "The only information I hold is what you told me, and I could not verify it: " + "; ".join(c["label"] for c in cl)],
+                                  evidence=[evidence_for(f) for f in claims[:3]], missing=[f"a verified {what}"], notes=notes)
             found = fb.knowledge.find_entity(fb.scope, owner.get("label") or owner["key"]) if owner.get("t") == "entity" else {"found": False, "suggestions": []}
             steps = [f"I have no recorded {what}."]
             if found.get("suggestions"):
@@ -671,11 +694,17 @@ class AttributeLookupStrategy(Strategy):
             return Conclusion(status="unsupported", strategy=self.name)
         for f in facts:
             if f.key_of("value") == val["key"]:
-                return Conclusion(status="yes", strategy=self.name, confidence=round(f.reliability, 3), steps=[describe(f)], answer={"type": "boolean", "value": True}, evidence=[evidence_for(f)], notes=notes)
+                return Conclusion(status="yes", strategy=self.name, confidence=round(f.reliability if f.established else min(f.reliability, 0.5), 3), steps=[describe(f)],
+                                  answer={"type": "boolean", "value": True}, evidence=[evidence_for(f)], notes=notes)
         if facts and q.predicate in ("attr.capital", "attr.name", "attr.age", "attr.birthday", "attr.currency"):
             f = facts[0]
             return Conclusion(status="no", strategy=self.name, confidence=round(f.reliability, 3), steps=[describe(f), f"{what} has a single value, so it is not {render_term(val)}."],
                               answer={"type": "boolean", "value": False, "actual": f.args["value"]}, evidence=[evidence_for(f)], notes=notes)
+        if claims and any(f.key_of("value") == val["key"] for f in claims):
+            cl = [c for c in claim_dicts() if c["label"] == render_term(val)] or claim_dicts()
+            return Conclusion(status="unverified_claim", strategy=self.name, confidence=0.0, answer={"type": "claims", "attribute": q.predicate, "owner": owner, "claims": cl, "asked": render_term(val)},
+                              steps=[f"You told me {render_term(val)} is the {what}; I could not verify that and have nothing established to compare it with."],
+                              evidence=[evidence_for(f) for f in claims[:3]], missing=[f"a verified {what}"], notes=notes)
         return Conclusion(status="unknown", strategy=self.name, steps=[f"I have no recorded {what} to compare with."], answer={"type": "boolean", "value": None}, missing=[what], notes=notes)
 
 
@@ -730,10 +759,14 @@ class ContradictionStrategy(Strategy):
     boundaries = "Detects direct and order-based conflicts; not arbitrary logical inconsistency across unrelated predicates."
 
     def applies(self, q: Query) -> bool:
-        return q.kind == "assertion" and q.predicate is not None and (q.predicate.startswith("attr.") or q.predicate in ("rel.is_a", "rel.has_property", "rel.located_in"))
+        return (q.kind == "assertion" and q.predicate is not None and (q.predicate.startswith("attr.") or q.predicate in ("rel.is_a", "rel.has_property", "rel.located_in"))
+                )
 
     def run(self, q: Query, fb: FactBase) -> Conclusion:
         prop = q.prop
+        if classify_claim(q.predicate, q.terms) == "world":
+            # claims about the world are validated, compared with established knowledge and recorded (with conflicts preserved) by the Knowledge layer
+            return Conclusion(status="consistent", strategy=self.name, confidence=1.0, steps=["This is a claim about the world: it is validated against established knowledge when recorded, not assumed true."])
         found = []
         for f in fb.get(prop.predicate):
             if f.source_id == "turn":

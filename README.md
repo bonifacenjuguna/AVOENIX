@@ -1,12 +1,15 @@
-# AVOENIX v0.0.0 — Algorithmic Intelligence System
+# AVOENIX v0.0.1 — Algorithmic Intelligence System
+
+*Algorithmic Intelligence, Engineered to Evolve.*
 
 AVOENIX is **not** a language-model chatbot. It is a deterministic, inspectable system that parses English into a language-independent
 representation (ACR), reasons over it with explicit algorithms, remembers and learns in controlled, reversible ways, and composes replies
 from structured facts. **No neural networks, pretrained models, or external AI APIs are used anywhere.**
 
-> **Status: v0.0.0 — an initial, partially verified foundation.** Read `docs/CAPABILITY_ASSESSMENT.md` before relying on anything.
+> **Status: v0.0.1 — Knowledge Integrity + Studio redesign on top of the v0.0.0 foundation; partially verified.** New in this release: user statements are stored as *claims* with provenance and a verification state and are never promoted to knowledge by being said (`docs/KNOWLEDGE_INTEGRITY.md`); Studio was redesigned (`docs/STUDIO.md`). See `docs/TESTING_REPORT.md` for what was and was not executed. Read `docs/CAPABILITY_ASSESSMENT.md` before relying on anything.
 
 ## What works (verified by tests in the build environment)
+- "What is the capital of the USA?" → Washington, D.C.; if you then say "The capital of the USA is New York.", AVOENIX records that *you said it* (unverified, contradicted by established knowledge), keeps your statement retrievable, and keeps answering Washington, D.C.
 - "John is older than Peter. Peter is older than David. Who is the youngest?" → David (with varied wording, follow-ups, contradictions).
 - Exact arithmetic, simple taxonomy/location/attribute questions, user facts across conversations, honest "I don't know".
 - Preference learning with read-back verification and revert; goal/step planning; emotion-aware tone; varied, repetition-aware replies.

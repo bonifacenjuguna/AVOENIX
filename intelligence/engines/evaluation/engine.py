@@ -95,7 +95,7 @@ class EvaluationEngine(Engine):
             comps["reasoning"] = round(pc.confidence, 3)
             if pc.assumptions:
                 factors.append("the answer relies on user-stated premises")
-        elif pc is not None and pc.status in ("unknown", "underdetermined", "unsupported", "contradiction", "undefined"):
+        elif pc is not None and pc.status in ("unknown", "underdetermined", "unsupported", "contradiction", "undefined", "unverified_claim"):
             not_evaluated.append("reasoning (no answer was established)")
         else:
             not_evaluated.append("reasoning")
@@ -103,11 +103,13 @@ class EvaluationEngine(Engine):
             comps["affect_reading"] = round(emotion.certainty, 3)
         used = {k: max(v, 1e-6) for k, v in comps.items() if k != "affect_reading"}
         overall = round(weighted_geometric(used, {k: (2.0 if k == "reasoning" else 1.0) for k in used}), 3) if used else None
-        if pc is not None and pc.status in ("unknown", "underdetermined", "unsupported", "contradiction"):
+        if pc is not None and pc.status == "unverified_claim":
+            overall = None          # understanding the question is not support for the claim: only an interpretation score exists, kept in components
+        if pc is not None and pc.status in ("unknown", "underdetermined", "unsupported", "contradiction", "unverified_claim"):
             band, headline = "not_evaluated", f"no answer established ({pc.status})"
         else:
             band, headline = band_of(overall), f"{band_of(overall)} support"
-        return {"overall": overall, "band": band, "headline": headline, "components": comps, "not_evaluated": not_evaluated, "factors": factors,
+        return {"overall": overall, "band": band, "headline": headline, "components": comps, "factual_support": comps.get("reasoning"), "not_evaluated": not_evaluated, "factors": factors,
                 "note": "evidence-support score, not a probability of being correct"}
 
     # ---- dataset execution ------------------------------------------------------------------------------------------------------------
@@ -139,6 +141,20 @@ class EvaluationEngine(Engine):
             add("answer", str(ans).lower() == str(expect["answer"]).lower(), f"expected {expect['answer']!r}, got {ans!r}")
         if "emoji" in expect:
             add("emoji", bool(turn.get("emoji")) == bool(expect["emoji"]), f"expected emoji={expect['emoji']}, got {turn.get('emoji')}")
+        for spec in expect.get("claims", []):                 # structural checks on the claim records the turn left behind
+            hit = [c for c in (turn.get("claims") or []) if re.search(spec["object"], c.get("object") or "", re.I)]
+            ok = bool(hit)
+            if ok and "verification" in spec:
+                ok = any(c["verification"] in (spec["verification"] if isinstance(spec["verification"], list) else [spec["verification"]]) for c in hit)
+            if ok and "provenance" in spec:
+                ok = any(c["provenance"] == spec["provenance"] for c in hit)
+            if ok and spec.get("memory_linked"):
+                ok = any(c.get("memory_linked") for c in hit)
+            add("claim", ok, f"{spec}: got {[(c.get('object'), c.get('verification'), c.get('provenance')) for c in turn.get('claims') or []]}")
+        if "open_conflicts" in expect:
+            add("open_conflicts", turn.get("open_conflicts") == expect["open_conflicts"], f"expected {expect['open_conflicts']}, got {turn.get('open_conflicts')}")
+        if "revisions" in expect:
+            add("revisions", (turn.get("revisions") or 0) >= expect["revisions"], f"expected >= {expect['revisions']}, got {turn.get('revisions')}")
         if "max_confidence" in expect:
             c = turn.get("confidence")
             add("max_confidence", c is None or c <= expect["max_confidence"], f"confidence {c} above {expect['max_confidence']}")
@@ -194,6 +210,13 @@ class EvaluationEngine(Engine):
             m = self._rate(rs) if rs else {"passed": 0, "total": 0, "accuracy": None}
             m["target"] = TARGETS[name]
             m["status"] = "not_evaluated" if not rs else ("target_met_on_this_dataset" if m["accuracy"] >= TARGETS[name] else "below_target")
+            metrics[name] = m
+        for name, tag in (("claim_classification", "claim_classification"), ("provenance_preserved", "provenance"), ("contradiction_detected", "contradiction_detection"),
+                          ("unsupported_presented_as_fact", "unsupported_as_fact"), ("confidence_calibration_claims", "claim_confidence"), ("revision_history_preserved", "revision_history")):
+            rs = [r for r in results if tag in r.metric_tags]
+            m = self._rate(rs) if rs else {"passed": 0, "total": 0, "accuracy": None}
+            m["target"] = None
+            m["status"] = "not_evaluated" if not rs else "measured_on_this_dataset"       # no invented targets for the new metrics
             metrics[name] = m
         splits = {s: self._rate([r for r in results if r.split == s]) for s in sorted({r.split for r in results})}
         calibration = self._calibration([r for r in results if r.confidence is not None])

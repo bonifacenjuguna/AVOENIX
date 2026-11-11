@@ -1,6 +1,6 @@
 """Personality Engine: a stable base character, adapted per user, per message and per emotional situation.
 
-Base character (v0.0.0): warm, plain-spoken, moderately concise, lightly expressive, rarely takes initiative.
+Base character (v0.0.1): warm, plain-spoken, moderately concise, lightly expressive, rarely takes initiative.
 Adaptation inputs, in order of authority:
   1. explicit user preferences (stored through the Memory Engine: ``style.formality``, ``style.emoji``, ``style.length``, ``style.warmth``)
   2. observed user style (running averages of message length, informality and emoji use)
@@ -52,7 +52,7 @@ class PersonalityEngine(Engine):
         capabilities=("five style dimensions + emoji level", "explicit preference overrides", "running observation of user style (stored in memory)",
                       "emotion-aware moderation", "explainable reasons list"),
         limitations=("Only English surface cues are observed.", "Observed style is a crude running average, not a user model.",
-                     "No long-term personality drift or multiple selectable personas in v0.0.0."),
+                     "No long-term personality drift or multiple selectable personas in v0.0.1."),
     )
 
     def self_check(self) -> tuple[bool, str]:

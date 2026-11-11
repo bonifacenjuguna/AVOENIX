@@ -12,12 +12,12 @@ export default function Learning() {
     reload();
   }
   return (
-    <div className="space-y-3">
+    <div className="mx-auto max-w-5xl space-y-3 p-4 sm:p-6">
       <h1 className="text-xl font-semibold">Learning</h1>
       <Status level="partial">Shows verified, reversible updates (preferences, corrections, strategy switches). Approval of project-wide knowledge has an API but no Studio UI yet.</Status>
       {msg && <p role="status" className="text-sm">{msg}</p>}
       {loading && <p className="muted">Loading…</p>}
-      {error && <p role="alert" className="text-red-600">{error}</p>}
+      {error && <p role="alert" style={{ color: "var(--danger)" }}>{error}</p>}
       {data && (
         <ul className="card divide-y p-3 text-sm">
           {data.records.length === 0 && <li className="muted">No learning records yet.</li>}

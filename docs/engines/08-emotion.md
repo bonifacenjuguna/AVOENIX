@@ -1,4 +1,4 @@
-# Emotion / Sentiment Engine (`emotion`) — v0.0.0
+# Emotion / Sentiment Engine (`emotion`) — v0.0.1
 
 **Status:** partial  
 **Depends on:** language
@@ -22,7 +22,7 @@ Lexicon + rule affect analysis: valence, arousal, emotion categories, negation, 
 
 - A ~200-word authored lexicon: unusual wording, slang, irony and sarcasm are not understood.
 - No speaker modelling: it reports expressed affect in this message only.
-- Not validated against a labelled corpus in v0.0.0 (see evaluation docs).
+- Not validated against a labelled corpus in v0.0.1 (see evaluation docs).
 
 ## Error handling
 

@@ -25,6 +25,7 @@ from .engines.emotion.engine import EmotionEngine
 from .engines.evaluation.engine import EvaluationEngine
 from .engines.input.engine import InputProcessingEngine
 from .engines.knowledge.engine import KnowledgeEngine, SelfModel
+from .engines.knowledge.integrity import classify_claim
 from .engines.language.engine import LanguageEngine
 from .engines.learning.engine import LearningEngine
 from .engines.memory.engine import MemoryEngine
@@ -50,6 +51,12 @@ _SELF_PATTERNS = [
 _SELF_KIND = re.compile(r"\bare you (?:a |an |the )?(?P<k>large language model|language model|llm|chatbot|chat bot|neural network|gpt|robot|human|person|ai|artificial intelligence|algorithm)\b", re.I)
 _KIND_CANON = {"large language model": "large language model", "language model": "large language model", "llm": "large language model", "gpt": "large language model",
                "chatbot": "scripted chatbot", "chat bot": "scripted chatbot", "neural network": "neural network"}
+
+def _is_open_claim(r) -> bool:
+    """A world statement the user made: it is reported as a claim with its verification state (never simply 'noted'), even when it turns out to agree with knowledge."""
+    return bool(r.fact) and r.fact.claim_type == "world"
+
+
 _RECALL = re.compile(r"\bwhat (do|did) you (remember|know) about (me|us)\b|\bdo you remember (me|anything)\b|\bwhat have i told you\b|\bwhat do you know about me\b", re.I)
 
 
@@ -148,11 +155,12 @@ class Avoenix:
             raise NotFoundError("conversation not found")
         return row
 
-    def messages(self, scope: Scope, conversation_id: str, limit: int = 500) -> list[dict]:
+    def messages(self, scope: Scope, conversation_id: str, limit: int | None = 500) -> list[dict]:
+        """Messages in order. ``limit=None`` returns the complete conversation (used by export)."""
         self.get_conversation(scope, conversation_id)
         rows = ScopedRepo(self.backend, scope).select("messages", {"conversation_id": conversation_id})
         rows.sort(key=lambda r: (r["turn_index"], 0 if r["role"] == "user" else 1))
-        return rows[:limit]
+        return rows if limit is None else rows[:limit]
 
     def delete_conversation(self, scope: Scope, conversation_id: str) -> bool:
         self.get_conversation(scope, conversation_id)
@@ -213,6 +221,15 @@ class Avoenix:
         questions, statements = self._split_intentions(lr)
         norm = packet.text
         learn_class = self.learning.classify(norm) if not questions else None
+        if learn_class and learn_class.get("kind") == "fact_correction":
+            # A correction about the WORLD ("No, the capital is X") is a claim, not something to learn: it goes through the Knowledge Integrity
+            # path (validated, provenance kept, earlier claim revised) instead of being applied as learned knowledge.
+            try:
+                facts, _ = self.learning._statement_to_facts(scope, learn_class["statement"])
+            except AvoenixError:
+                facts = []
+            if facts and all(classify_claim(f[0], f[1]) == "world" for f in facts):
+                learn_class = None
         self_q = self._self_question(norm, lr, questions)
         recall_q = bool(_RECALL.search(norm))
         goal_text = None if (questions or learn_class or self_q) else self.planning.detect_goal(norm)
@@ -259,6 +276,9 @@ class Avoenix:
                     conclusions = reasoning.conclusions
                 blocked = any(c.status == "contradiction" for c in conclusions)
                 if statements and not blocked:
+                    acts = {n.act for n in lr.doc.of_kind(Intention)}
+                    corrected = "correct" in acts or ("deny" in acts and "assert" in acts)       # "No, it is X" revises the user's earlier claim
+
                     def store_all():
                         out = []
                         for rid in lr.doc.roots:
@@ -266,17 +286,22 @@ class Avoenix:
                             if isinstance(n, Intention) and n.act in ("assert", "inform", "correct", "confirm"):
                                 for pid in n.content:
                                     if isinstance(lr.doc.nodes.get(pid), Proposition):
-                                        out += self.knowledge.assert_proposition(scope, lr.doc, pid, conversation_id=cid)
+                                        out += self.knowledge.assert_proposition(scope, lr.doc, pid, conversation_id=cid, correction=corrected)
                         return out
                     results = st.run("knowledge", "assert_proposition", store_all,
-                                     lambda rs: {"results": [r.status for r in rs]}, default=[]) or []
-                    good = [r for r in results if r.status in ("stored", "duplicate", "superseded") and r.fact]
-                    if good:
-                        status = "superseded" if any(r.status == "superseded" for r in good) else ("duplicate" if all(r.status == "duplicate" for r in good) else "stored")
-                        stored.append({"facts": [fact_data(r.fact) for r in good], "status": status})
-                        stored_facts_meta = [r.fact.to_dict() for r in good]
+                                     lambda rs: {"results": [r.status for r in rs], "verification": [r.verification for r in rs]}, default=[]) or []
+                    good = [r for r in results if r.status in ("stored", "duplicate", "superseded", "disputed") and r.fact]
+                    plain = [r for r in good if not _is_open_claim(r)]
+                    claim_results = [r for r in good if _is_open_claim(r)]
+                    if plain:
+                        status = "superseded" if any(r.status == "superseded" for r in plain) else ("duplicate" if all(r.status == "duplicate" for r in plain) else "stored")
+                        stored.append({"facts": [fact_data(r.fact) for r in plain], "status": status})
+                        stored_facts_meta = [r.fact.to_dict() for r in plain]
+                    for r in claim_results:
+                        stored.append({"claim": self._claim_entry(scope, r, norm, cid)})
+                        stored_facts_meta.append(r.fact.to_dict())
                     for r in results:
-                        if r.status == "disputed":
+                        if r.status == "disputed" and not r.fact:
                             stored.append({"ok": False, "reason": "it conflicts with something I hold with higher reliability, so I've kept my current information"})
                             break
         actions = [n for n in lr.doc.of_kind(Intention) if n.act == "request_action"]
@@ -401,6 +426,27 @@ class Avoenix:
             return f[0].args["value"]["label"] if f else None
         except Exception:
             return None
+
+    def _claim_entry(self, scope: Scope, r, utterance: str, cid: str) -> dict:
+        """Structured description of a user claim for the response planner, and the episodic memory of *who said it* (separate from the claim)."""
+        f = r.fact
+        try:
+            if not f.memory_id:
+                mem = self.memory.remember(scope, "episodic", f"User said: {utterance[:400]}", data={"fact_id": f.id, "verification": r.verification},
+                                           importance=0.4, conversation_id=cid, source="conversation")
+                self.knowledge.link_memory(scope, f.id, mem["id"])
+        except AvoenixError:
+            pass
+        established = None
+        roles = {k: v.get("key") for k, v in f.args.items() if k != "value"}
+        if "value" in f.args:
+            for e in self.knowledge.query(scope, f.predicate, roles, established_only=True, conversation_id=cid):
+                if e.polarity == f.polarity and e.id != f.id:
+                    established = fact_data(e)
+                    break
+        a = r.assessment or f.assessment or {}
+        return {"fact": fact_data(f), "verification": r.verification or f.verification, "level": a.get("level"), "status": r.status,
+                "established": established, "fact_id": f.id, "conflict_ids": r.conflict_ids}
 
     @staticmethod
     def _task(lr: LanguageResult, social: list[dict], questions: list, statements: list, learn: dict | None, self_q: dict | None, recall_q: bool, goal: str | None) -> str:

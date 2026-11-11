@@ -293,7 +293,7 @@ class ResponseGenerationEngine(Engine):
 
     def _m_value_answer(self, m: dict, ctx: Ctx) -> str:
         d = {"predicate": m["attribute"], "args": {"owner": m["owner"], "value": m["value"]}, "polarity": "positive"}
-        clause = realize_fact(d, contract=ctx.contract)
+        clause = realize_fact(d, contract=ctx.contract).rstrip(".")
         attr = m["attribute"][5:].replace("_", " ")
         pre = self._certainty_prefix(m.get("confidence"), ctx)
         src = m.get("source")
@@ -308,9 +308,36 @@ class ResponseGenerationEngine(Engine):
             core = pre + _decap(core)
         if m.get("alternatives") and not ctx.concise:
             core += f" (I also have: {join_list([a['label'] for a in m['alternatives']])}.)"
-        if m.get("disputed_note"):
+        if m.get("disputed_note") and not m.get("user_claims"):
             core += f" {m['disputed_note']}"
+        uc = m.get("user_claims") or []
+        if uc and not ctx.concise:
+            core += f" (You earlier said {join_list([c['label'] for c in uc])}; I could not verify that, so I'm not treating it as fact.)"
         return core
+
+    def _m_claim_answer(self, m: dict, ctx: Ctx) -> str:
+        attr = (m.get("attribute") or "attr.value")[5:].replace("_", " ")
+        owner = m.get("owner")
+        what = f"{'your' if owner == 'you' else 'the'} {attr}{'' if owner == 'you' else ' of ' + str(owner)}"
+        labels = join_list([c["label"] for c in m.get("claims", [])])
+        return self.pick(ctx, [Opt("cla.noest", f"I don't have an established answer for {what}. You told me {labels}, but I couldn't verify that.", 0.5, concise=False),
+                               Opt("cla.only", f"The only thing I have for {what} is your statement ({labels}), and it's unverified.", 0.4, concise=False),
+                               Opt("cla.short", f"Unverified: you said {labels}.", 0.3, concise=True)])
+
+    def _m_claim_recorded(self, m: dict, ctx: Ctx) -> str:
+        clause = realize_fact(m["fact"], contract=ctx.contract).rstrip(".")
+        est = m.get("established")
+        ver = m.get("verification")
+        if ver in ("supported", "verified", "curated"):
+            return self.pick(ctx, [Opt("clr.match", f"That matches what I know: {clause}.", 0.5), Opt("clr.agree", f"Yes, that agrees with my information — {clause}.", 0.4)])
+        if est is not None:
+            ec = realize_fact(est, contract=ctx.contract).rstrip(".")
+            return self.pick(ctx, [Opt("clr.conflict", f"I've kept a record that you said {clause}, but that doesn't match what I know: {ec}. I'm treating your statement as an unverified claim, not a fact.", 0.5, concise=False),
+                                   Opt("clr.conflict_s", f"I've logged that you said {clause}, but I have {ec}. Yours stays an unverified claim.", 0.4, concise=True)])
+        if ver == "conflicting":
+            return f"I've recorded that you said {clause}, but it conflicts with other claims I hold and I can't verify either, so I'm not treating it as fact."
+        return self.pick(ctx, [Opt("clr.unv", f"I've recorded that you said {clause}, but I can't verify it, so it's an unverified claim rather than something I know.", 0.5, concise=False),
+                               Opt("clr.unv_s", f"Recorded as your claim ({clause}) — unverified.", 0.3, concise=True)])
 
     def _m_number_answer(self, m: dict, ctx: Ctx) -> str:
         v, ex = m["value"], m.get("expression")

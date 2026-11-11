@@ -167,6 +167,20 @@ def create_app(settings: Settings | None = None, backend: Any = None) -> FastAPI
     def delete_conversation(cid: str, p: Principal = Depends(auth)):
         return run(core.delete_conversation, p, cid)
 
+    @app.get("/v1/conversations/{cid}/export")
+    def export_conversation(cid: str, request: Request, format: str = "json", p: Principal = Depends(auth)):
+        try:
+            status, body = core.export_conversation(p, cid, format, ip=ip_of(request))
+        except Exception as exc:  # noqa: BLE001
+            status, err = core.safe_error(exc)
+            if status >= 500:
+                log.exception("export failed (reference %s)", err["error"].get("details", {}).get("reference"))
+            return reply(status, err)
+        from fastapi.responses import Response
+        return Response(content=body["content"], media_type=body["content_type"],
+                        headers={"Content-Disposition": f'attachment; filename="{body["filename"]}"', "X-Message-Count": str(body["message_count"]),
+                                 "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff"})
+
     @app.post("/v1/chat")
     async def chat(request: Request, p: Principal = Depends(auth)):
         b = await body_of(request)
@@ -184,6 +198,22 @@ def create_app(settings: Settings | None = None, backend: Any = None) -> FastAPI
     @app.get("/v1/knowledge")
     def knowledge(q: str | None = None, limit: int = 20, p: Principal = Depends(auth)):
         return run(core.knowledge, p, q, limit)
+
+    @app.get("/v1/claims")
+    def claims(verification: str | None = None, subject: str | None = None, limit: int = 50, p: Principal = Depends(auth)):
+        return run(core.claims, p, verification, subject, limit)
+
+    @app.get("/v1/claims/{claim_id}/history")
+    def claim_history(claim_id: str, p: Principal = Depends(auth)):
+        return run(core.claim_history, p, claim_id)
+
+    @app.get("/v1/conflicts")
+    def conflicts(status: str | None = None, p: Principal = Depends(auth)):
+        return run(core.conflicts, p, status)
+
+    @app.post("/v1/conflicts/{conflict_id}/resolve")
+    async def resolve_conflict(conflict_id: str, request: Request, p: Principal = Depends(auth)):
+        return run(core.resolve_conflict, p, conflict_id, await body_of(request))
 
     @app.post("/v1/feedback")
     async def feedback(request: Request, p: Principal = Depends(auth)):

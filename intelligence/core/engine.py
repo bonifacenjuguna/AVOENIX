@@ -31,7 +31,7 @@ class EngineInfo:
     depends_on: tuple[str, ...] = ()
     capabilities: tuple[str, ...] = ()
     limitations: tuple[str, ...] = ()
-    version: str = "0.0.0"
+    version: str = "0.0.1"
 
     def to_dict(self) -> dict:
         return {

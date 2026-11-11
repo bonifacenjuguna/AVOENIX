@@ -1,4 +1,4 @@
-# Personality Engine (`personality`) — v0.0.0
+# Personality Engine (`personality`) — v0.0.1
 
 **Status:** partial  
 **Depends on:** memory, emotion
@@ -21,7 +21,7 @@ Base character plus per-user adaptation (explicit preferences, observed style, e
 
 - Only English surface cues are observed.
 - Observed style is a crude running average, not a user model.
-- No long-term personality drift or multiple selectable personas in v0.0.0.
+- No long-term personality drift or multiple selectable personas in v0.0.1.
 
 ## Error handling
 

@@ -1,4 +1,4 @@
-# Reasoning Engine (`reasoning`) — v0.0.0
+# Reasoning Engine (`reasoning`) — v0.0.1
 
 **Status:** partial  
 **Depends on:** knowledge, language
@@ -18,6 +18,7 @@ Pluggable strategies over ACR: relational ordering (+CSP cross-check), taxonomy/
 - contradiction detection (negation, single-valued attributes, ordering cycles)
 - Laplace-based inductive generalisation (tentative)
 - unknown / underdetermined reporting with the missing information
+- unverified user claims are reported as claims (status 'unverified_claim'), never used as established facts
 - runtime registration of additional strategies
 
 ## Known limitations

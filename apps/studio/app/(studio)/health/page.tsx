@@ -20,12 +20,12 @@ export default function Health() {
   useEffect(() => { load(); }, [load]);
 
   return (
-    <div className="space-y-4">
+    <div className="mx-auto max-w-5xl space-y-3 p-4 sm:p-6">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-semibold">Health & diagnostics</h1>
         <button className="btn" onClick={load} disabled={loading}>{loading ? "Checking…" : "Re-run checks"}</button>
       </div>
-      {error && <p role="alert" className="card border-red-500 p-3 text-red-600">Backend unreachable or refused: {error}</p>}
+      {error && <p role="alert" className="card p-3" style={{ borderColor: "var(--danger)", color: "var(--danger)" }}>Backend unreachable or refused: {error}</p>}
       {d && (
         <>
           <div className="card grid gap-2 p-3 text-sm sm:grid-cols-4">
@@ -41,7 +41,7 @@ export default function Health() {
                 {d.engines.map((e: EngineHealth) => (
                   <tr key={e.key} className="border-t" style={{ borderColor: "var(--line)" }}>
                     <td className="py-1 font-medium">{e.key}</td>
-                    <td className={e.status === "ok" ? "" : "text-red-600"}>{e.status}</td>
+                    <td style={e.status === "ok" ? undefined : { color: "var(--danger)" }}>{e.status}</td>
                     <td className="muted">{e.detail}</td>
                     <td className="text-right">{e.metrics.calls}</td><td className="text-right">{e.metrics.errors}</td>
                     <td className="text-right">{e.metrics.avg_ms ?? "—"}</td>

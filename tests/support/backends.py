@@ -36,7 +36,7 @@ def make_pg_backend() -> PostgresBackend:
     host, port, db, user = pg_params()
     backend = PostgresBackend(PsqlDatabase(host, port, db, user))
     # clean slate for tests (children before parents)
-    for t in ["audit_log", "knowledge_terms", "knowledge_facts", "learning_records", "feedback", "turn_traces", "messages", "conversations",
+    for t in ["audit_log", "knowledge_revisions", "knowledge_conflicts", "knowledge_terms", "knowledge_facts", "learning_records", "feedback", "turn_traces", "messages", "conversations",
               "memories", "experiments", "evaluation_runs", "system_config", "api_keys", "sessions", "project_users", "projects", "users"]:
         backend.db.query(f'DELETE FROM "{t}" RETURNING 1 AS n', [])
     return backend

@@ -204,6 +204,50 @@ class ApiCore:
         return 200, {"conversation_id": cid, "messages": [{k: m.get(k) for k in ("id", "role", "content", "turn_index", "latency_ms", "created_at")}
                                                          for m in self.engine.messages(self.scope_for(p), cid)]}
 
+    def export_conversation(self, p: Principal, cid: str, fmt: str, ip: str | None = None) -> tuple[int, dict]:
+        """The COMPLETE conversation (not a page of it) in the requested format. Ownership is enforced by the scoped engine call; the export is audited."""
+        from .export import FORMATS, filename_for, render
+        self._id(cid)
+        if fmt not in FORMATS:
+            raise InputError("format must be one of: json, md, txt")
+        scope = self.scope_for(p)
+        conv = self.engine.get_conversation(scope, cid)
+        msgs = self.engine.messages(scope, cid, limit=None)
+        now = datetime.now(timezone.utc)
+        content = render(self._conv(conv), msgs, fmt, now.isoformat())
+        self.audit("conversation.export", actor=p.id, target_type="conversation", target_id=cid, ip=ip, details={"format": fmt, "messages": len(msgs)})
+        return 200, {"filename": filename_for(conv, fmt, now), "content_type": FORMATS[fmt], "content": content, "message_count": len(msgs)}
+
+    def claims(self, p: Principal, verification: str | None, subject: str | None, limit: int = 50) -> tuple[int, dict]:
+        s, limit = self.scope_for(p), max(1, min(int(limit), 200))
+        if verification is not None and verification not in ("verified", "curated", "supported", "unverified", "contradicted", "conflicting", "not_applicable"):
+            raise InputError("unknown verification state")
+        cl = self.engine.knowledge.claims(s, verification=verification, subject_key=(subject or None), limit=limit)
+        return 200, {"claims": [c.to_dict() for c in cl], "schema": "claim/1.0"}
+
+    def claim_history(self, p: Principal, claim_id: str) -> tuple[int, dict]:
+        self._id(claim_id)
+        return 200, self.engine.knowledge.history(self.scope_for(p), claim_id)
+
+    def conflicts(self, p: Principal, status: str | None) -> tuple[int, dict]:
+        if status not in (None, "open", "resolved"):
+            raise InputError("status must be open or resolved")
+        return 200, {"conflicts": self.engine.knowledge.conflicts(self.scope_for(p), status=status)}
+
+    def resolve_conflict(self, p: Principal, conflict_id: str, body: dict) -> tuple[int, dict]:
+        self._id(conflict_id)
+        if not isinstance(body, dict):
+            raise InputError("body must be an object")
+        note = body.get("note")
+        if note is not None and (not isinstance(note, str) or len(note) > 500):
+            raise InputError("note must be a string of at most 500 characters")
+        winner = body.get("winner")
+        if winner is not None:
+            self._id(winner)
+        c = self.engine.knowledge.resolve_conflict(self.scope_for(p), conflict_id, str(body.get("resolution", "")), winner=winner, note=note, resolved_by=p.id)
+        self.audit("knowledge.conflict.resolve", actor=p.id, target_type="knowledge_conflict", target_id=conflict_id, details={"resolution": c["resolution"]})
+        return 200, c
+
     def delete_conversation(self, p: Principal, cid: str) -> tuple[int, dict]:
         self._id(cid)
         self.engine.delete_conversation(self.scope_for(p), cid)

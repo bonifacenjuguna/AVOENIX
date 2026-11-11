@@ -29,8 +29,24 @@ def norm_key(label: str) -> str:
     return s
 
 
+# Surface forms that name the same entity. Keys are normalised (lower-case, article-free); values are (canonical key, canonical label).
+# Deliberately small: only unambiguous country/city abbreviations the curated seed uses. Ambiguous names (e.g. "America") are not aliased.
+ALIASES: dict[str, tuple[str, str]] = {
+    **{a: ("united states", "United States") for a in ("usa", "us", "u.s.", "u.s.a.", "united states of america", "the united states")},
+    **{a: ("united kingdom", "United Kingdom") for a in ("uk", "u.k.", "britain", "great britain")},
+    **{a: ("washington", "Washington, D.C.") for a in ("washington", "washington dc", "washington d.c.", "washington, dc", "washington, d.c.")},
+}
+
+
+def canonical(label: str) -> tuple[str, str]:
+    """(key, label) after alias resolution; unknown names keep their own normalised key and surface label."""
+    key = norm_key(label)
+    return ALIASES.get(key, (key, label))
+
+
 def entity_term(label: str, etype: str = "class.entity") -> dict:
-    return {"t": "entity", "key": norm_key(label), "label": label, "type": etype}
+    key, lab = canonical(label)
+    return {"t": "entity", "key": key, "label": lab, "type": etype}
 
 
 def kind_term(concept_id: str, label: str | None = None) -> dict:
