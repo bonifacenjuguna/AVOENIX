@@ -23,6 +23,7 @@ SOURCE_RELIABILITY = {
     "user_statement": 0.70,
     "derived": 0.60,   # replaced by the derivation's own score; this is only a floor
     "system": 0.90,
+    "imported": 0.50,  # an imported statement is a candidate, never automatically true; it can be raised only by independent verification
 }
 
 

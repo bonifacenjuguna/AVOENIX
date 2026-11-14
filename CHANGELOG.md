@@ -2,6 +2,27 @@
 
 All notable changes to AVOENIX are documented here. Format: [Keep a Changelog](https://keepachangelog.com/); versioning: [Semantic Versioning](https://semver.org/) as described in `docs/VERSIONING.md`.
 
+## [v0.1.0] — Intelligence core advancement (meaning layer)
+
+### Added
+- **Meaning layer** (`intelligence/meaning/`): a rule-based chunker, a concept graph (seed lexicon + optional imported resources, with confidence and provenance on every edge), data-driven semantic frames (residence, occupation, naming, acquisition, purpose, maker, preference, consumption, age, funds), compositional polarity ("short on cash" / "can't afford it" / "not short on cash" share one meaning without per-phrase rules), reported speech kept as an *attributed* claim, and a dialogue state (salience-decayed entities, pronoun resolution with selectional restrictions, pending slots, correction log).
+- **Reasoning over what was understood**: word problems handed to the exact arithmetic engine, universal / conditional deduction with a visible trace and an honest "unknown", abstract ordering with contradiction detection, HTN planning with a small method library.
+- **Compositional response realiser**: morphology + clause grammar + act-level composition, ranked by a trigram language model used only as a ranking prior (seeded, deterministic, repeat-penalised). No stored response per case.
+- **Data ingestion** (`intelligence/ingest/`): manifest with licence gate and confidence cap, streaming WordNet / ConceptNet / Wikidata / text-corpus readers, SQLite processed store with raw files kept by sha256, quality gate with rollback, reversible imports; imported facts reach the Knowledge Engine only as candidates (`source_type="imported"`, reliability 0.5). Validated on synthetic format-faithful fixtures only.
+- **Distributional semantics** (`intelligence/semantics/`): incremental co-occurrence, PPMI, truncated eigen-decomposition, vector store; similarity yields "related" only, never "equivalent". Validated on a tiny synthetic corpus only.
+- Diagnostics: `scripts/trace_turn.py`, and `POST /v1/diagnostics/turns` (admin-only, off unless `AVOENIX_DIAGNOSTICS_ENABLED=true`, audited, runs in an isolated in-memory sandbox). Public responses never carry the inspection record.
+- Evaluation: `intelligence_v1_dev.json` (33) and `intelligence_v1_heldout.json` (64, hash-pinned) with `--no-meaning` for before/after.
+- Tests: meaning-layer unit tests, ingestion tests, acceptance conversations (laptop scenario, 21 turns, corrections, hearsay, diagnostics privacy).
+
+### Changed
+- `Avoenix.process_turn` tries the meaning layer first (`AvoenixConfig.meaning_enabled`, default on) and falls through to the v0.0.1 pipeline when it does not understand. `ConversationState` gained serialised `dialogue` and `premises`. `attr.residence` is functional. Spell repair no longer "corrects" lexicon words or regular inflections.
+
+### Fixed (found by the new tests)
+- `ask_clause` raised `KeyError` for unknown-residence replies; "What do I like?" raised `IndexError`; "My goal is to learn chess" was stored as an occupation.
+
+### Known limitations
+See `docs/v0.1.0/LIMITATIONS.md`.
+
 ## [v0.0.1] — Knowledge Integrity + Studio redesign
 
 ### Added

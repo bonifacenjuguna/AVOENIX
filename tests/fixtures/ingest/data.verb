@@ -1,0 +1,5 @@
+  1 This file is a SYNTHETIC fixture in the Princeton WordNet WNDB layout. It is not WordNet data. Licence: CC0-1.0 (authored for this repository).
+  2 Header lines are indented; data lines begin with the 8-digit synset offset.
+02001000 05 v 02 live 0 domicile 0 000 | have one's home in a place
+02001001 05 v 03 sojourn 0 lodge 0 abide 0 001 @ 02001000 v 0000 | stay temporarily
+BAD LINE WITHOUT STRUCTURE

@@ -1,0 +1,2297 @@
+{
+ "label": "intelligence_v1_heldout",
+ "platform_version": "v0.0.1",
+ "started_at": "2026-11-14T00:42:32.966407+00:00",
+ "summary": {
+  "overall": {
+   "passed": 63,
+   "total": 64,
+   "accuracy": 0.9844
+  },
+  "by_category": {
+   "conversation": {
+    "passed": 9,
+    "total": 9,
+    "accuracy": 1.0
+   },
+   "knowledge_integrity": {
+    "passed": 6,
+    "total": 6,
+    "accuracy": 1.0
+   },
+   "language_understanding": {
+    "passed": 32,
+    "total": 32,
+    "accuracy": 1.0
+   },
+   "reasoning": {
+    "passed": 16,
+    "total": 17,
+    "accuracy": 0.9412
+   }
+  },
+  "by_split": {
+   "heldout": {
+    "passed": 63,
+    "total": 64,
+    "accuracy": 0.9844
+   }
+  },
+  "metrics": {
+   "intent_accuracy": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": 0.85,
+    "status": "not_evaluated"
+   },
+   "memory_retrieval": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": 0.9,
+    "status": "not_evaluated"
+   },
+   "deterministic_reasoning": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": 0.9,
+    "status": "not_evaluated"
+   },
+   "claim_classification": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "provenance_preserved": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "contradiction_detected": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "unsupported_presented_as_fact": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "confidence_calibration_claims": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "revision_history_preserved": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   }
+  },
+  "latency_ms": {
+   "p50": 7.63,
+   "max": 99.98
+  }
+ },
+ "failures": [
+  {
+   "id": "rs-unknown",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /(?i)don't know|can't say|not enough|no information|haven't/ not in response: \"I don't have enough to tell whether Mike is older than Paul. I'd need any age comparison involving Mike.\""
+   ]
+  }
+ ],
+ "cases": [
+  {
+   "id": "lu-fin-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: 'No, you are short on money.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: 'No, you are short on money.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'No, you are short on money.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.8,
+   "latency_ms": 12.0,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "No, you are short on money."
+  },
+  {
+   "id": "lu-fin-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: 'No, you are short on money.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: 'No, you are short on money.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'No, you are short on money.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.8,
+   "latency_ms": 7.16,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "No, you are short on money."
+  },
+  {
+   "id": "lu-fin-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: 'No, you do not have enough money now.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: 'No, you do not have enough money now.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'No, you do not have enough money now.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.8,
+   "latency_ms": 6.93,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "No, you do not have enough money now."
+  },
+  {
+   "id": "lu-fin-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: 'No, you do not have enough money at the moment.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: 'No, you do not have enough money at the moment.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'No, you do not have enough money at the moment.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.8,
+   "latency_ms": 9.19,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "No, you do not have enough money at the moment."
+  },
+  {
+   "id": "lu-fin-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: 'No, you are short on money.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: 'No, you are short on money.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'No, you are short on money.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.8,
+   "latency_ms": 6.44,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "No, you are short on money."
+  },
+  {
+   "id": "lu-fin-5",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: 'No, you are short on money now.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: 'No, you are short on money now.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'No, you are short on money now.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.8,
+   "latency_ms": 7.13,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "No, you are short on money now."
+  },
+  {
+   "id": "lu-fin-6",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: 'No, you are short on money.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: 'No, you are short on money.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'No, you are short on money.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.8,
+   "latency_ms": 7.89,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "No, you are short on money."
+  },
+  {
+   "id": "lu-res-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'You told me that you live in Nairobi.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that you live in Nairobi.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 6.89,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "You told me that you live in Nairobi."
+  },
+  {
+   "id": "lu-res-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'You told me that Nairobi is where you live.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that Nairobi is where you live.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 6.37,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "You told me that Nairobi is where you live."
+  },
+  {
+   "id": "lu-res-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: \"As far as you've told me, you live in Nairobi.\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"As far as you've told me, you live in Nairobi.\"",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 6.9,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "As far as you've told me, you live in Nairobi."
+  },
+  {
+   "id": "lu-res-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'You told me that Nairobi is where you live.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that Nairobi is where you live.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 7.09,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "You told me that Nairobi is where you live."
+  },
+  {
+   "id": "lu-res-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'You told me that Nairobi is where you live.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that Nairobi is where you live.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 8.4,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "You told me that Nairobi is where you live."
+  },
+  {
+   "id": "lu-res-5",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'You told me that you live in Nairobi.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that you live in Nairobi.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 6.96,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "You told me that you live in Nairobi."
+  },
+  {
+   "id": "lu-res-6",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'You live in Nairobi.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You live in Nairobi.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 6.98,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "You live in Nairobi."
+  },
+  {
+   "id": "lu-name-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Savah/ not in response: 'You told me that your name is Savah.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that your name is Savah.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 7.45,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "You told me that your name is Savah."
+  },
+  {
+   "id": "lu-name-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Savah/ not in response: 'You told me that you are called Savah.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that you are called Savah.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 8.53,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "You told me that you are called Savah."
+  },
+  {
+   "id": "lu-name-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Savah/ not in response: 'You told me that you are called Savah.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that you are called Savah.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 7.52,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "You told me that you are called Savah."
+  },
+  {
+   "id": "lu-name-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Savah/ not in response: 'You told me that you are called Savah.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that you are called Savah.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 7.63,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "You told me that you are called Savah."
+  },
+  {
+   "id": "lu-name-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Savah/ not in response: 'Your name is Savah.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Your name is Savah.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 7.94,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "Your name is Savah."
+  },
+  {
+   "id": "lu-q-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'As far as I know, the capital of Kenya is Nairobi.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'As far as I know, the capital of Kenya is Nairobi.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 6.07,
+   "metric_tags": [
+    "question_variation"
+   ],
+   "error": null,
+   "response": "As far as I know, the capital of Kenya is Nairobi."
+  },
+  {
+   "id": "lu-q-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'The capital of kenya is Nairobi.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The capital of kenya is Nairobi.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 5.58,
+   "metric_tags": [
+    "question_variation"
+   ],
+   "error": null,
+   "response": "The capital of kenya is Nairobi."
+  },
+  {
+   "id": "lu-q-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'The capital of Kenya is Nairobi.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The capital of Kenya is Nairobi.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 5.47,
+   "metric_tags": [
+    "question_variation"
+   ],
+   "error": null,
+   "response": "The capital of Kenya is Nairobi."
+  },
+  {
+   "id": "lu-q-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'Nairobi is the capital of Kenya.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Nairobi is the capital of Kenya.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 5.96,
+   "metric_tags": [
+    "question_variation"
+   ],
+   "error": null,
+   "response": "Nairobi is the capital of Kenya."
+  },
+  {
+   "id": "lu-q-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'The capital of Kenya is Nairobi.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The capital of Kenya is Nairobi.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 5.81,
+   "metric_tags": [
+    "question_variation"
+   ],
+   "error": null,
+   "response": "The capital of Kenya is Nairobi."
+  },
+  {
+   "id": "lu-q-5",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'The capital of Kenya is Nairobi.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The capital of Kenya is Nairobi.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 8.75,
+   "metric_tags": [
+    "question_variation"
+   ],
+   "error": null,
+   "response": "The capital of Kenya is Nairobi."
+  },
+  {
+   "id": "lu-neg-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\bno\\b|you don't|you do not|you never|doesn't/ not in response: 'No, you dislike coffee.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b/ unexpectedly present: 'No, you dislike coffee.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'No, you dislike coffee.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 8.65,
+   "metric_tags": [
+    "negation"
+   ],
+   "error": null,
+   "response": "No, you dislike coffee."
+  },
+  {
+   "id": "lu-neg-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\bno\\b|you don't|you do not|you never|doesn't/ not in response: 'No, you do not eat meat.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b/ unexpectedly present: 'No, you do not eat meat.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'No, you do not eat meat.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 10.02,
+   "metric_tags": [
+    "negation"
+   ],
+   "error": null,
+   "response": "No, you do not eat meat."
+  },
+  {
+   "id": "lu-neg-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do|like tea/ not in response: 'Yes \u2014 you like tea.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\bdon't\\b/ unexpectedly present: 'Yes \u2014 you like tea.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Yes \u2014 you like tea.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 7.79,
+   "metric_tags": [
+    "negation"
+   ],
+   "error": null,
+   "response": "Yes \u2014 you like tea."
+  },
+  {
+   "id": "lu-age-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/30|thirty/ not in response: 'You told me that you are 30.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that you are 30.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 7.32,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "You told me that you are 30."
+  },
+  {
+   "id": "lu-age-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/30|thirty/ not in response: 'You told me that your age is 30.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that your age is 30.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 7.31,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "You told me that your age is 30."
+  },
+  {
+   "id": "lu-amb-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)which|what .*(it|refer)|not sure what|clarif|what do you mean|what are you/ not in response: \"I'm not sure what 'it' refers to. Could you say which one you mean?\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|\\bit is big/ unexpectedly present: \"I'm not sure what 'it' refers to. Could you say which one you mean?\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I'm not sure what 'it' refers to. Could you say which one you mean?\"",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.4,
+   "latency_ms": 3.59,
+   "metric_tags": [
+    "ambiguity"
+   ],
+   "error": null,
+   "response": "I'm not sure what 'it' refers to. Could you say which one you mean?"
+  },
+  {
+   "id": "lu-amb-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)who|which|where|clarif|not sure|mean/ not in response: \"I'm not sure what 'she' refers to. Could you say which one you mean?\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I'm not sure what 'she' refers to. Could you say which one you mean?\"",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.4,
+   "latency_ms": 3.26,
+   "metric_tags": [
+    "ambiguity"
+   ],
+   "error": null,
+   "response": "I'm not sure what 'she' refers to. Could you say which one you mean?"
+  },
+  {
+   "id": "cv-laptop",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\?/ not in response: 'Thanks for telling me. You bought a new laptop yesterday. What model is it?'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Thanks for telling me. You bought a new laptop yesterday. What model is it?'",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)ThinkPad|Lenovo/ not in response: 'Got it, your laptop is a Lenovo ThinkPad. What will you use it for? I couldn\\'t make sense of \"A Lenovo ThinkPad\" yet.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Got it, your laptop is a Lenovo ThinkPad. What will you use it for? I couldn\\'t make sense of \"A Lenovo ThinkPad\" yet.'",
+     "turn": 1
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Lenovo/ not in response: 'Your laptop is made by Lenovo.'",
+     "turn": 3
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Your laptop is made by Lenovo.'",
+     "turn": 3
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)programming/ not in response: 'You told me that you use your laptop for Programming.'",
+     "turn": 4
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that you use your laptop for Programming.'",
+     "turn": 4
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 22.12,
+   "metric_tags": [
+    "pronoun",
+    "slot_filling"
+   ],
+   "error": null,
+   "response": "You told me that you use your laptop for Programming."
+  },
+  {
+   "id": "cv-pron-person",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Kisumu/ not in response: 'She lives in Kisumu.'",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'She lives in Kisumu.'",
+     "turn": 2
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)teacher/ not in response: 'She is a teacher.'",
+     "turn": 3
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'She is a teacher.'",
+     "turn": 3
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 14.46,
+   "metric_tags": [
+    "pronoun"
+   ],
+   "error": null,
+   "response": "She is a teacher."
+  },
+  {
+   "id": "cv-topic-change",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Rex/ not in response: 'You told me that it is called Rex.'",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)laptop/ unexpectedly present: 'You told me that it is called Rex.'",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that it is called Rex.'",
+     "turn": 2
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 12.27,
+   "metric_tags": [
+    "topic_change"
+   ],
+   "error": null,
+   "response": "You told me that it is called Rex."
+  },
+  {
+   "id": "cv-correct-0",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Mombasa/ not in response: 'You told me that you live in Mombasa.'",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that you live in Mombasa.'",
+     "turn": 2
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 13.27,
+   "metric_tags": [
+    "correction"
+   ],
+   "error": null,
+   "response": "You told me that you live in Mombasa."
+  },
+  {
+   "id": "cv-correct-1",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Savah/ not in response: 'You told me that you are called Savah.'",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/Sara\\b(?!h)/ unexpectedly present: 'You told me that you are called Savah.'",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that you are called Savah.'",
+     "turn": 2
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 13.85,
+   "metric_tags": [
+    "correction"
+   ],
+   "error": null,
+   "response": "You told me that you are called Savah."
+  },
+  {
+   "id": "cv-follow-0",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'As far as I know, the capital of Kenya is Nairobi.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'As far as I know, the capital of Kenya is Nairobi.'",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Kampala/ not in response: 'The capital of Uganda is Kampala.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The capital of Uganda is Kampala.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 11.34,
+   "metric_tags": [
+    "follow_up"
+   ],
+   "error": null,
+   "response": "The capital of Uganda is Kampala."
+  },
+  {
+   "id": "cv-follow-1",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Kisumu/ not in response: 'He lives in Kisumu.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'He lives in Kisumu.'",
+     "turn": 1
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Mombasa/ not in response: 'You told me that she lives in Mombasa.'",
+     "turn": 3
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that she lives in Mombasa.'",
+     "turn": 3
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Kisumu/ not in response: 'You told me that your brother Otieno is based in Kisumu.'",
+     "turn": 4
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that your brother Otieno is based in Kisumu.'",
+     "turn": 4
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 19.9,
+   "metric_tags": [
+    "follow_up",
+    "pronoun"
+   ],
+   "error": null,
+   "response": "You told me that your brother Otieno is based in Kisumu."
+  },
+  {
+   "id": "cv-ctx-answer",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)nurse/ not in response: 'You are a nurse.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You are a nurse.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 8.72,
+   "metric_tags": [
+    "context_answer"
+   ],
+   "error": null,
+   "response": "You are a nurse."
+  },
+  {
+   "id": "cv-long-21",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Wanjiru/ not in response: 'You told me that you are called Wanjiru.'",
+     "turn": 8
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that you are called Wanjiru.'",
+     "turn": 8
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nakuru/ not in response: 'You told me that Nakuru is where you live.'",
+     "turn": 9
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that Nakuru is where you live.'",
+     "turn": 9
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Dell/ not in response: 'Your laptop is made by Dell.'",
+     "turn": 10
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Your laptop is made by Dell.'",
+     "turn": 10
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)design/ not in response: \"As far as you've told me, you use your laptop for design.\"",
+     "turn": 11
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"As far as you've told me, you use your laptop for design.\"",
+     "turn": 11
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Eldoret/ not in response: 'You told me that your brother Kamau is based in Eldoret.'",
+     "turn": 12
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that your brother Kamau is based in Eldoret.'",
+     "turn": 12
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)doctor/ not in response: 'You told me that he works as a doctor.'",
+     "turn": 13
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that he works as a doctor.'",
+     "turn": 13
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)architect/ not in response: 'You work as an architect.'",
+     "turn": 14
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You work as an architect.'",
+     "turn": 14
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Naivasha/ not in response: 'You told me that Naivasha is where you live.'",
+     "turn": 16
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me that Naivasha is where you live.'",
+     "turn": 16
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'The capital of Kenya is Nairobi.'",
+     "turn": 17
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The capital of Kenya is Nairobi.'",
+     "turn": 17
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Kampala/ not in response: 'Kampala is the capital of Uganda.'",
+     "turn": 18
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Kampala is the capital of Uganda.'",
+     "turn": 18
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Wanjiru/ not in response: 'You are called Wanjiru.'",
+     "turn": 19
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You are called Wanjiru.'",
+     "turn": 19
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Eldoret/ not in response: 'Your brother Kamau is based in Eldoret.'",
+     "turn": 20
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Your brother Kamau is based in Eldoret.'",
+     "turn": 20
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 99.98,
+   "metric_tags": [
+    "long_context",
+    "pronoun",
+    "correction"
+   ],
+   "error": null,
+   "response": "Your brother Kamau is based in Eldoret."
+  },
+  {
+   "id": "rs-0",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Anna/ not in response: 'Since Anna is taller than Ben and Ben is taller than Carl, Anna is the tallest.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Since Anna is taller than Ben and Ben is taller than Carl, Anna is the tallest.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.869,
+   "latency_ms": 7.97,
+   "metric_tags": [
+    "ordering"
+   ],
+   "error": null,
+   "response": "Since Anna is taller than Ben and Ben is taller than Carl, Anna is the tallest."
+  },
+  {
+   "id": "rs-1",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Xia/ not in response: 'Given that Zed is older than Yan and Yan is older than Xia, the answer is Xia \u2014 the youngest.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Given that Zed is older than Yan and Yan is older than Xia, the answer is Xia \u2014 the youngest.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.869,
+   "latency_ms": 8.53,
+   "metric_tags": [
+    "ordering"
+   ],
+   "error": null,
+   "response": "Given that Zed is older than Yan and Yan is older than Xia, the answer is Xia \u2014 the youngest."
+  },
+  {
+   "id": "rs-2",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/\\b3\\b/ not in response: 'The answer is 3 apples.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The answer is 3 apples.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.92,
+   "latency_ms": 4.43,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "The answer is 3 apples."
+  },
+  {
+   "id": "rs-3",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/\\b60\\b/ not in response: 'The answer is 60 dollars.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The answer is 60 dollars.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.92,
+   "latency_ms": 4.23,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "The answer is 60 dollars."
+  },
+  {
+   "id": "rs-4",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/\\b65\\b/ not in response: 'The answer is 65 shillings.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The answer is 65 shillings.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.92,
+   "latency_ms": 4.15,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "The answer is 65 shillings."
+  },
+  {
+   "id": "rs-5",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/\\b180\\b/ not in response: 'The answer is 180 kms.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The answer is 180 kms.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.92,
+   "latency_ms": 4.15,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "The answer is 180 kms."
+  },
+  {
+   "id": "rs-6",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/\\b20\\b/ not in response: 'The answer is 20 marbles.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The answer is 20 marbles.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.92,
+   "latency_ms": 12.69,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "The answer is 20 marbles."
+  },
+  {
+   "id": "rs-7",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/\\b42\\b/ not in response: 'The answer is 42 eggs.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The answer is 42 eggs.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.92,
+   "latency_ms": 5.45,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "The answer is 42 eggs."
+  },
+  {
+   "id": "rs-8",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|does|has wings/ not in response: 'Yes \u2014 every bird have wing; sparrow is a bird.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Yes \u2014 every bird have wing; sparrow is a bird.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 13.45,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "Yes \u2014 every bird have wing; sparrow is a bird."
+  },
+  {
+   "id": "rs-9",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|is a mammal/ not in response: 'Yes, because rex \u2192 dog \u2192 mammal.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Yes, because rex \u2192 dog \u2192 mammal.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 5.38,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "Yes, because rex \u2192 dog \u2192 mammal."
+  },
+  {
+   "id": "rs-10",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|cancelled/ not in response: 'Yes \u2014 if it rain then match cancel; given: it rain.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Yes \u2014 if it rain then match cancel; given: it rain.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 9.5,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "Yes \u2014 if it rain then match cancel; given: it rain."
+  },
+  {
+   "id": "rs-11",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\bno\\b|not/ not in response: 'No \u2014 A > B > C (weight), so the reverse cannot hold.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'No \u2014 A > B > C (weight), so the reverse cannot hold.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 4.21,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "No \u2014 A > B > C (weight), so the reverse cannot hold."
+  },
+  {
+   "id": "rs-12",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/\\b36\\b/ not in response: '15 pct_of 240 is 36.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: '15 pct_of 240 is 36.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.993,
+   "latency_ms": 4.66,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "15 pct_of 240 is 36."
+  },
+  {
+   "id": "rs-13",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/\\b17\\b/ not in response: 'That comes to 17.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'That comes to 17.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.993,
+   "latency_ms": 8.37,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "That comes to 17."
+  },
+  {
+   "id": "rs-contra",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)doesn't add up|can't all be true|contradict|inconsisten/ not in response: \"Something is inconsistent here: Anna is older than Ben and Ben is older than Anna can't all be true. Which one should I trust?\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"Something is inconsistent here: Anna is older than Ben and Ben is older than Anna can't all be true. Which one should I trust?\"",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 1.0,
+   "latency_ms": 7.61,
+   "metric_tags": [
+    "contradiction"
+   ],
+   "error": null,
+   "response": "Something is inconsistent here: Anna is older than Ben and Ben is older than Anna can't all be true. Which one should I trust?"
+  },
+  {
+   "id": "rs-unknown",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)don't know|can't say|not enough|no information|haven't/ not in response: \"I don't have enough to tell whether Mike is older than Paul. I'd need any age comparison involving Mike.\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b/ unexpectedly present: \"I don't have enough to tell whether Mike is older than Paul. I'd need any age comparison involving Mike.\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /(?i)don't know|can't say|not enough|no information|haven't/ not in response: \"I don't have enough to tell whether Mike is older than Paul. I'd need any age comparison involving Mike.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 5.85,
+   "metric_tags": [
+    "uncertainty"
+   ],
+   "error": null,
+   "response": "I don't have enough to tell whether Mike is older than Paul. I'd need any age comparison involving Mike."
+  },
+  {
+   "id": "rs-plan",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)(1\\.|first|step)/ not in response: 'Here is one way to prepare for the exam in 3 days: 1. Day 1 \u2014 List everything the exam covers and mark the topics you find hardest; then study the hardest topic'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Here is one way to prepare for the exam in 3 days: 1. Day 1 \u2014 List everything the exam covers and mark the topics you find hardest; then study the hardest topic'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.8,
+   "latency_ms": 4.71,
+   "metric_tags": [
+    "task_decomposition"
+   ],
+   "error": null,
+   "response": "Here is one way to prepare for the exam in 3 days: 1. Day 1 \u2014 List everything the exam covers and mark the topics you find hardest; then study the hardest topics first, in short focused sessions with breaks. 2. Day 2 \u2014 Practise under realistic conditions, using past questions or a mock exam, and time yourself. 3. Day 3 \u2014 Review what you got wrong and condense the key points onto one page; then get your materials ready, sleep well and keep the last hours light."
+  },
+  {
+   "id": "ki-wrong",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)unverified|couldn't verify|can't verify|not.*(treat|fact)/ not in response: \"I've kept a record that you said the capital of Germany is Paris, but that doesn't match what I know: the capital of Germany is Berlin. I'm treating your statem\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I've kept a record that you said the capital of Germany is Paris, but that doesn't match what I know: the capital of Germany is Berlin. I'm treating your statem\"",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Berlin/ not in response: \"The capital of Germany is Berlin. (You earlier said Paris; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"The capital of Germany is Berlin. (You earlier said Paris; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 13.91,
+   "metric_tags": [
+    "incorrect_assertion"
+   ],
+   "error": null,
+   "response": "The capital of Germany is Berlin. (You earlier said Paris; I could not verify that, so I'm not treating it as fact.)"
+  },
+  {
+   "id": "ki-hearsay",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)brother|unverified|couldn't verify/ not in response: \"Your brother says the capital of Australia is Sydney. I couldn't verify that, and it conflicts with what I know (Canberra), so I'm treating it as unverified.\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"Your brother says the capital of Australia is Sydney. I couldn't verify that, and it conflicts with what I know (Canberra), so I'm treating it as unverified.\"",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Canberra/ not in response: \"Canberra is the capital of Australia. (You earlier said Sydney; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"Canberra is the capital of Australia. (You earlier said Sydney; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 13.5,
+   "metric_tags": [
+    "source_attribution"
+   ],
+   "error": null,
+   "response": "Canberra is the capital of Australia. (You earlier said Sydney; I could not verify that, so I'm not treating it as fact.)"
+  },
+  {
+   "id": "ki-hedge",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)unverified|think|couldn't verify|not sure/ not in response: \"You think the capital of Nigeria is Lagos. I couldn't verify that, and it conflicts with what I know (Abuja), so I'm treating it as unverified.\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"You think the capital of Nigeria is Lagos. I couldn't verify that, and it conflicts with what I know (Abuja), so I'm treating it as unverified.\"",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Abuja/ not in response: \"Abuja is the capital of Nigeria. (You earlier said Lagos; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"Abuja is the capital of Nigeria. (You earlier said Lagos; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 13.73,
+   "metric_tags": [
+    "uncertain"
+   ],
+   "error": null,
+   "response": "Abuja is the capital of Nigeria. (You earlier said Lagos; I could not verify that, so I'm not treating it as fact.)"
+  },
+  {
+   "id": "ki-source",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\byou\\b/ not in response: \"I don't have an established answer for the capital of Atlantis. You told me Poseidonis, but I couldn't verify that.\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have an established answer for the capital of Atlantis. You told me Poseidonis, but I couldn't verify that.\"",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": null,
+   "latency_ms": 13.32,
+   "metric_tags": [
+    "source_attribution"
+   ],
+   "error": null,
+   "response": "I don't have an established answer for the capital of Atlantis. You told me Poseidonis, but I couldn't verify that."
+  },
+  {
+   "id": "ki-conflict",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Marinus/ not in response: \"The only thing I have for the capital of Atlantis is your statement (Poseidonis and Marinus), and it's unverified.\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)the capital of atlantis is marinus\\./ unexpectedly present: \"The only thing I have for the capital of Atlantis is your statement (Poseidonis and Marinus), and it's unverified.\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"The only thing I have for the capital of Atlantis is your statement (Poseidonis and Marinus), and it's unverified.\"",
+     "turn": 2
+    }
+   ],
+   "failures": [],
+   "confidence": null,
+   "latency_ms": 22.07,
+   "metric_tags": [
+    "revision"
+   ],
+   "error": null,
+   "response": "The only thing I have for the capital of Atlantis is your statement (Poseidonis and Marinus), and it's unverified."
+  },
+  {
+   "id": "ki-age-rev",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/31/ not in response: \"As far as you've told me, you are 31.\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/\\b30\\b/ unexpectedly present: \"As far as you've told me, you are 31.\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"As far as you've told me, you are 31.\"",
+     "turn": 2
+    }
+   ],
+   "failures": [],
+   "confidence": 0.9,
+   "latency_ms": 13.35,
+   "metric_tags": [
+    "revision"
+   ],
+   "error": null,
+   "response": "As far as you've told me, you are 31."
+  }
+ ],
+ "calibration": {
+  "status": "measured",
+  "n": 62,
+  "expected_calibration_error": 0.1006,
+  "bins": [
+   {
+    "range": "[0.00, 0.50)",
+    "n": 2,
+    "mean_confidence": 0.4,
+    "accuracy": 1.0
+   },
+   {
+    "range": "[0.75, 0.90)",
+    "n": 10,
+    "mean_confidence": 0.814,
+    "accuracy": 1.0
+   },
+   {
+    "range": "[0.90, 1.00)",
+    "n": 50,
+    "mean_confidence": 0.917,
+    "accuracy": 0.98
+   }
+  ],
+  "note": "Confidence is an evidence-support score; a large error means it should not be read as a probability."
+ },
+ "environment": {
+  "python": "3.13.18",
+  "backend": "memory",
+  "platform": "Linux-6.18.44-fc-v470-x86_64-with-glibc2.39"
+ },
+ "caveats": [
+  "Targets are development goals, not claims of achievement.",
+  "Dataset is small and developer-authored; results do not generalise beyond it."
+ ]
+}

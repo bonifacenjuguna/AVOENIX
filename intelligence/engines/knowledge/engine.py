@@ -43,7 +43,7 @@ from .terms import (
 
 RANK = {"external_verified": 5, "seed_curated": 4, "system": 4, "learned": 3, "user_statement": 2, "derived": 1}
 FUNCTIONAL_PREDICATES = {"attr.name", "attr.age", "attr.birthday", "attr.height", "attr.weight", "attr.address", "attr.job", "attr.capital",
-                         "attr.president", "attr.population", "attr.currency", "attr.color", "attr.colour", "attr.favorite", "attr.language"}
+                         "attr.president", "attr.population", "attr.currency", "attr.color", "attr.colour", "attr.favorite", "attr.language", "attr.residence"}
 VISIBLE_STATUSES = ("active",)
 
 

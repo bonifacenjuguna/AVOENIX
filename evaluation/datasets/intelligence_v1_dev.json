@@ -1,0 +1,811 @@
+{
+ "name": "avoenix-intelligence-dev-v1",
+ "description": "Development cases used while building v0.1.0 (distinct wording/entities from the held-out set).",
+ "cases": [
+  {
+   "id": "dv-fin-0",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I haven't got enough cash.",
+    "Am I short of money?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\byes\\b|short|not enough|you (do not|don't|can't)"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether",
+      "(?i)\\bno,? you have"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-fin-1",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "We are low on money right now.",
+    "Am I short of money?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\byes\\b|short|not enough|you (do not|don't|can't)"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether",
+      "(?i)\\bno,? you have"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-fin-2",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I can't pay for this at the moment.",
+    "Am I short of money?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\byes\\b|short|not enough|you (do not|don't|can't)"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether",
+      "(?i)\\bno,? you have"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-fin-3",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I'm penniless.",
+    "Am I short of money?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\byes\\b|short|not enough|you (do not|don't|can't)"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether",
+      "(?i)\\bno,? you have"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-fin-4",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I'm out of money.",
+    "Am I short of money?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\byes\\b|short|not enough|you (do not|don't|can't)"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether",
+      "(?i)\\bno,? you have"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-res-0",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I dwell in Kampala.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Kampala"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-res-1",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I am living in Kampala.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Kampala"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-res-2",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "Kampala is my home.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Kampala"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-res-3",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "My house is in Kampala.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Kampala"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-res-4",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I'm located in Kampala.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Kampala"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-name-0",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "You can call me Zuri.",
+    "What is my name?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Zuri"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-name-1",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "My name's Zuri.",
+    "What is my name?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Zuri"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-name-2",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "Everyone calls me Zuri.",
+    "What is my name?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Zuri"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-q-0",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "question_variation"
+   ],
+   "turns": [
+    "What is the capital city of Uganda?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Kampala"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-q-1",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "question_variation"
+   ],
+   "turns": [
+    "Uganda's capital is which city?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Kampala"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-q-2",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "question_variation"
+   ],
+   "turns": [
+    "Can you tell me the capital of Uganda?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Kampala"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-neg-0",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "negation"
+   ],
+   "turns": [
+    "I do not drink milk.",
+    "Do I drink milk?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\bno\\b|you (do not|don't)"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether",
+      "(?i)\\byes\\b"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-neg-1",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "negation"
+   ],
+   "turns": [
+    "I love mangoes.",
+    "Do I like mangoes?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\byes\\b|you (do|love|like)"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-amb-0",
+   "category": "language_understanding",
+   "split": "dev",
+   "metrics": [
+    "ambiguity"
+   ],
+   "turns": [
+    "How much does it cost?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)which|what .*(it|refer)|not sure what|clarif|what do you mean"
+     ],
+     "not_contains": []
+    }
+   ]
+  },
+  {
+   "id": "dv-lap",
+   "category": "conversation",
+   "split": "dev",
+   "metrics": [
+    "pronoun",
+    "slot_filling"
+   ],
+   "turns": [
+    "I bought a new phone on Monday.",
+    "A Samsung Galaxy.",
+    "Photography.",
+    "Who makes it?",
+    "What do I use it for?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\?"
+     ]
+    },
+    {
+     "contains": [
+      "(?i)Samsung|Galaxy"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {},
+    {
+     "contains": [
+      "Samsung"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "(?i)photography"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-pron",
+   "category": "conversation",
+   "split": "dev",
+   "metrics": [
+    "pronoun"
+   ],
+   "turns": [
+    "My uncle Peter lives in Arusha.",
+    "He is a farmer.",
+    "Where does he live?",
+    "What does he do?"
+   ],
+   "expect": [
+    {},
+    {},
+    {
+     "contains": [
+      "Arusha"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "(?i)farmer"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-topic",
+   "category": "conversation",
+   "split": "dev",
+   "metrics": [
+    "topic_change"
+   ],
+   "turns": [
+    "I bought a bicycle last week.",
+    "My cat is called Mimi.",
+    "What is it called?"
+   ],
+   "expect": [
+    {},
+    {},
+    {
+     "contains": [
+      "Mimi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether",
+      "(?i)bicycle"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-corr",
+   "category": "conversation",
+   "split": "dev",
+   "metrics": [
+    "correction"
+   ],
+   "turns": [
+    "I live in Kampala.",
+    "Sorry, I actually live in Jinja.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {},
+    {
+     "contains": [
+      "Jinja"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-follow",
+   "category": "conversation",
+   "split": "dev",
+   "metrics": [
+    "follow_up"
+   ],
+   "turns": [
+    "What is the capital of Kenya?",
+    "And Rwanda?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Kigali"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-job",
+   "category": "conversation",
+   "split": "dev",
+   "metrics": [
+    "context_answer"
+   ],
+   "turns": [
+    "I work as a pilot.",
+    "What do I do for a living?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)pilot"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-wp-0",
+   "category": "reasoning",
+   "split": "dev",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "Mary has 9 pens. She loses 4. How many pens does Mary have now?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\b5\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-wp-1",
+   "category": "reasoning",
+   "split": "dev",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "A book costs 15 dollars. I buy 4 books. How much do I pay?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\b60\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-wp-2",
+   "category": "reasoning",
+   "split": "dev",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "A car travels 80 km each hour. How far does it go in 2 hours?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\b160\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-wp-3",
+   "category": "reasoning",
+   "split": "dev",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "I had 50 shillings and spent 12. How much is left?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\b38\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-log-0",
+   "category": "reasoning",
+   "split": "dev",
+   "metrics": [
+    "deduction"
+   ],
+   "turns": [
+    "All fish can swim. A salmon is a fish. Can a salmon swim?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)\\byes\\b|can swim"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-log-1",
+   "category": "reasoning",
+   "split": "dev",
+   "metrics": [
+    "deduction"
+   ],
+   "turns": [
+    "If the shop is open I buy bread. The shop is open. Do I buy bread?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)\\byes\\b|buy bread"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-ki-0",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "metrics": [
+    "source_attribution"
+   ],
+   "turns": [
+    "My teacher says the capital of Canada is Toronto.",
+    "What is the capital of Canada?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)teacher|unverified|couldn't verify"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Ottawa"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dv-ki-1",
+   "category": "knowledge_integrity",
+   "split": "dev",
+   "metrics": [
+    "uncertain"
+   ],
+   "turns": [
+    "I believe the capital of Tanzania is Arusha.",
+    "What is the capital of Tanzania?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)unverified|believe|couldn't verify"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "(?i)Dodoma"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  }
+ ]
+}

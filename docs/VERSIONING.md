@@ -1,6 +1,6 @@
 # Versioning policy
 
-- **Platform version:** `v0.0.1` (initial release `v0.0.0`; single source: `VERSION`; mirrored in `intelligence/version.py`, `pyproject.toml`, `apps/studio/package.json`). Semantic Versioning 2.0.0.
+- **Platform version:** `v0.1.0` (initial release `v0.0.0`; single source: `VERSION`; mirrored in `intelligence/version.py`, `pyproject.toml`, `apps/studio/package.json`). Semantic Versioning 2.0.0.
 - `0.y.z`: initial development; any minor bump may break compatibility. `1.0.0` will be declared only when the public API and ACR schema are considered stable.
 - **API version** (`/v1`) is independent of the platform version. It changes only on breaking HTTP changes.
 - **ACR schema** (`acr/1.0`) is versioned separately; `representation/serialization.register_migration` upgrades older documents.

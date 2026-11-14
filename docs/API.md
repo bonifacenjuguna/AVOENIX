@@ -1,4 +1,4 @@
-# HTTP API v1 (platform v0.0.1)
+# HTTP API v1 (platform v0.1.0)
 
 Base path `/v1`. JSON only. Authentication: HttpOnly session cookie `avoenix_session` (set by `POST /v1/auth/login`). Errors: `{"error": {"code", "message", "details"}}`; unexpected errors return a generic message with a `reference` id (details are logged server-side only). **Not executed against a running FastAPI server in the build sandbox**; the logic behind each route is tested in `services/intelligence-api/tests/test_core.py`.
 

@@ -170,7 +170,7 @@ def test_production_config_validation():
 def test_diagnostics_and_health_are_real(api):
     p = api.authenticate(login(api)[2])
     s, d = api.diagnostics(p)
-    assert s == 200 and len(d["engines"]) == 12 and d["version"]["platform"] == "v0.0.1"
+    assert s == 200 and len(d["engines"]) == 12 and d["version"]["platform"] == "v0.1.0"
     assert api.readiness()[0] == 200
 
 
@@ -290,3 +290,46 @@ def test_migration_runner_orders_forward_files_and_skips_rollbacks():
     spec.loader.exec_module(m)
     names = [f.name for f in m.migration_files()]
     assert names[:2] == ["0001_initial.sql", "0002_knowledge_integrity.sql"] and not any(n.endswith("_down.sql") for n in names)
+
+
+# ---- meaning-layer diagnostics: env-gated, admin only, isolated, audited -------------------------------------------------------------
+def _principal(core):
+    status, body = login(core)
+    assert status == 200
+    return core.authenticate(body["token"]) if hasattr(core, "authenticate") else None
+
+
+def _diag_core(enabled):
+    s = Settings(admin_email="admin@example.test", admin_password=PW, diagnostics_enabled=enabled)
+    core = ApiCore(MemoryBackend(), s)
+    core.bootstrap_admin()
+    return core
+
+
+def test_diagnostics_hidden_when_disabled_and_chat_never_returns_inspection():
+    from app.core import Principal
+    core = _diag_core(False)
+    admin = Principal({"id": "a1", "role": "admin"}, "s1")
+    status, body = core.diagnostics_turns(admin, ["I live in Kampala."])
+    assert status == 404
+    status, body = core.chat(admin, "I live in Kampala.", None, None)
+    assert status == 200 and "inspection" not in str((body.get("response_meta") or {}).get("meaning") or {})
+
+
+def test_diagnostics_requires_admin_runs_in_sandbox_and_is_audited():
+    from app.core import Principal
+    core = _diag_core(True)
+    user = Principal({"id": "u1", "role": "user"}, "s2")
+    admin = Principal({"id": "a1", "role": "admin"}, "s1")
+    assert core.diagnostics_turns(user, ["hi"])[0] == 403
+    with pytest.raises(InputError):
+        core.diagnostics_turns(admin, ["x" * 501])
+    with pytest.raises(InputError):
+        core.diagnostics_turns(admin, ["hi"] * 31)
+    status, body = core.chat(admin, "My name is Zuri.", None, None)           # real-store fact for the admin
+    status, body = core.diagnostics_turns(admin, ["I live in Kampala.", "What's my name?"])
+    assert status == 200 and body["sandbox"] is True and body["turns"][0]["inspection"]
+    assert "Zuri" not in body["turns"][1]["response"]                          # the sandbox cannot see real stored data
+    rows = core.backend.select("audit_log", {})
+    assert any(r["action"] == "diagnostics.run" for r in rows) and any(r["action"] == "diagnostics.denied" for r in rows)
+    assert "Kampala" not in str(rows)                                          # audited as counts only, never content

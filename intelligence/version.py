@@ -1,8 +1,8 @@
 """Single source of truth for AVOENIX version metadata.
 
-The current release label is ``v0.0.1`` (initial release: ``v0.0.0``). Ecosystem metadata (PEP 440 in
+The current release label is ``v0.1.0`` (initial release: ``v0.0.0``). Ecosystem metadata (PEP 440 in
 ``pyproject.toml`` and semver in ``package.json``) cannot carry the leading ``v``,
-so the machine form is ``0.0.1``. The two forms always describe the same release;
+so the machine form is ``0.1.0``. The two forms always describe the same release;
 ``tests/unit/test_version.py`` enforces that every place agrees.
 
 Three independent version axes exist:
@@ -13,8 +13,8 @@ Three independent version axes exist:
                        so persisted representations can be migrated safely.
 """
 
-PLATFORM_VERSION = "v0.0.1"
-SEMVER = "0.0.1"
+PLATFORM_VERSION = "v0.1.0"
+SEMVER = "0.1.0"
 API_VERSION = "v1"
 ACR_SCHEMA_VERSION = "acr/1.0"
 DATABASE_SCHEMA_VERSION = "0002"

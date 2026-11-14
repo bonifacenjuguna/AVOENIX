@@ -1,0 +1,8 @@
+[
+{"id":"Q1","labels":{"en":{"language":"en","value":"Kenya"}},"claims":{"P36":[{"mainsnak":{"datavalue":{"value":{"id":"Q2"}}}}]}},
+{"id":"Q2","labels":{"en":{"language":"en","value":"Nairobi"}},"claims":{}},
+{"id":"Q3","labels":{"en":{"language":"en","value":"Uganda"}},"claims":{"P36":[{"mainsnak":{"datavalue":{"value":{"id":"Q4"}}}}]}},
+{"id":"Q4","labels":{"en":{"language":"en","value":"Jinja"}},"claims":{}},
+{"id":"Q5","labels":{"en":{"language":"en","value":"Orphan"}},"claims":{"P36":[{"mainsnak":{"datavalue":{"value":{"id":"Q99"}}}}]}},
+{not json},
+]

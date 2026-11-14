@@ -23,6 +23,23 @@ from .tokenizer import Token, split_sentences, tokenize
 from . import gazetteer
 
 
+def _lexicon_words() -> set[str]:
+    """Words known to the concept lexicon (seed + imported resources), with regular inflections, so spelling repair never "corrects" a valid word
+    that merely is not in the core tables ("reside" -> "beside")."""
+    try:
+        from ....meaning.lexicon import default_graph
+    except Exception:                                   # the meaning package is optional for the language engine
+        return set()
+    out: set[str] = set()
+    for lem in default_graph().lemma_index:
+        if not lem.isalpha():
+            continue
+        out.add(lem)
+        base = lem[:-1] if lem.endswith("e") else lem
+        out.update({lem + "s", lem + "es", lem + "d", base + "ed", base + "ing", lem + "ing", lem + "ed"})
+    return out
+
+
 @lru_cache(maxsize=1)
 def vocabulary() -> frozenset[str]:
     vocab: set[str] = set()
@@ -34,6 +51,7 @@ def vocabulary() -> frozenset[str]:
         vocab.update(group)
     vocab.update(L.AUX_BE); vocab.update(L.AUX_HAVE); vocab.update(L.AUX_DO)
     vocab.update(L.DEICTIC_DAYS)
+    vocab.update(_lexicon_words())
     return frozenset(w for w in vocab if w.isalpha() and len(w) > 1)
 
 
@@ -54,6 +72,11 @@ def _known(word: str) -> bool:
         return True
     if verb_analysis(w):
         return True
+    for suf in ("ing", "ed", "es", "s"):                 # regular inflection of a known stem is not a typo ("raining" is not "gaining")
+        if w.endswith(suf) and len(w) - len(suf) >= 3:
+            stem = w[: -len(suf)]
+            if stem in vocabulary() or stem + "e" in vocabulary() or (len(stem) > 3 and stem[-1] == stem[-2] and stem[:-1] in vocabulary()):
+                return True
     from .morphology import degree_analysis
     return degree_analysis(w) is not None
 

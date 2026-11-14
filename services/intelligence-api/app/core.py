@@ -267,6 +267,31 @@ class ApiCore:
         self._id(message_id)
         return 200, self.engine.get_trace(self.scope_for(p), message_id)
 
+    # ---- meaning-layer diagnostics (admin only, env-gated, audited, isolated) ----------------------------------------------------
+    MAX_DIAG_TURNS, MAX_DIAG_CHARS = 30, 500
+
+    def diagnostics_turns(self, p: Principal, texts: Any, ip: str | None = None) -> tuple[int, dict]:
+        """Run a scripted conversation through a THROWAWAY in-memory engine with full inspection enabled.
+
+        It never reads or writes the real store, so it cannot reveal any user's conversation, memory or knowledge; the texts are supplied by the
+        admin. Disabled unless AVOENIX_DIAGNOSTICS_ENABLED=true; every call is audited (counts only, not content)."""
+        if not self.settings.diagnostics_enabled:
+            return 404, {"error": {"code": "not_found", "message": "not found", "details": {}}}      # indistinguishable from a missing route
+        if not p.is_admin:
+            self.audit("diagnostics.denied", actor=p.id, ip=ip)
+            return 403, {"error": {"code": "forbidden", "message": "admin role required", "details": {}}}
+        if not isinstance(texts, list) or not texts or len(texts) > self.MAX_DIAG_TURNS or not all(isinstance(t, str) and 0 < len(t) <= self.MAX_DIAG_CHARS for t in texts):
+            raise InputError(f"texts must be a list of 1-{self.MAX_DIAG_TURNS} non-empty strings of at most {self.MAX_DIAG_CHARS} characters")
+        from intelligence.storage import MemoryBackend
+        sandbox = Avoenix(MemoryBackend(), AvoenixConfig(diagnostics=True, deterministic_seed=1))
+        sc, cid, turns = Scope("diagnostics", "sandbox"), None, []
+        for t in texts:
+            r = sandbox.process_turn(sc, t, cid)
+            cid = r.conversation_id
+            turns.append({"input": t, "response": r.response, "status": r.status, "inspection": (r.response_meta.get("meaning") or {}).get("inspection")})
+        self.audit("diagnostics.run", actor=p.id, ip=ip, details={"turns": len(texts)})
+        return 200, {"sandbox": True, "turns": turns}
+
     # ---- inspection ------------------------------------------------------------------------------------------------------------
     def engines(self) -> tuple[int, dict]:
         return 200, {"engines": self.engine.engines_info()}

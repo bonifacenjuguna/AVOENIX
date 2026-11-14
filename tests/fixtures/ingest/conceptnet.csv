@@ -1,0 +1,6 @@
+/a/[/r/Synonym/,/c/en/broke/,/c/en/penniless/]	/r/Synonym	/c/en/broke	/c/en/penniless	{"weight": 4.0}
+/a/[/r/Antonym/,/c/en/rich/,/c/en/poor/]	/r/Antonym	/c/en/rich	/c/en/poor	{"weight": 2.0}
+/a/[/r/IsA/,/c/en/laptop/,/c/en/computer/]	/r/IsA	/c/en/laptop	/c/en/computer	{"weight": 3.0}
+/a/[/r/Synonym/,/c/fr/riche/,/c/fr/aise/]	/r/Synonym	/c/fr/riche	/c/fr/aise	{"weight": 1.0}
+/a/[/r/RelatedTo/,/c/en/x/,/c/en/x/]	/r/RelatedTo	/c/en/x	/c/en/x	{"weight": 1.0}
+malformed line

@@ -186,6 +186,11 @@ def create_app(settings: Settings | None = None, backend: Any = None) -> FastAPI
         b = await body_of(request)
         return run(core.chat, p, b.get("text"), b.get("conversation_id"), b.get("client_context"))
 
+    @app.post("/v1/diagnostics/turns")
+    async def diagnostics_turns(request: Request, p: Principal = Depends(auth)):
+        b = await body_of(request)
+        return run(core.diagnostics_turns, p, b.get("texts"), request.client.host if request.client else None)
+
     @app.get("/v1/messages/{mid}/trace")
     def trace(mid: str, p: Principal = Depends(auth)):
         return run(core.trace, p, mid)

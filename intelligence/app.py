@@ -35,6 +35,14 @@ from .engines.reasoning.engine import ReasoningEngine
 from .engines.reasoning.facts import fact_data
 from .engines.response.engine import ResponseGenerationEngine
 from .engines.response.planner import build_plan
+from .meaning.engine import MeaningLayer
+from .meaning.dialogue import DialogueState as _DS
+
+
+class DialogueSnapshot:
+    @staticmethod
+    def of(d: dict) -> dict:
+        return _DS(d).snapshot()
 from .representation import Entity, Intention, Proposition
 from .storage.backend import Backend
 from .storage.scoped import ScopedRepo
@@ -67,6 +75,9 @@ class AvoenixConfig:
     clock: Clock = field(default_factory=SystemClock)
     seed_knowledge: bool = True
     deterministic_seed: int | None = None          # tests/evaluation: fixed response seed base
+    meaning_enabled: bool = True                   # the meaning layer (frames, dialogue state, composition); False reproduces the v0.0.1 pipeline exactly
+    lexicon_store: str | None = None               # path to a processed lexical store (intelligence/ingest) that extends the seed lexicon, read-only
+    diagnostics: bool = False                      # attach the full meaning-layer inspection record to TurnResult.response_meta["meaning"] (never set by public endpoints)
 
 
 class _Stages:
@@ -112,6 +123,10 @@ class Avoenix:
         self.personality = PersonalityEngine(self.memory)
         self.response = ResponseGenerationEngine()
         self.evaluation = EvaluationEngine(backend)
+        if self.config.lexicon_store:
+            from .meaning.lexicon import use_store
+            use_store(self.config.lexicon_store)
+        self.meaning = MeaningLayer(self.knowledge)
         if self.config.seed_knowledge:
             self.knowledge.seed()
 
@@ -207,6 +222,25 @@ class Avoenix:
                                                       "sentences": r.sentences, "corrections": len(r.corrections), "unsupported": r.unsupported})
         if lr is None:
             return self._finish_error(scope, cid, cstate, rstate, text, "language_failure", "the language stage failed", st, t_start, turn_id, persist, repo, conv)
+
+        # 2b) meaning layer: frames, dialogue state, composition. Declines (returns None) when it lacks the structure to understand the turn. ------
+        if self.config.meaning_enabled:
+            seed_m = None if self.config.deterministic_seed is None else self.config.deterministic_seed + cstate.turn * 131 + zlib.crc32(scope.user_id.encode())
+            prefs_m = self.memory.preferences(scope)
+            mo = st.run("meaning", "handle", lambda: self.meaning.handle(scope, packet.text, lr, cstate.dialogue, cstate.premises, conversation_id=cid, seed=seed_m,
+                                                                         explain=bool(prefs_m.get("behavior.show_steps"))),
+                        lambda o: {"handled": bool(o.text), "rewrite": o.rewrite, "confidence": round(o.confidence, 3), "acts": [a["type"] for a in o.acts]})
+            if mo is not None and mo.rewrite:
+                try:
+                    packet = self.input.process(mo.rewrite)
+                    lr2 = self.language.analyze(packet)
+                    if lr2 is not None:
+                        lr = lr2
+                        st.trace.append(StageTrace("meaning", "rewrite", 0.0, True, {"canonical_question": mo.rewrite}))
+                except (UnsupportedLanguageError, InputError):
+                    pass
+            elif mo is not None and mo.text:
+                return self._finish_meaning(scope, repo, conv, cid, cstate, rstate, text, packet, lr, mo, st, t_start, turn_id, persist)
 
         # 3) context -----------------------------------------------------------------------------------------------------------------
         report = st.run("context", "resolve", lambda: self.context.resolve(lr.doc, cstate),
@@ -356,6 +390,38 @@ class Avoenix:
         if persist:
             self._persist(scope, repo, conv, cid, cstate, rstate, text, text_out, result, now, total_ms)
         result.response_meta["reasoning_status"] = primary.status if primary else None
+        return result
+
+    def _finish_meaning(self, scope, repo, conv, cid, cstate: ConversationState, rstate, text, packet, lr, mo, st, t_start, turn_id, persist) -> TurnResult:
+        """Complete a turn that the meaning layer answered: keep emotion/personality/memory/context continuity and build the same TurnResult shape."""
+        norm = packet.text
+        emotion = st.run("emotion", "analyze", lambda: self.emotion.analyze(lr), lambda e: {"label": e.label, "valence": e.valence}, default=None)
+        st.run("personality", "observe", lambda: self.personality.observe(scope, lr), None)
+        st.run("memory", "record_turn", lambda: self.memory.record_turn(scope, cid, "user", norm), None)
+        st.run("memory", "record_response", lambda: self.memory.record_turn(scope, cid, "assistant", mo.text), None)
+        cstate.dialogue = mo.dialogue or cstate.dialogue
+        cstate.premises = mo.premises or cstate.premises
+        st.run("context", "update", lambda: self.context.update(cstate, lr.doc, user_text=norm, system_text=mo.text, answered=True), None)
+        total_ms = (time.perf_counter() - t_start) * 1000
+        status = "ok" if not st.errors else "partial"
+        meaning_summary = {"frames": [f.get("frame") for f in mo.trace.get("frames", [])], "acts": [a["type"] for a in mo.acts], "confidence": round(mo.confidence, 3),
+                           "uncertainty": mo.uncertainty, "stored": [{"status": s.get("status"), "verification": s.get("verification")} for s in mo.stored if isinstance(s, dict)]}
+        if self.config.diagnostics:
+            meaning_summary["inspection"] = mo.trace
+        band = "high" if mo.confidence >= 0.8 else "medium" if mo.confidence >= 0.55 else "low"
+        understanding = {"task": "meaning", "speech_acts": lr.speech_acts, "interpretation_confidence": round(lr.interpretation_confidence, 3), "coverage": round(lr.coverage, 3),
+                         "sentences": lr.sentences, "corrections": lr.corrections, "unsupported": lr.unsupported, "notes": lr.notes, "language": packet.language,
+                         "acr": lr.doc.to_dict()}
+        result = TurnResult(
+            response=mo.text, conversation_id=cid, status=status, trace=st.trace, total_ms=total_ms, understanding=understanding,
+            reasoning=(mo.trace.get("reasoning") if isinstance(mo.trace.get("reasoning"), dict) else None),
+            confidence={"overall": round(mo.confidence, 3), "band": band, "components": {"meaning": round(mo.confidence, 3)}, "not_evaluated": [], "uncertainty": mo.uncertainty},
+            emotion=emotion.to_dict() if emotion else None,
+            context={"resolution": None, "state": self.context.describe(cstate), "dialogue": (mo.dialogue or {}) and DialogueSnapshot.of(mo.dialogue)},
+            memory={"stored_facts": [s["fact"] for s in mo.stored if isinstance(s, dict) and s.get("fact")], "learning": [], "goal": None},
+            response_meta={"engine": "meaning", "meaning": meaning_summary, "plan": {"acts": [a["type"] for a in mo.acts]}}, errors=st.errors, turn_id=turn_id)
+        if persist:
+            self._persist(scope, repo, conv, cid, cstate, rstate, text, mo.text, result, self.config.clock.now(), total_ms)
         return result
 
     # ---- routing helpers ---------------------------------------------------------------------------------------------------------------

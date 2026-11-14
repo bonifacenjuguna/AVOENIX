@@ -1,0 +1,11 @@
+{
+  "_meta": {"name": "avoenix-comparatives", "version": "1", "license": "CC0-1.0",
+            "note": "Comparative adjectives -> (dimension, direction). +1 means the grammatical subject has MORE of the dimension."},
+  "comparatives": {
+    "heavier": ["weight", 1], "lighter": ["weight", -1], "taller": ["height", 1], "shorter": ["height", -1], "older": ["age", 1], "younger": ["age", -1],
+    "faster": ["speed", 1], "slower": ["speed", -1], "bigger": ["size", 1], "larger": ["size", 1], "smaller": ["size", -1], "longer": ["length", 1],
+    "richer": ["wealth", 1], "poorer": ["wealth", -1], "stronger": ["strength", 1], "weaker": ["strength", -1], "cheaper": ["price", -1], "hotter": ["temperature", 1],
+    "colder": ["temperature", -1], "smarter": ["intelligence", 1], "better": ["quality", 1], "worse": ["quality", -1], "higher": ["height", 1], "lower": ["height", -1],
+    "darker": ["darkness", 1], "brighter": ["brightness", 1], "louder": ["loudness", 1], "quieter": ["loudness", -1]
+  }
+}

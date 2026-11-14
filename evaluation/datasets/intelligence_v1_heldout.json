@@ -1,0 +1,1660 @@
+{
+ "name": "avoenix-intelligence-benchmark-v1",
+ "description": "Held-out benchmark written BEFORE the v0.1.0 intelligence work and not used to develop it. Failing cases must not be edited to pass. Proxy automatic checks only (regex over responses).",
+ "cases": [
+  {
+   "id": "lu-fin-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I don't have enough money.",
+    "Do I have enough money?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b"
+     ],
+     "not_contains": [
+      "(?i)\\byes\\b|you do have",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-fin-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I'm short on cash.",
+    "Do I have enough money?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b"
+     ],
+     "not_contains": [
+      "(?i)\\byes\\b|you do have",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-fin-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I cannot afford it right now.",
+    "Do I have enough money?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b"
+     ],
+     "not_contains": [
+      "(?i)\\byes\\b|you do have",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-fin-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I'm broke at the moment.",
+    "Do I have enough money?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b"
+     ],
+     "not_contains": [
+      "(?i)\\byes\\b|you do have",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-fin-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I'm running low on funds.",
+    "Do I have enough money?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b"
+     ],
+     "not_contains": [
+      "(?i)\\byes\\b|you do have",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-fin-5",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I can't pay for it just now.",
+    "Do I have enough money?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b"
+     ],
+     "not_contains": [
+      "(?i)\\byes\\b|you do have",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-fin-6",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I have no spare cash this week.",
+    "Do I have enough money?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b"
+     ],
+     "not_contains": [
+      "(?i)\\byes\\b|you do have",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-res-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I live in Nairobi.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-res-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I reside in Nairobi.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-res-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "Nairobi is where I live.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-res-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "My home is in Nairobi.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-res-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I'm based in Nairobi.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-res-5",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I stay in Nairobi.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-res-6",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I am a resident of Nairobi.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-name-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "Call me Savah.",
+    "What's my name?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Savah"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-name-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "People call me Savah.",
+    "What's my name?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Savah"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-name-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I go by Savah.",
+    "What's my name?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Savah"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-name-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I am called Savah.",
+    "What's my name?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Savah"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-name-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "They know me as Savah.",
+    "What's my name?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Savah"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-q-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "question_variation"
+   ],
+   "turns": [
+    "Which city is Kenya's capital?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-q-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "question_variation"
+   ],
+   "turns": [
+    "Kenya's capital is what?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-q-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "question_variation"
+   ],
+   "turns": [
+    "Name the capital of Kenya."
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-q-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "question_variation"
+   ],
+   "turns": [
+    "Tell me Kenya's capital city."
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-q-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "question_variation"
+   ],
+   "turns": [
+    "What city serves as the capital of Kenya?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-q-5",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "question_variation"
+   ],
+   "turns": [
+    "Where is the seat of government of Kenya?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-neg-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "negation"
+   ],
+   "turns": [
+    "I don't like coffee.",
+    "Do I like coffee?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\bno\\b|you don't|you do not|you never|doesn't"
+     ],
+     "not_contains": [
+      "(?i)\\byes\\b",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-neg-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "negation"
+   ],
+   "turns": [
+    "I never eat meat.",
+    "Do I eat meat?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\bno\\b|you don't|you do not|you never|doesn't"
+     ],
+     "not_contains": [
+      "(?i)\\byes\\b",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-neg-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "negation"
+   ],
+   "turns": [
+    "I like tea.",
+    "Do I like tea?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\byes\\b|you do|like tea"
+     ],
+     "not_contains": [
+      "(?i)\\bdon't\\b",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-age-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I am thirty years old.",
+    "How old am I?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "30|thirty"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-age-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "paraphrase"
+   ],
+   "turns": [
+    "I turned 30 last week.",
+    "How old am I?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "30|thirty"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-amb-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "ambiguity"
+   ],
+   "turns": [
+    "Is it big?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)which|what .*(it|refer)|not sure what|clarif|what do you mean|what are you"
+     ],
+     "not_contains": [
+      "(?i)\\byes\\b|\\bit is big",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lu-amb-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "metrics": [
+    "ambiguity"
+   ],
+   "turns": [
+    "She lives there."
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)who|which|where|clarif|not sure|mean"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cv-laptop",
+   "category": "conversation",
+   "split": "heldout",
+   "metrics": [
+    "pronoun",
+    "slot_filling"
+   ],
+   "turns": [
+    "I bought a new laptop yesterday.",
+    "A Lenovo ThinkPad.",
+    "Programming.",
+    "Who makes it?",
+    "What do I use it for?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)\\?"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "(?i)ThinkPad|Lenovo"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {},
+    {
+     "contains": [
+      "Lenovo"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "(?i)programming"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cv-pron-person",
+   "category": "conversation",
+   "split": "heldout",
+   "metrics": [
+    "pronoun"
+   ],
+   "turns": [
+    "My sister Amina lives in Kisumu.",
+    "She is a teacher.",
+    "Where does she live?",
+    "What does she do?"
+   ],
+   "expect": [
+    {},
+    {},
+    {
+     "contains": [
+      "Kisumu"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "(?i)teacher"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cv-topic-change",
+   "category": "conversation",
+   "split": "heldout",
+   "metrics": [
+    "topic_change"
+   ],
+   "turns": [
+    "I bought a laptop yesterday.",
+    "My dog is called Rex.",
+    "What is it called?"
+   ],
+   "expect": [
+    {},
+    {},
+    {
+     "contains": [
+      "Rex"
+     ],
+     "not_contains": [
+      "(?i)laptop",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cv-correct-0",
+   "category": "conversation",
+   "split": "heldout",
+   "metrics": [
+    "correction"
+   ],
+   "turns": [
+    "I live in Nairobi.",
+    "Actually, I live in Mombasa.",
+    "Where do I live?"
+   ],
+   "expect": [
+    {},
+    {},
+    {
+     "contains": [
+      "Mombasa"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cv-correct-1",
+   "category": "conversation",
+   "split": "heldout",
+   "metrics": [
+    "correction"
+   ],
+   "turns": [
+    "My name is Sara.",
+    "No, my name is Savah.",
+    "What is my name?"
+   ],
+   "expect": [
+    {},
+    {},
+    {
+     "contains": [
+      "Savah"
+     ],
+     "not_contains": [
+      "Sara\\b(?!h)",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cv-follow-0",
+   "category": "conversation",
+   "split": "heldout",
+   "metrics": [
+    "follow_up"
+   ],
+   "turns": [
+    "What is the capital of Kenya?",
+    "And Uganda?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Kampala"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cv-follow-1",
+   "category": "conversation",
+   "split": "heldout",
+   "metrics": [
+    "follow_up",
+    "pronoun"
+   ],
+   "turns": [
+    "My brother Otieno lives in Kisumu.",
+    "Where does he live?",
+    "And my sister Amina lives in Mombasa.",
+    "Where does she live?",
+    "And where does Otieno live?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "Kisumu"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {},
+    {
+     "contains": [
+      "Mombasa"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Kisumu"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cv-ctx-answer",
+   "category": "conversation",
+   "split": "heldout",
+   "metrics": [
+    "context_answer"
+   ],
+   "turns": [
+    "I work as a nurse.",
+    "What do I do for a living?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)nurse"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cv-long-21",
+   "category": "conversation",
+   "split": "heldout",
+   "metrics": [
+    "long_context",
+    "pronoun",
+    "correction"
+   ],
+   "turns": [
+    "My name is Wanjiru.",
+    "I live in Nakuru.",
+    "I bought a laptop yesterday.",
+    "A Dell XPS.",
+    "I use it for design.",
+    "My brother Kamau lives in Eldoret.",
+    "He is a doctor.",
+    "I work as an architect.",
+    "What is my name?",
+    "Where do I live?",
+    "Who makes my laptop?",
+    "What do I use it for?",
+    "Where does Kamau live?",
+    "What does he do?",
+    "What do I do for a living?",
+    "Actually I live in Naivasha.",
+    "Where do I live?",
+    "What is the capital of Kenya?",
+    "And Uganda?",
+    "What is my name?",
+    "Where does my brother live?"
+   ],
+   "expect": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+     "contains": [
+      "Wanjiru"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Nakuru"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Dell"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "(?i)design"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Eldoret"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "(?i)doctor"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "(?i)architect"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {},
+    {
+     "contains": [
+      "Naivasha"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Nairobi"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Kampala"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Wanjiru"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Eldoret"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-0",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "ordering"
+   ],
+   "turns": [
+    "Anna is taller than Ben. Ben is taller than Carl. Who is the tallest?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Anna"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-1",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "ordering"
+   ],
+   "turns": [
+    "Zed is older than Yan. Yan is older than Xia. Who is the youngest?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "Xia"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-2",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "Tom has 5 apples. He gives 2 to Anna. How many does Tom have left?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\b3\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-3",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "A shirt costs 20 dollars. I buy 3 shirts. How much do I pay?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\b60\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-4",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "I had 100 shillings and spent 35. How much is left?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\b65\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-5",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "A train travels 60 km each hour. How far does it go in 3 hours?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\b180\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-6",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "Sam has 12 marbles and wins 8 more. How many marbles does Sam have now?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\b20\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-7",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "A box holds 6 eggs. How many eggs are in 7 boxes?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\b42\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-8",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "All birds have wings. A sparrow is a bird. Does a sparrow have wings?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)\\byes\\b|does|has wings"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-9",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "Every dog is a mammal. Rex is a dog. Is Rex a mammal?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)\\byes\\b|is a mammal"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-10",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "If it rains the match is cancelled. It is raining. Is the match cancelled?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)\\byes\\b|cancelled"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-11",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "A is heavier than B. B is heavier than C. Is C heavier than A?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)\\bno\\b|not"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-12",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "What is 15 percent of 240?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\b36\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-13",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "multi_step"
+   ],
+   "turns": [
+    "What is 144 divided by 12 plus 5?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "\\b17\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-contra",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "contradiction"
+   ],
+   "turns": [
+    "Anna is older than Ben. Ben is older than Anna."
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)doesn't add up|can't all be true|contradict|inconsisten"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-unknown",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "uncertainty"
+   ],
+   "turns": [
+    "Is Mike older than Paul?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)don't know|can't say|not enough|no information|haven't"
+     ],
+     "not_contains": [
+      "(?i)\\byes\\b"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rs-plan",
+   "category": "reasoning",
+   "split": "heldout",
+   "metrics": [
+    "task_decomposition"
+   ],
+   "turns": [
+    "How do I prepare for an exam in three days?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)(1\\.|first|step)"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-wrong",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "metrics": [
+    "incorrect_assertion"
+   ],
+   "turns": [
+    "Paris is the capital of Germany.",
+    "What is the capital of Germany?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)unverified|couldn't verify|can't verify|not.*(treat|fact)"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Berlin"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-hearsay",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "metrics": [
+    "source_attribution"
+   ],
+   "turns": [
+    "My brother says the capital of Australia is Sydney.",
+    "What is the capital of Australia?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)brother|unverified|couldn't verify"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Canberra"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-hedge",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "metrics": [
+    "uncertain"
+   ],
+   "turns": [
+    "I think the capital of Nigeria is Lagos.",
+    "What is the capital of Nigeria?"
+   ],
+   "expect": [
+    {
+     "contains": [
+      "(?i)unverified|think|couldn't verify|not sure"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    },
+    {
+     "contains": [
+      "Abuja"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-source",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "metrics": [
+    "source_attribution"
+   ],
+   "turns": [
+    "The capital of Atlantis is Poseidonis.",
+    "Who told you that Poseidonis is the capital of Atlantis?"
+   ],
+   "expect": [
+    {},
+    {
+     "contains": [
+      "(?i)\\byou\\b"
+     ],
+     "not_contains": [
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-conflict",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "metrics": [
+    "revision"
+   ],
+   "turns": [
+    "The capital of Atlantis is Poseidonis.",
+    "Actually the capital of Atlantis is Marinus.",
+    "What is the capital of Atlantis?"
+   ],
+   "expect": [
+    {},
+    {},
+    {
+     "contains": [
+      "Marinus"
+     ],
+     "not_contains": [
+      "(?i)the capital of atlantis is marinus\\.",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ki-age-rev",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "metrics": [
+    "revision"
+   ],
+   "turns": [
+    "I am 30 years old.",
+    "Actually I am 31 years old.",
+    "How old am I?"
+   ],
+   "expect": [
+    {},
+    {},
+    {
+     "contains": [
+      "31"
+     ],
+     "not_contains": [
+      "\\b30\\b",
+      "(?i)work that out|beyond what I can reason|can't say whether"
+     ]
+    }
+   ]
+  }
+ ],
+ "heldout_sha256": "257883f15d2f4c8365888c695f084631d546e246b38ca38f7d0416cdd249e5ca",
+ "fixlog": "2026-11-11: before any implementation work, the first baseline run showed that loose regexes (e.g. \"can't\") matched the generic refusal text and gave false passes. Added a refusal-fingerprint not_contains to every answer expectation and tightened lu-fin/lu-neg patterns. No case was changed after seeing the system's behaviour on the new work."
+}

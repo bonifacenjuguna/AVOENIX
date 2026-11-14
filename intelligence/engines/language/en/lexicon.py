@@ -85,7 +85,7 @@ INTENSIFIERS = {"very": 1.4, "really": 1.4, "extremely": 1.8, "incredibly": 1.8,
 DIMINISHERS = {"slightly": 0.5, "somewhat": 0.7, "barely": 0.4, "a bit": 0.7, "kind": 0.8, "little": 0.7,
                "fairly": 0.85, "rather": 0.9, "hardly": 0.4, "almost": 0.8}
 ADVERBS_COMMON = {
-    "very", "really", "quite", "too", "also", "just", "still", "already", "always", "often", "sometimes",
+    "very", "really", "quite", "too", "also", "just", "still", "already", "always", "often", "sometimes", "more", "less", "most", "least", "extra",
     "usually", "never", "now", "then", "here", "there", "soon", "later", "again", "ever", "even", "only",
     "yesterday", "today", "tomorrow", "tonight", "recently", "currently", "quickly", "slowly", "well",
     "almost", "maybe", "perhaps", "together", "however", "therefore", "thus", "instead", "else", "far",

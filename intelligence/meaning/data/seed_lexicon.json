@@ -1,0 +1,722 @@
+{
+ "_meta": {
+  "name": "avoenix-seed-lexicon",
+  "version": "1",
+  "license": "CC0-1.0",
+  "author": "AVOENIX project (developer-authored)",
+  "note": "A small seed of lexical-semantic clusters used by the frame matcher. It is NOT a substitute for WordNet/ConceptNet: it only provides the lemma clusters the shipped frames refer to. Imported resources (intelligence/ingest) extend it by synonym/hypernym links."
+ },
+ "concepts": {
+  "c.reside": {
+   "pos": "verb",
+   "lemmas": [
+    "live",
+    "reside",
+    "dwell",
+    "stay",
+    "inhabit",
+    "lodge",
+    "reside",
+    "resides"
+   ]
+  },
+  "c.based": {
+   "pos": "adj",
+   "lemmas": [
+    "based",
+    "located",
+    "situated",
+    "settled",
+    "resident",
+    "locate",
+    "settle",
+    "situate",
+    "base"
+   ]
+  },
+  "c.home": {
+   "pos": "noun",
+   "lemmas": [
+    "home",
+    "house",
+    "residence",
+    "apartment",
+    "flat",
+    "hometown"
+   ]
+  },
+  "c.resident": {
+   "pos": "noun",
+   "lemmas": [
+    "resident",
+    "inhabitant",
+    "citizen",
+    "dweller",
+    "native",
+    "resident"
+   ]
+  },
+  "c.move": {
+   "pos": "verb",
+   "lemmas": [
+    "move",
+    "relocate",
+    "migrate",
+    "emigrate",
+    "transfer"
+   ]
+  },
+  "c.call": {
+   "pos": "verb",
+   "lemmas": [
+    "call",
+    "name",
+    "know",
+    "address",
+    "refer",
+    "go",
+    "refer"
+   ]
+  },
+  "c.name": {
+   "pos": "noun",
+   "lemmas": [
+    "name",
+    "nickname"
+   ]
+  },
+  "c.work": {
+   "pos": "verb",
+   "lemmas": [
+    "work",
+    "serve",
+    "labor"
+   ]
+  },
+  "c.job": {
+   "pos": "noun",
+   "lemmas": [
+    "job",
+    "profession",
+    "occupation",
+    "career",
+    "trade",
+    "living"
+   ]
+  },
+  "c.like": {
+   "pos": "verb",
+   "lemmas": [
+    "like",
+    "love",
+    "enjoy",
+    "adore",
+    "fancy",
+    "prefer",
+    "relish"
+   ]
+  },
+  "c.dislike": {
+   "pos": "verb",
+   "lemmas": [
+    "hate",
+    "dislike",
+    "detest",
+    "loathe",
+    "despise"
+   ]
+  },
+  "c.consume": {
+   "pos": "verb",
+   "lemmas": [
+    "eat",
+    "drink",
+    "consume",
+    "have"
+   ]
+  },
+  "c.buy": {
+   "pos": "verb",
+   "lemmas": [
+    "buy",
+    "purchase",
+    "acquire",
+    "get",
+    "order"
+   ]
+  },
+  "c.afford": {
+   "pos": "verb",
+   "lemmas": [
+    "afford"
+   ]
+  },
+  "c.pay": {
+   "pos": "verb",
+   "lemmas": [
+    "pay",
+    "spend"
+   ]
+  },
+  "c.lack": {
+   "pos": "verb",
+   "lemmas": [
+    "lack",
+    "miss"
+   ]
+  },
+  "c.insufficient": {
+   "pos": "adj",
+   "lemmas": [
+    "short",
+    "low",
+    "lacking",
+    "deficient",
+    "scarce",
+    "insufficient",
+    "tight",
+    "limited"
+   ]
+  },
+  "c.penniless": {
+   "pos": "adj",
+   "lemmas": [
+    "broke",
+    "penniless",
+    "bankrupt",
+    "skint",
+    "impoverished",
+    "destitute"
+   ]
+  },
+  "c.depleted": {
+   "pos": "adj",
+   "lemmas": [
+    "out",
+    "depleted",
+    "exhausted",
+    "empty"
+   ]
+  },
+  "c.enough": {
+   "pos": "adj",
+   "lemmas": [
+    "enough",
+    "sufficient",
+    "adequate",
+    "ample"
+   ]
+  },
+  "c.money": {
+   "pos": "noun",
+   "lemmas": [
+    "money",
+    "cash",
+    "funds",
+    "savings",
+    "finances",
+    "income",
+    "budget",
+    "capital",
+    "shillings",
+    "dollars",
+    "currency",
+    "fund",
+    "saving",
+    "finance",
+    "shilling",
+    "dollar",
+    "penny",
+    "pound",
+    "euro",
+    "wallet",
+    "paycheck",
+    "salary",
+    "pay"
+   ]
+  },
+  "c.have": {
+   "pos": "verb",
+   "lemmas": [
+    "have",
+    "own",
+    "possess",
+    "hold",
+    "keep"
+   ]
+  },
+  "c.give": {
+   "pos": "verb",
+   "lemmas": [
+    "give",
+    "hand",
+    "pass",
+    "donate",
+    "lend",
+    "gift"
+   ]
+  },
+  "c.lose": {
+   "pos": "verb",
+   "lemmas": [
+    "lose",
+    "spend",
+    "waste",
+    "eat",
+    "use",
+    "sell",
+    "drop",
+    "break"
+   ]
+  },
+  "c.gain": {
+   "pos": "verb",
+   "lemmas": [
+    "win",
+    "gain",
+    "find",
+    "receive",
+    "earn",
+    "collect",
+    "pick",
+    "get",
+    "buy",
+    "obtain",
+    "make"
+   ]
+  },
+  "c.cost": {
+   "pos": "verb",
+   "lemmas": [
+    "cost",
+    "sell"
+   ]
+  },
+  "c.travel": {
+   "pos": "verb",
+   "lemmas": [
+    "travel",
+    "drive",
+    "go",
+    "run",
+    "walk",
+    "fly",
+    "move",
+    "cycle",
+    "ride"
+   ]
+  },
+  "c.contain": {
+   "pos": "verb",
+   "lemmas": [
+    "hold",
+    "contain",
+    "fit",
+    "carry"
+   ]
+  },
+  "c.make": {
+   "pos": "verb",
+   "lemmas": [
+    "make",
+    "manufacture",
+    "produce",
+    "build",
+    "create",
+    "design"
+   ]
+  },
+  "c.say": {
+   "pos": "verb",
+   "lemmas": [
+    "say",
+    "tell",
+    "claim",
+    "state",
+    "assert",
+    "mention",
+    "insist",
+    "report",
+    "write"
+   ]
+  },
+  "c.think": {
+   "pos": "verb",
+   "lemmas": [
+    "think",
+    "believe",
+    "suppose",
+    "reckon",
+    "guess",
+    "assume",
+    "imagine"
+   ]
+  },
+  "c.use": {
+   "pos": "verb",
+   "lemmas": [
+    "use",
+    "utilise",
+    "utilize",
+    "employ"
+   ]
+  },
+  "c.device": {
+   "pos": "noun",
+   "lemmas": [
+    "device",
+    "gadget",
+    "machine"
+   ]
+  },
+  "c.laptop": {
+   "pos": "noun",
+   "lemmas": [
+    "laptop",
+    "notebook",
+    "computer",
+    "pc",
+    "macbook",
+    "chromebook"
+   ]
+  },
+  "c.phone": {
+   "pos": "noun",
+   "lemmas": [
+    "phone",
+    "smartphone",
+    "mobile",
+    "iphone",
+    "cellphone"
+   ]
+  },
+  "c.tablet": {
+   "pos": "noun",
+   "lemmas": [
+    "tablet",
+    "ipad"
+   ]
+  },
+  "c.vehicle": {
+   "pos": "noun",
+   "lemmas": [
+    "vehicle"
+   ]
+  },
+  "c.car": {
+   "pos": "noun",
+   "lemmas": [
+    "car",
+    "automobile",
+    "truck",
+    "van",
+    "motorbike",
+    "motorcycle",
+    "bicycle",
+    "bike",
+    "scooter"
+   ]
+  },
+  "c.pet": {
+   "pos": "noun",
+   "lemmas": [
+    "dog",
+    "cat",
+    "puppy",
+    "kitten",
+    "parrot",
+    "rabbit",
+    "pet",
+    "horse"
+   ]
+  },
+  "c.kin_f": {
+   "pos": "noun",
+   "lemmas": [
+    "sister",
+    "mother",
+    "mom",
+    "mum",
+    "daughter",
+    "aunt",
+    "grandmother",
+    "wife",
+    "niece"
+   ]
+  },
+  "c.kin_m": {
+   "pos": "noun",
+   "lemmas": [
+    "brother",
+    "father",
+    "dad",
+    "son",
+    "uncle",
+    "grandfather",
+    "husband",
+    "nephew"
+   ]
+  },
+  "c.kin_n": {
+   "pos": "noun",
+   "lemmas": [
+    "friend",
+    "colleague",
+    "cousin",
+    "neighbour",
+    "neighbor",
+    "boss",
+    "teacher",
+    "parent",
+    "child",
+    "partner",
+    "classmate"
+   ]
+  },
+  "c.capital": {
+   "pos": "noun",
+   "lemmas": [
+    "capital",
+    "seat",
+    "capital"
+   ]
+  },
+  "c.currency": {
+   "pos": "noun",
+   "lemmas": [
+    "currency"
+   ]
+  },
+  "c.population": {
+   "pos": "noun",
+   "lemmas": [
+    "population"
+   ]
+  },
+  "c.president": {
+   "pos": "noun",
+   "lemmas": [
+    "president"
+   ]
+  },
+  "c.occupation": {
+   "pos": "noun",
+   "lemmas": [
+    "pilot",
+    "farmer",
+    "teacher",
+    "doctor",
+    "nurse",
+    "engineer",
+    "driver",
+    "student",
+    "architect",
+    "lawyer",
+    "accountant",
+    "cook",
+    "chef",
+    "carpenter",
+    "mechanic",
+    "tailor",
+    "writer",
+    "developer",
+    "programmer",
+    "designer",
+    "plumber",
+    "electrician",
+    "banker",
+    "soldier",
+    "artist",
+    "musician",
+    "fisherman",
+    "trader",
+    "journalist",
+    "scientist",
+    "pharmacist",
+    "dentist",
+    "police",
+    "manager",
+    "cashier",
+    "baker",
+    "builder",
+    "vet"
+   ]
+  },
+  "c.fillermark": {
+   "pos": "noun",
+   "lemmas": [
+    "living"
+   ]
+  },
+  "c.cause_purpose": {
+   "pos": "noun",
+   "lemmas": [
+    "purpose",
+    "use"
+   ]
+  },
+  "c.consume_drink": {
+   "pos": "verb",
+   "lemmas": [
+    "drink",
+    "eat",
+    "consume"
+   ]
+  },
+  "c.maker": {
+   "pos": "noun",
+   "lemmas": [
+    "maker",
+    "manufacturer",
+    "brand",
+    "company"
+   ]
+  },
+  "c.model": {
+   "pos": "noun",
+   "lemmas": [
+    "model",
+    "version",
+    "type",
+    "kind",
+    "make"
+   ]
+  },
+  "c.person_kin": {
+   "pos": "noun",
+   "lemmas": [
+    "uncle",
+    "aunt",
+    "sister",
+    "brother",
+    "mother",
+    "father",
+    "friend",
+    "cousin",
+    "colleague",
+    "neighbour",
+    "neighbor",
+    "boss",
+    "teacher",
+    "grandmother",
+    "grandfather",
+    "son",
+    "daughter",
+    "wife",
+    "husband",
+    "nephew",
+    "niece"
+   ]
+  },
+  "c.do_living": {
+   "pos": "verb",
+   "lemmas": [
+    "do"
+   ]
+  },
+  "c.age": {
+   "pos": "noun",
+   "lemmas": [
+    "age",
+    "year"
+   ]
+  },
+  "c.turn": {
+   "pos": "verb",
+   "lemmas": [
+    "turn",
+    "become",
+    "reach"
+   ]
+  },
+  "c.old": {
+   "pos": "adj",
+   "lemmas": [
+    "old"
+   ]
+  },
+  "c.go_by": {
+   "pos": "verb",
+   "lemmas": [
+    "go"
+   ]
+  },
+  "c.weather": {
+   "pos": "verb",
+   "lemmas": [
+    "rain",
+    "snow",
+    "drizzle",
+    "shine",
+    "pour",
+    "thunder",
+    "freeze",
+    "cancel",
+    "open",
+    "close"
+   ]
+  }
+ },
+ "relations": [
+  [
+   "c.like",
+   "antonym",
+   "c.dislike"
+  ],
+  [
+   "c.insufficient",
+   "antonym",
+   "c.enough"
+  ],
+  [
+   "c.penniless",
+   "antonym",
+   "c.enough"
+  ],
+  [
+   "c.laptop",
+   "hypernym",
+   "c.device"
+  ],
+  [
+   "c.phone",
+   "hypernym",
+   "c.device"
+  ],
+  [
+   "c.tablet",
+   "hypernym",
+   "c.device"
+  ],
+  [
+   "c.car",
+   "hypernym",
+   "c.vehicle"
+  ],
+  [
+   "c.money",
+   "related",
+   "c.afford"
+  ],
+  [
+   "c.money",
+   "related",
+   "c.pay"
+  ],
+  [
+   "c.buy",
+   "related",
+   "c.pay"
+  ],
+  [
+   "c.reside",
+   "related",
+   "c.move"
+  ],
+  [
+   "c.say",
+   "related",
+   "c.think"
+  ]
+ ]
+}

@@ -1,0 +1,13 @@
+{
+  "_meta": {"name": "avoenix-dialogue-slots", "version": "1", "license": "CC0-1.0",
+            "note": "Which attributes a kind of entity can have, in the order a curious conversation partner would ask about them, and what kinds a verb accepts as its object (selectional restrictions)."},
+  "kinds": {
+    "artifact": {"concepts": ["c.device", "c.laptop", "c.phone", "c.tablet", "c.car", "c.vehicle"], "slots": [["model", "maker"], ["use", "purpose"]], "person": false},
+    "pet": {"concepts": ["c.pet"], "slots": [["name", "name"]], "person": false},
+    "person": {"concepts": ["c.kin_f", "c.kin_m", "c.kin_n", "c.person_kin"], "slots": [], "person": true}
+  },
+  "selectional": {
+    "maker": ["artifact"], "purpose": ["artifact"], "name": ["pet", "person", "artifact"], "residence": ["person"], "occupation": ["person"]
+  },
+  "gender": {"c.kin_f": "female", "c.kin_m": "male"}
+}

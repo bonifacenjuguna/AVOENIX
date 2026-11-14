@@ -69,13 +69,15 @@ class ConversationState:
     last_question: dict | None = None                          # {"doc": acr dict, "turn": n}
     history: list[dict] = field(default_factory=list)          # [{"turn", "role", "text"}]
     user: dict[str, Any] = field(default_factory=dict)
+    dialogue: dict[str, Any] = field(default_factory=dict)        # meaning-layer dialogue state (entities, salience, pending slots); see intelligence/meaning/dialogue.py
+    premises: dict[str, Any] = field(default_factory=dict)        # meaning-layer deduction premises for this conversation
 
     def to_dict(self) -> dict:
         return {"conversation_id": self.conversation_id, "turn": self.turn,
                 "entities": {k: v.to_dict() for k, v in self.entities.items()}, "options": self.options,
                 "option_focus": self.option_focus, "topic": self.topic, "unresolved_questions": self.unresolved_questions,
                 "pending_clarification": self.pending_clarification, "last_question": self.last_question,
-                "history": self.history[-MAX_TURNS_KEPT:], "user": self.user}
+                "history": self.history[-MAX_TURNS_KEPT:], "user": self.user, "dialogue": self.dialogue, "premises": self.premises}
 
     @classmethod
     def from_dict(cls, d: dict) -> "ConversationState":
@@ -89,6 +91,8 @@ class ConversationState:
         st.last_question = d.get("last_question")
         st.history = d.get("history", [])
         st.user = d.get("user", {})
+        st.dialogue = d.get("dialogue", {})
+        st.premises = d.get("premises", {})
         return st
 
 

@@ -1,0 +1,3 @@
+  1 SYNTHETIC fixture (WNDB layout), CC0-1.0.
+03001000 00 a 02 short 0 scarce 0 001 ! 03001001 a 0101 | lacking in quantity
+03001001 00 a 01 plentiful 0 001 ! 03001000 a 0101 | existing in large quantities

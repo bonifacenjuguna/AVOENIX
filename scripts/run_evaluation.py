@@ -26,10 +26,11 @@ def main() -> int:
     ap.add_argument("--dataset", default=str(ROOT / "evaluation/datasets/core_v0.json"))
     ap.add_argument("--out", default=str(ROOT / "evaluation/results/latest.json"))
     ap.add_argument("--split", default=None, help="only run this split (dev|holdout)")
+    ap.add_argument("--no-meaning", action="store_true", help="disable the meaning layer (reproduces the v0.0.1 pipeline)")
     args = ap.parse_args()
     data = json.loads(Path(args.dataset).read_text())
     cases = [c for c in data["cases"] if not args.split or c.get("split") == args.split]
-    app = Avoenix(MemoryBackend(), AvoenixConfig())
+    app = Avoenix(MemoryBackend(), AvoenixConfig(meaning_enabled=not args.no_meaning))
     counter = {"n": 0}
 
     def claim_state(scope: Scope) -> dict:

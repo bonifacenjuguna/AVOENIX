@@ -1,0 +1,303 @@
+{
+ "_meta": {
+  "name": "avoenix-semantic-frames",
+  "version": "1",
+  "license": "CC0-1.0",
+  "note": "Frames are meaning structures (predicate + roles). Each frame lists *constructions*: structural templates over chunker output whose open class positions are concept clusters, not words. Adding a paraphrase means adding lemmas to a concept (data), not a pattern."
+ },
+ "frames": {
+  "residence": {
+   "predicate": "attr.residence",
+   "owner": "agent",
+   "value": "place",
+   "functional": true,
+   "ask": {
+    "where": "place"
+   },
+   "constructions": [
+    {
+     "type": "V",
+     "verb": "c.reside",
+     "subject": "agent",
+     "pp": {
+      "in": "place",
+      "at": "place",
+      "near": "place",
+      "around": "place",
+      "within": "place"
+     }
+    },
+    {
+     "type": "V",
+     "verb": "c.move",
+     "subject": "agent",
+     "pp": {
+      "to": "place",
+      "into": "place",
+      "back": "place"
+     },
+     "needs_tense": [
+      "past",
+      "perfect"
+     ]
+    },
+    {
+     "type": "COP_ADJ",
+     "adj": "c.based",
+     "subject": "agent",
+     "pp": {
+      "in": "place",
+      "at": "place"
+     }
+    },
+    {
+     "type": "COP_NP",
+     "complement": "c.home",
+     "subject": "place",
+     "possessor": "agent"
+    },
+    {
+     "type": "NP_PP",
+     "head": "c.home",
+     "possessor": "agent",
+     "pp": {
+      "in": "place",
+      "at": "place"
+     }
+    },
+    {
+     "type": "COP_NP",
+     "complement": "c.resident",
+     "subject": "agent",
+     "pp": {
+      "of": "place",
+      "in": "place"
+     },
+     "value_from": "pp"
+    },
+    {
+     "type": "COP_WHERE",
+     "subject": "place",
+     "verb": "c.reside",
+     "agent": "agent"
+    }
+   ]
+  },
+  "occupation": {
+   "predicate": "attr.job",
+   "owner": "agent",
+   "value": "occupation",
+   "functional": true,
+   "ask": {
+    "what": "occupation"
+   },
+   "constructions": [
+    {
+     "type": "V",
+     "verb": "c.work",
+     "subject": "agent",
+     "pp": {
+      "as": "occupation"
+     }
+    },
+    {
+     "type": "COP_NP",
+     "complement": "c.occupation",
+     "subject": "agent",
+     "value_from": "complement"
+    },
+    {
+     "type": "V",
+     "verb": "c.do_living",
+     "subject": "agent",
+     "pp": {
+      "for": "occupation"
+     }
+    }
+   ]
+  },
+  "naming": {
+   "predicate": "attr.name",
+   "owner": "agent",
+   "value": "name",
+   "functional": true,
+   "ask": {
+    "what": "name"
+   },
+   "constructions": [
+    {
+     "type": "V",
+     "verb": "c.call",
+     "subject": "other",
+     "object": "agent",
+     "complement": "name"
+    },
+    {
+     "type": "V_PASSIVE",
+     "verb": "c.call",
+     "subject": "agent",
+     "complement": "name"
+    },
+    {
+     "type": "POSS_COP",
+     "head": "c.name",
+     "possessor": "agent",
+     "complement": "name"
+    },
+    {
+     "type": "COP_NAME",
+     "subject": "agent",
+     "value": "name"
+    },
+    {
+     "type": "V",
+     "verb": "c.go_by",
+     "subject": "agent",
+     "pp": {
+      "by": "name",
+      "as": "name"
+     }
+    },
+    {
+     "type": "V",
+     "verb": "c.call",
+     "subject": "other",
+     "object": "agent",
+     "pp": {
+      "as": "name"
+     }
+    }
+   ]
+  },
+  "acquisition": {
+   "predicate": "rel.owns",
+   "owner": "agent",
+   "value": "thing",
+   "ask": {
+    "what": "thing"
+   },
+   "constructions": [
+    {
+     "type": "V",
+     "verb": "c.buy",
+     "subject": "agent",
+     "object": "thing"
+    },
+    {
+     "type": "V",
+     "verb": "c.have",
+     "subject": "agent",
+     "object": "thing",
+     "object_kind": "artifact"
+    }
+   ]
+  },
+  "purpose": {
+   "predicate": "attr.use",
+   "owner": "thing",
+   "value": "purpose",
+   "ask": {
+    "what": "purpose"
+   },
+   "constructions": [
+    {
+     "type": "V",
+     "verb": "c.use",
+     "subject": "agent",
+     "object": "thing",
+     "pp": {
+      "for": "purpose",
+      "as": "purpose"
+     }
+    }
+   ]
+  },
+  "maker": {
+   "predicate": "attr.maker",
+   "owner": "thing",
+   "value": "maker",
+   "ask": {
+    "who": "maker",
+    "what": "maker",
+    "which": "maker"
+   },
+   "constructions": [
+    {
+     "type": "V",
+     "verb": "c.make",
+     "subject": "maker",
+     "object": "thing"
+    }
+   ]
+  },
+  "preference": {
+   "predicate": "rel.likes",
+   "owner": "agent",
+   "value": "thing",
+   "polarity_from_verb": true,
+   "ask": {},
+   "constructions": [
+    {
+     "type": "V",
+     "verb": "c.like",
+     "subject": "agent",
+     "object": "thing",
+     "polarity": "positive"
+    },
+    {
+     "type": "V",
+     "verb": "c.dislike",
+     "subject": "agent",
+     "object": "thing",
+     "polarity": "negative"
+    }
+   ]
+  },
+  "consumption": {
+   "predicate": "rel.consumes",
+   "owner": "agent",
+   "value": "thing",
+   "ask": {},
+   "constructions": [
+    {
+     "type": "V",
+     "verb": "c.consume_drink",
+     "subject": "agent",
+     "object": "thing"
+    }
+   ]
+  },
+  "age": {
+   "predicate": "attr.age",
+   "owner": "agent",
+   "value": "value",
+   "functional": true,
+   "ask": {
+    "how_old": "value"
+   },
+   "constructions": []
+  }
+ },
+ "roles_kind": {
+  "place": [
+   "PROPN"
+  ],
+  "name": [
+   "PROPN"
+  ],
+  "occupation": [
+   "NOUN"
+  ],
+  "thing": [
+   "NOUN",
+   "PROPN"
+  ],
+  "purpose": [
+   "NOUN",
+   "VERB"
+  ],
+  "maker": [
+   "PROPN"
+  ]
+ }
+}

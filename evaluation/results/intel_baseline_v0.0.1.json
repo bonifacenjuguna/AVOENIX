@@ -1,0 +1,2925 @@
+{
+ "label": "intelligence_v1_heldout",
+ "platform_version": "v0.0.1",
+ "started_at": "2026-11-11T07:49:26.542307+00:00",
+ "summary": {
+  "overall": {
+   "passed": 11,
+   "total": 64,
+   "accuracy": 0.1719
+  },
+  "by_category": {
+   "conversation": {
+    "passed": 2,
+    "total": 9,
+    "accuracy": 0.2222
+   },
+   "knowledge_integrity": {
+    "passed": 2,
+    "total": 6,
+    "accuracy": 0.3333
+   },
+   "language_understanding": {
+    "passed": 2,
+    "total": 32,
+    "accuracy": 0.0625
+   },
+   "reasoning": {
+    "passed": 5,
+    "total": 17,
+    "accuracy": 0.2941
+   }
+  },
+  "by_split": {
+   "heldout": {
+    "passed": 11,
+    "total": 64,
+    "accuracy": 0.1719
+   }
+  },
+  "metrics": {
+   "intent_accuracy": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": 0.85,
+    "status": "not_evaluated"
+   },
+   "memory_retrieval": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": 0.9,
+    "status": "not_evaluated"
+   },
+   "deterministic_reasoning": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": 0.9,
+    "status": "not_evaluated"
+   },
+   "claim_classification": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "provenance_preserved": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "contradiction_detected": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "unsupported_presented_as_fact": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "confidence_calibration_claims": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   },
+   "revision_history_preserved": {
+    "passed": 0,
+    "total": 0,
+    "accuracy": null,
+    "target": null,
+    "status": "not_evaluated"
+   }
+  },
+  "latency_ms": {
+   "p50": 10.29,
+   "max": 103.81
+  }
+ },
+ "failures": [
+  {
+   "id": "lu-fin-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-fin-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-fin-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-fin-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-fin-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-fin-5",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-fin-6",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-res-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "lu-res-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "lu-res-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Nairobi/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-res-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-res-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-res-5",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-res-6",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "lu-name-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Savah/ not in response: \"I don't have your name on record. I'd need name of you.\""
+   ]
+  },
+  {
+   "id": "lu-name-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Savah/ not in response: \"I don't have your name on record. I'd need name of you.\""
+   ]
+  },
+  {
+   "id": "lu-name-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Savah/ not in response: \"I don't have your name on record. I'd need name of you.\""
+   ]
+  },
+  {
+   "id": "lu-name-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Savah/ not in response: \"I don't know your name. I'd need name of you.\""
+   ]
+  },
+  {
+   "id": "lu-name-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Savah/ not in response: \"I don't have your name on record. I'd need name of you.\""
+   ]
+  },
+  {
+   "id": "lu-q-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-q-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "lu-q-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-q-5",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "lu-neg-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /(?i)\\bno\\b|you don't|you do not|you never|doesn't/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-neg-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /(?i)\\bno\\b|you don't|you do not|you never|doesn't/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-neg-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /(?i)\\byes\\b|you do|like tea/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "lu-age-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /30|thirty/ not in response: \"I don't have enough to tell whether you are age. I'd need a statement that you or one of its kinds has 'age'.\""
+   ]
+  },
+  {
+   "id": "lu-age-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /30|thirty/ not in response: \"I don't have enough to tell whether you are age. I'd need a statement that you or one of its kinds has 'age'.\""
+   ]
+  },
+  {
+   "id": "lu-amb-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /(?i)which|what .*(it|refer)|not sure what|clarif|what do you mean|what are you/ not in response: \"I don't know whether ?unresolved is big. I'd need a statement that ?unresolved or one of its kinds has 'big'.\""
+   ]
+  },
+  {
+   "id": "lu-amb-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /(?i)who|which|where|clarif|not sure|mean/ not in response: 'Okay.'"
+   ]
+  },
+  {
+   "id": "cv-laptop",
+   "category": "conversation",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /(?i)\\?/ not in response: 'I see.'",
+    "turn 1: contains: /(?i)ThinkPad|Lenovo/ not in response: 'Alright.'",
+    "turn 3: contains: /Lenovo/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 3: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 4: contains: /(?i)programming/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 4: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "cv-pron-person",
+   "category": "conversation",
+   "split": "heldout",
+   "reasons": [
+    "turn 2: contains: /Kisumu/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 2: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 3: contains: /(?i)teacher/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 3: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "cv-topic-change",
+   "category": "conversation",
+   "split": "heldout",
+   "reasons": [
+    "turn 2: contains: /Rex/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 2: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "cv-correct-0",
+   "category": "conversation",
+   "split": "heldout",
+   "reasons": [
+    "turn 2: contains: /Mombasa/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 2: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "cv-follow-1",
+   "category": "conversation",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /Kisumu/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 3: contains: /Mombasa/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 4: contains: /Kisumu/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 4: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "cv-ctx-answer",
+   "category": "conversation",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: contains: /(?i)nurse/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "cv-long-21",
+   "category": "conversation",
+   "split": "heldout",
+   "reasons": [
+    "turn 9: contains: /Nakuru/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 9: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 10: contains: /Dell/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 11: contains: /(?i)design/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 11: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 12: contains: /Eldoret/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 12: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 13: contains: /(?i)doctor/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 13: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 14: contains: /(?i)architect/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 14: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 16: contains: /Naivasha/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 16: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 20: contains: /Eldoret/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "rs-2",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /\\b3\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "rs-3",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /\\b60\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "rs-4",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /\\b65\\b/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "rs-5",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /\\b180\\b/ not in response: \"I don't have enough to tell whether train is distance. I'd need a statement that train or one of its kinds has 'distance'.\""
+   ]
+  },
+  {
+   "id": "rs-6",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /\\b20\\b/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "rs-7",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /\\b42\\b/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "rs-8",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /(?i)\\byes\\b|does|has wings/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "rs-9",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't say whether Rex is a mammal. I'd need is-a information connecting Rex and mammal. Yes, that agrees with my information \u2014 dogs are mammals.\""
+   ]
+  },
+  {
+   "id": "rs-10",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /(?i)\\byes\\b|cancelled/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ]
+  },
+  {
+   "id": "rs-11",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /(?i)\\bno\\b|not/ not in response: \"I can't say whether C is heavy. I'd need a statement that C or one of its kinds has 'heavy'.\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't say whether C is heavy. I'd need a statement that C or one of its kinds has 'heavy'.\""
+   ]
+  },
+  {
+   "id": "rs-unknown",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /(?i)don't know|can't say|not enough|no information|haven't/ not in response: \"I don't have enough to tell whether Mike is older than Paul. I'd need any age comparison involving Mike.\""
+   ]
+  },
+  {
+   "id": "rs-plan",
+   "category": "reasoning",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /(?i)(1\\.|first|step)/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "ki-hearsay",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /(?i)brother|unverified|couldn't verify/ not in response: 'Thanks for telling me.'"
+   ]
+  },
+  {
+   "id": "ki-hedge",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "reasons": [
+    "turn 0: contains: /(?i)unverified|think|couldn't verify|not sure/ not in response: 'Alright.'"
+   ]
+  },
+  {
+   "id": "ki-source",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "reasons": [
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ]
+  },
+  {
+   "id": "ki-age-rev",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "reasons": [
+    "turn 2: contains: /31/ not in response: \"I don't know whether you are age. I'd need a statement that you or one of its kinds has 'age'.\""
+   ]
+  }
+ ],
+ "cases": [
+  {
+   "id": "lu-fin-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 15.97,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-fin-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 12.1,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-fin-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 10.32,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-fin-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 10.81,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-fin-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 10.16,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-fin-5",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 8.61,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-fin-6",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|you do have/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /(?i)\\bnot enough\\b|\\bshort\\b|\\bno\\b[,.]|\\bno\\b$|don't have enough|can(?:'t|not) afford|\\bbroke\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 8.85,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-res-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 6.38,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-res-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 7.48,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-res-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Nairobi/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Nairobi/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 5.76,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-res-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 6.5,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-res-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 7.65,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-res-5",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 6.02,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-res-6",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 11.0,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-name-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Savah/ not in response: \"I don't have your name on record. I'd need name of you.\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have your name on record. I'd need name of you.\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Savah/ not in response: \"I don't have your name on record. I'd need name of you.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 13.27,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I don't have your name on record. I'd need name of you."
+  },
+  {
+   "id": "lu-name-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Savah/ not in response: \"I don't have your name on record. I'd need name of you.\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have your name on record. I'd need name of you.\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Savah/ not in response: \"I don't have your name on record. I'd need name of you.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 14.17,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I don't have your name on record. I'd need name of you."
+  },
+  {
+   "id": "lu-name-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Savah/ not in response: \"I don't have your name on record. I'd need name of you.\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have your name on record. I'd need name of you.\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Savah/ not in response: \"I don't have your name on record. I'd need name of you.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 20.2,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I don't have your name on record. I'd need name of you."
+  },
+  {
+   "id": "lu-name-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Savah/ not in response: \"I don't know your name. I'd need name of you.\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't know your name. I'd need name of you.\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Savah/ not in response: \"I don't know your name. I'd need name of you.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 11.45,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I don't know your name. I'd need name of you."
+  },
+  {
+   "id": "lu-name-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Savah/ not in response: \"I don't have your name on record. I'd need name of you.\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have your name on record. I'd need name of you.\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Savah/ not in response: \"I don't have your name on record. I'd need name of you.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 6.5,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I don't have your name on record. I'd need name of you."
+  },
+  {
+   "id": "lu-q-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'Nairobi is the capital of Kenya.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Nairobi is the capital of Kenya.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 5.62,
+   "metric_tags": [
+    "question_variation"
+   ],
+   "error": null,
+   "response": "Nairobi is the capital of Kenya."
+  },
+  {
+   "id": "lu-q-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'No \u2014 the capital of Kenya is Nairobi.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'No \u2014 the capital of Kenya is Nairobi.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 10.0,
+   "metric_tags": [
+    "question_variation"
+   ],
+   "error": null,
+   "response": "No \u2014 the capital of Kenya is Nairobi."
+  },
+  {
+   "id": "lu-q-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 4.8,
+   "metric_tags": [
+    "question_variation"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-q-3",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 6.91,
+   "metric_tags": [
+    "question_variation"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-q-4",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /Nairobi/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 0.487,
+   "latency_ms": 11.21,
+   "metric_tags": [
+    "question_variation"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-q-5",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /Nairobi/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 0.892,
+   "latency_ms": 8.09,
+   "metric_tags": [
+    "question_variation"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-neg-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\bno\\b|you don't|you do not|you never|doesn't/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /(?i)\\bno\\b|you don't|you do not|you never|doesn't/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 10.72,
+   "metric_tags": [
+    "negation"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-neg-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\bno\\b|you don't|you do not|you never|doesn't/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /(?i)\\bno\\b|you don't|you do not|you never|doesn't/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 0.96,
+   "latency_ms": 10.23,
+   "metric_tags": [
+    "negation"
+   ],
+   "error": null,
+   "response": "I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-neg-2",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\byes\\b|you do|like tea/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\bdon't\\b/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /(?i)\\byes\\b|you do|like tea/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 14.79,
+   "metric_tags": [
+    "negation"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "lu-age-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/30|thirty/ not in response: \"I don't have enough to tell whether you are age. I'd need a statement that you or one of its kinds has 'age'.\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have enough to tell whether you are age. I'd need a statement that you or one of its kinds has 'age'.\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /30|thirty/ not in response: \"I don't have enough to tell whether you are age. I'd need a statement that you or one of its kinds has 'age'.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 17.89,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I don't have enough to tell whether you are age. I'd need a statement that you or one of its kinds has 'age'."
+  },
+  {
+   "id": "lu-age-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/30|thirty/ not in response: \"I don't have enough to tell whether you are age. I'd need a statement that you or one of its kinds has 'age'.\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have enough to tell whether you are age. I'd need a statement that you or one of its kinds has 'age'.\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /30|thirty/ not in response: \"I don't have enough to tell whether you are age. I'd need a statement that you or one of its kinds has 'age'.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 16.74,
+   "metric_tags": [
+    "paraphrase"
+   ],
+   "error": null,
+   "response": "I don't have enough to tell whether you are age. I'd need a statement that you or one of its kinds has 'age'."
+  },
+  {
+   "id": "lu-amb-0",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)which|what .*(it|refer)|not sure what|clarif|what do you mean|what are you/ not in response: \"I don't know whether ?unresolved is big. I'd need a statement that ?unresolved or one of its kinds has 'big'.\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|\\bit is big/ unexpectedly present: \"I don't know whether ?unresolved is big. I'd need a statement that ?unresolved or one of its kinds has 'big'.\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't know whether ?unresolved is big. I'd need a statement that ?unresolved or one of its kinds has 'big'.\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /(?i)which|what .*(it|refer)|not sure what|clarif|what do you mean|what are you/ not in response: \"I don't know whether ?unresolved is big. I'd need a statement that ?unresolved or one of its kinds has 'big'.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 6.65,
+   "metric_tags": [
+    "ambiguity"
+   ],
+   "error": null,
+   "response": "I don't know whether ?unresolved is big. I'd need a statement that ?unresolved or one of its kinds has 'big'."
+  },
+  {
+   "id": "lu-amb-1",
+   "category": "language_understanding",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)who|which|where|clarif|not sure|mean/ not in response: 'Okay.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Okay.'",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /(?i)who|which|where|clarif|not sure|mean/ not in response: 'Okay.'"
+   ],
+   "confidence": 1.0,
+   "latency_ms": 4.86,
+   "metric_tags": [
+    "ambiguity"
+   ],
+   "error": null,
+   "response": "Okay."
+  },
+  {
+   "id": "cv-laptop",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\?/ not in response: 'I see.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'I see.'",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)ThinkPad|Lenovo/ not in response: 'Alright.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Alright.'",
+     "turn": 1
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Lenovo/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 3
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 3
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)programming/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 4
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 4
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /(?i)\\?/ not in response: 'I see.'",
+    "turn 1: contains: /(?i)ThinkPad|Lenovo/ not in response: 'Alright.'",
+    "turn 3: contains: /Lenovo/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 3: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 4: contains: /(?i)programming/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 4: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 23.83,
+   "metric_tags": [
+    "pronoun",
+    "slot_filling"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "cv-pron-person",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Kisumu/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 2
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)teacher/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 3
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 3
+    }
+   ],
+   "failures": [
+    "turn 2: contains: /Kisumu/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 2: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 3: contains: /(?i)teacher/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 3: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 31.26,
+   "metric_tags": [
+    "pronoun"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "cv-topic-change",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Rex/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)laptop/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 2
+    }
+   ],
+   "failures": [
+    "turn 2: contains: /Rex/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 2: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 18.76,
+   "metric_tags": [
+    "topic_change"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "cv-correct-0",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Mombasa/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 2
+    }
+   ],
+   "failures": [
+    "turn 2: contains: /Mombasa/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 2: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 10.66,
+   "metric_tags": [
+    "correction"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "cv-correct-1",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Savah/ not in response: 'Your name is Savah.'",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/Sara\\b(?!h)/ unexpectedly present: 'Your name is Savah.'",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Your name is Savah.'",
+     "turn": 2
+    }
+   ],
+   "failures": [],
+   "confidence": 0.862,
+   "latency_ms": 18.71,
+   "metric_tags": [
+    "correction"
+   ],
+   "error": null,
+   "response": "Your name is Savah."
+  },
+  {
+   "id": "cv-follow-0",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'The capital of Kenya is Nairobi.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The capital of Kenya is Nairobi.'",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Kampala/ not in response: 'As far as I know, the capital of Uganda is Kampala.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'As far as I know, the capital of Uganda is Kampala.'",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 10.29,
+   "metric_tags": [
+    "follow_up"
+   ],
+   "error": null,
+   "response": "As far as I know, the capital of Uganda is Kampala."
+  },
+  {
+   "id": "cv-follow-1",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Kisumu/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Mombasa/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 3
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 3
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Kisumu/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 4
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 4
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /Kisumu/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 3: contains: /Mombasa/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 4: contains: /Kisumu/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 4: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 18.58,
+   "metric_tags": [
+    "follow_up",
+    "pronoun"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "cv-ctx-answer",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)nurse/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: contains: /(?i)nurse/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 0.786,
+   "latency_ms": 7.05,
+   "metric_tags": [
+    "context_answer"
+   ],
+   "error": null,
+   "response": "I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "cv-long-21",
+   "category": "conversation",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Wanjiru/ not in response: 'Your name is Wanjiru.'",
+     "turn": 8
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Your name is Wanjiru.'",
+     "turn": 8
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Nakuru/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 9
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 9
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Dell/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 10
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 10
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)design/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 11
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 11
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Eldoret/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 12
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 12
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)doctor/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 13
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 13
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)architect/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 14
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 14
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Naivasha/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 16
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 16
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Nairobi/ not in response: 'The capital of Kenya is Nairobi.'",
+     "turn": 17
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The capital of Kenya is Nairobi.'",
+     "turn": 17
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Kampala/ not in response: 'Kampala is the capital of Uganda.'",
+     "turn": 18
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Kampala is the capital of Uganda.'",
+     "turn": 18
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Wanjiru/ not in response: 'You told me your name is Wanjiru.'",
+     "turn": 19
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'You told me your name is Wanjiru.'",
+     "turn": 19
+    },
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/Eldoret/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 20
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 20
+    }
+   ],
+   "failures": [
+    "turn 9: contains: /Nakuru/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 9: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 10: contains: /Dell/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 11: contains: /(?i)design/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 11: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 12: contains: /Eldoret/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 12: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 13: contains: /(?i)doctor/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 13: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 14: contains: /(?i)architect/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 14: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 16: contains: /Naivasha/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 16: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 20: contains: /Eldoret/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 103.81,
+   "metric_tags": [
+    "long_context",
+    "pronoun",
+    "correction"
+   ],
+   "error": null,
+   "response": "I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "rs-0",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Anna/ not in response: 'The answer is Anna \u2014 the tallest.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The answer is Anna \u2014 the tallest.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.869,
+   "latency_ms": 8.02,
+   "metric_tags": [
+    "ordering"
+   ],
+   "error": null,
+   "response": "The answer is Anna \u2014 the tallest."
+  },
+  {
+   "id": "rs-1",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Xia/ not in response: 'The youngest is Xia.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The youngest is Xia.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.869,
+   "latency_ms": 10.92,
+   "metric_tags": [
+    "ordering"
+   ],
+   "error": null,
+   "response": "The youngest is Xia."
+  },
+  {
+   "id": "rs-2",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/\\b3\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /\\b3\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 5.4,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "rs-3",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/\\b60\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /\\b60\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 0.891,
+   "latency_ms": 7.53,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "rs-4",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/\\b65\\b/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /\\b65\\b/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 0.956,
+   "latency_ms": 6.8,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "rs-5",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/\\b180\\b/ not in response: \"I don't have enough to tell whether train is distance. I'd need a statement that train or one of its kinds has 'distance'.\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have enough to tell whether train is distance. I'd need a statement that train or one of its kinds has 'distance'.\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /\\b180\\b/ not in response: \"I don't have enough to tell whether train is distance. I'd need a statement that train or one of its kinds has 'distance'.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 6.52,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "I don't have enough to tell whether train is distance. I'd need a statement that train or one of its kinds has 'distance'."
+  },
+  {
+   "id": "rs-6",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/\\b20\\b/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /\\b20\\b/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 0.939,
+   "latency_ms": 10.12,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "rs-7",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/\\b42\\b/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /\\b42\\b/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 0.879,
+   "latency_ms": 6.54,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "rs-8",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\byes\\b|does|has wings/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /(?i)\\byes\\b|does|has wings/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 0.953,
+   "latency_ms": 25.28,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations. I've recorded that you said sparrows are birds, but I can't verify it, so it's an unverified claim rather than something I know."
+  },
+  {
+   "id": "rs-9",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b|is a mammal/ not in response: \"I can't say whether Rex is a mammal. I'd need is-a information connecting Rex and mammal. Yes, that agrees with my information \u2014 dogs are mammals.\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't say whether Rex is a mammal. I'd need is-a information connecting Rex and mammal. Yes, that agrees with my information \u2014 dogs are mammals.\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't say whether Rex is a mammal. I'd need is-a information connecting Rex and mammal. Yes, that agrees with my information \u2014 dogs are mammals.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 13.79,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "I can't say whether Rex is a mammal. I'd need is-a information connecting Rex and mammal. Yes, that agrees with my information \u2014 dogs are mammals."
+  },
+  {
+   "id": "rs-10",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\byes\\b|cancelled/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /(?i)\\byes\\b|cancelled/ not in response: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer si\""
+   ],
+   "confidence": 0.876,
+   "latency_ms": 17.97,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "That's beyond what I can reason about right now. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "rs-11",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)\\bno\\b|not/ not in response: \"I can't say whether C is heavy. I'd need a statement that C or one of its kinds has 'heavy'.\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't say whether C is heavy. I'd need a statement that C or one of its kinds has 'heavy'.\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /(?i)\\bno\\b|not/ not in response: \"I can't say whether C is heavy. I'd need a statement that C or one of its kinds has 'heavy'.\"",
+    "turn 0: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't say whether C is heavy. I'd need a statement that C or one of its kinds has 'heavy'.\""
+   ],
+   "confidence": 0.694,
+   "latency_ms": 9.89,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "I can't say whether C is heavy. I'd need a statement that C or one of its kinds has 'heavy'."
+  },
+  {
+   "id": "rs-12",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/\\b36\\b/ not in response: 'That comes to 36.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'That comes to 36.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.993,
+   "latency_ms": 7.09,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "That comes to 36."
+  },
+  {
+   "id": "rs-13",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/\\b17\\b/ not in response: 'The answer is 17.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'The answer is 17.'",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 0.993,
+   "latency_ms": 9.18,
+   "metric_tags": [
+    "multi_step"
+   ],
+   "error": null,
+   "response": "The answer is 17."
+  },
+  {
+   "id": "rs-contra",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)doesn't add up|can't all be true|contradict|inconsisten/ not in response: \"Something is inconsistent here: Anna is older than Ben and Ben is older than Anna can't all be true. Which one should I trust?\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"Something is inconsistent here: Anna is older than Ben and Ben is older than Anna can't all be true. Which one should I trust?\"",
+     "turn": 0
+    }
+   ],
+   "failures": [],
+   "confidence": 1.0,
+   "latency_ms": 7.77,
+   "metric_tags": [
+    "contradiction"
+   ],
+   "error": null,
+   "response": "Something is inconsistent here: Anna is older than Ben and Ben is older than Anna can't all be true. Which one should I trust?"
+  },
+  {
+   "id": "rs-unknown",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)don't know|can't say|not enough|no information|haven't/ not in response: \"I don't have enough to tell whether Mike is older than Paul. I'd need any age comparison involving Mike.\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)\\byes\\b/ unexpectedly present: \"I don't have enough to tell whether Mike is older than Paul. I'd need any age comparison involving Mike.\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /(?i)don't know|can't say|not enough|no information|haven't/ not in response: \"I don't have enough to tell whether Mike is older than Paul. I'd need any age comparison involving Mike.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 9.07,
+   "metric_tags": [
+    "uncertainty"
+   ],
+   "error": null,
+   "response": "I don't have enough to tell whether Mike is older than Paul. I'd need any age comparison involving Mike."
+  },
+  {
+   "id": "rs-plan",
+   "category": "reasoning",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)(1\\.|first|step)/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 0
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /(?i)(1\\.|first|step)/ not in response: \"I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 6.5,
+   "metric_tags": [
+    "task_decomposition"
+   ],
+   "error": null,
+   "response": "I don't have a way to handle that yet. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "ki-wrong",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)unverified|couldn't verify|can't verify|not.*(treat|fact)/ not in response: \"I've kept a record that you said the capital of Germany is Paris, but that doesn't match what I know: the capital of Germany is Berlin. I'm treating your statem\"",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I've kept a record that you said the capital of Germany is Paris, but that doesn't match what I know: the capital of Germany is Berlin. I'm treating your statem\"",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Berlin/ not in response: \"Berlin is the capital of Germany. (You earlier said Paris; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"Berlin is the capital of Germany. (You earlier said Paris; I could not verify that, so I'm not treating it as fact.)\"",
+     "turn": 1
+    }
+   ],
+   "failures": [],
+   "confidence": 0.932,
+   "latency_ms": 14.88,
+   "metric_tags": [
+    "incorrect_assertion"
+   ],
+   "error": null,
+   "response": "Berlin is the capital of Germany. (You earlier said Paris; I could not verify that, so I'm not treating it as fact.)"
+  },
+  {
+   "id": "ki-hearsay",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)brother|unverified|couldn't verify/ not in response: 'Thanks for telling me.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Thanks for telling me.'",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Canberra/ not in response: 'Canberra is the capital of Australia.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Canberra is the capital of Australia.'",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /(?i)brother|unverified|couldn't verify/ not in response: 'Thanks for telling me.'"
+   ],
+   "confidence": 0.932,
+   "latency_ms": 13.33,
+   "metric_tags": [
+    "source_attribution"
+   ],
+   "error": null,
+   "response": "Canberra is the capital of Australia."
+  },
+  {
+   "id": "ki-hedge",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/(?i)unverified|think|couldn't verify|not sure/ not in response: 'Alright.'",
+     "turn": 0
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Alright.'",
+     "turn": 0
+    },
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Abuja/ not in response: 'Abuja is the capital of Nigeria.'",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: 'Abuja is the capital of Nigeria.'",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 0: contains: /(?i)unverified|think|couldn't verify|not sure/ not in response: 'Alright.'"
+   ],
+   "confidence": 0.932,
+   "latency_ms": 13.53,
+   "metric_tags": [
+    "uncertain"
+   ],
+   "error": null,
+   "response": "Abuja is the capital of Nigeria."
+  },
+  {
+   "id": "ki-source",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/(?i)\\byou\\b/ not in response: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    },
+    {
+     "check": "not_contains",
+     "ok": false,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\"",
+     "turn": 1
+    }
+   ],
+   "failures": [
+    "turn 1: not_contains: /(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts\""
+   ],
+   "confidence": 0.853,
+   "latency_ms": 14.85,
+   "metric_tags": [
+    "source_attribution"
+   ],
+   "error": null,
+   "response": "I can't work that out in this version. I can compare people or things (older, taller, faster...) and work out who is the oldest or youngest, answer simple facts I know or that you've told me, do exact arithmetic and keep track of what you tell me within and across conversations."
+  },
+  {
+   "id": "ki-conflict",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "passed": true,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": true,
+     "detail": "/Marinus/ not in response: \"The only thing I have for the capital of Atlantis is your statement (Poseidonis and Marinus), and it's unverified.\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)the capital of atlantis is marinus\\./ unexpectedly present: \"The only thing I have for the capital of Atlantis is your statement (Poseidonis and Marinus), and it's unverified.\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"The only thing I have for the capital of Atlantis is your statement (Poseidonis and Marinus), and it's unverified.\"",
+     "turn": 2
+    }
+   ],
+   "failures": [],
+   "confidence": null,
+   "latency_ms": 22.62,
+   "metric_tags": [
+    "revision"
+   ],
+   "error": null,
+   "response": "The only thing I have for the capital of Atlantis is your statement (Poseidonis and Marinus), and it's unverified."
+  },
+  {
+   "id": "ki-age-rev",
+   "category": "knowledge_integrity",
+   "split": "heldout",
+   "passed": false,
+   "checks": [
+    {
+     "check": "contains",
+     "ok": false,
+     "detail": "/31/ not in response: \"I don't know whether you are age. I'd need a statement that you or one of its kinds has 'age'.\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/\\b30\\b/ unexpectedly present: \"I don't know whether you are age. I'd need a statement that you or one of its kinds has 'age'.\"",
+     "turn": 2
+    },
+    {
+     "check": "not_contains",
+     "ok": true,
+     "detail": "/(?i)work that out|beyond what I can reason|can't say whether/ unexpectedly present: \"I don't know whether you are age. I'd need a statement that you or one of its kinds has 'age'.\"",
+     "turn": 2
+    }
+   ],
+   "failures": [
+    "turn 2: contains: /31/ not in response: \"I don't know whether you are age. I'd need a statement that you or one of its kinds has 'age'.\""
+   ],
+   "confidence": 1.0,
+   "latency_ms": 20.56,
+   "metric_tags": [
+    "revision"
+   ],
+   "error": null,
+   "response": "I don't know whether you are age. I'd need a statement that you or one of its kinds has 'age'."
+  }
+ ],
+ "calibration": {
+  "status": "measured",
+  "n": 63,
+  "expected_calibration_error": 0.7991,
+  "bins": [
+   {
+    "range": "[0.00, 0.50)",
+    "n": 1,
+    "mean_confidence": 0.487,
+    "accuracy": 0.0
+   },
+   {
+    "range": "[0.50, 0.75)",
+    "n": 1,
+    "mean_confidence": 0.694,
+    "accuracy": 0.0
+   },
+   {
+    "range": "[0.75, 0.90)",
+    "n": 9,
+    "mean_confidence": 0.864,
+    "accuracy": 0.333
+   },
+   {
+    "range": "[0.90, 1.00)",
+    "n": 52,
+    "mean_confidence": 0.988,
+    "accuracy": 0.135
+   }
+  ],
+  "note": "Confidence is an evidence-support score; a large error means it should not be read as a probability."
+ },
+ "environment": {
+  "python": "3.13.18",
+  "backend": "memory",
+  "platform": "Linux-6.18.44-fc-v378-x86_64-with-glibc2.39"
+ },
+ "caveats": [
+  "Targets are development goals, not claims of achievement.",
+  "Dataset is small and developer-authored; results do not generalise beyond it."
+ ]
+}

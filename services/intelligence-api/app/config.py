@@ -25,6 +25,7 @@ class Settings:
     project_id: str = "studio"
     cookie_secure: bool = True
     min_password_length: int = 12
+    diagnostics_enabled: bool = False                      # admin-only meaning-layer inspection; OFF unless explicitly enabled
 
     @classmethod
     def from_env(cls, env: dict | None = None) -> "Settings":
@@ -38,6 +39,7 @@ class Settings:
             login_rate_limit_per_minute=int(e.get("AVOENIX_LOGIN_RATE_LIMIT_PER_MINUTE", "10")),
             max_body_bytes=int(e.get("AVOENIX_MAX_BODY_BYTES", "64000")), project_id=e.get("AVOENIX_PROJECT_ID", "studio"),
             cookie_secure=e.get("AVOENIX_COOKIE_SECURE", "true" if environment == "production" else "false").lower() == "true",
+            diagnostics_enabled=e.get("AVOENIX_DIAGNOSTICS_ENABLED", "false").lower() == "true",
         )
 
     def problems(self) -> list[str]:

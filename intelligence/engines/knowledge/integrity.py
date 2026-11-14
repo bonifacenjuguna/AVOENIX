@@ -33,7 +33,7 @@ if TYPE_CHECKING:  # pragma: no cover
 WORLD_PREDICATES = {"attr.capital", "attr.currency", "attr.president", "attr.population", "rel.located_in"}
 ESTABLISHED_SOURCES = ("external_verified", "seed_curated", "system", "learned")
 FUNCTIONAL_PREDICATES = {"attr.name", "attr.age", "attr.birthday", "attr.height", "attr.weight", "attr.address", "attr.job", "attr.capital",
-                         "attr.president", "attr.population", "attr.currency", "attr.color", "attr.colour", "attr.favorite", "attr.language"}
+                         "attr.president", "attr.population", "attr.currency", "attr.color", "attr.colour", "attr.favorite", "attr.language", "attr.residence"}
 
 
 def provenance_of(source_type: str) -> str:
@@ -42,7 +42,7 @@ def provenance_of(source_type: str) -> str:
 
 def classify_claim(predicate: str, args: dict[str, dict]) -> str:
     """world / personal / premise. Structure-based (predicate and term types), not keyword-based."""
-    if any((t or {}).get("key") == SELF_USER for t in args.values()):
+    if any((t or {}).get("key") == SELF_USER or str((t or {}).get("key", "")).startswith(SELF_USER + "/") for t in args.values()):
         return ClaimType.PERSONAL.value
     if predicate in WORLD_PREDICATES:
         return ClaimType.WORLD.value

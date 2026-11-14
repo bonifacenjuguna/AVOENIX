@@ -1,0 +1,29 @@
+{
+  "_meta": {"name": "avoenix-task-methods", "version": "1", "license": "CC0-1.0",
+            "note": "Hand-authored hierarchical-task-network methods: a goal verb + object class decomposes into ordered subtasks with a share of the available time. This is a small knowledge base, not learned behaviour; goals with no method are reported as unsupported rather than improvised."},
+  "methods": {
+    "prepare": {
+      "assessment": {"objects": ["exam", "test", "quiz", "interview", "presentation", "assessment", "viva", "oral"],
+        "subtasks": [
+          {"id": "scope", "share": 0.15, "text": "List everything the {object} covers and mark the topics you find hardest"},
+          {"id": "learn", "share": 0.40, "text": "Study the hardest topics first, in short focused sessions with breaks"},
+          {"id": "practise", "share": 0.25, "text": "Practise under realistic conditions, using past questions or a mock {object}, and time yourself"},
+          {"id": "review", "share": 0.15, "text": "Review what you got wrong and condense the key points onto one page"},
+          {"id": "ready", "share": 0.05, "text": "Get your materials ready, sleep well and keep the last hours light"}]},
+      "event": {"objects": ["trip", "party", "event", "wedding", "meeting", "move"],
+        "subtasks": [
+          {"id": "define", "share": 0.2, "text": "Decide what the {object} needs and write the list down"},
+          {"id": "book", "share": 0.3, "text": "Book or buy the things that have the longest lead time first"},
+          {"id": "arrange", "share": 0.3, "text": "Arrange the details and confirm with everyone involved"},
+          {"id": "check", "share": 0.2, "text": "Do a final check of the list and handle anything left over"}]}
+    },
+    "learn": {
+      "skill": {"objects": ["language", "skill", "instrument", "subject", "topic", "programming"],
+        "subtasks": [
+          {"id": "goal", "share": 0.1, "text": "Define what being able to do {object} means for you, in one sentence"},
+          {"id": "basics", "share": 0.35, "text": "Learn the basics with one good resource rather than many"},
+          {"id": "practise", "share": 0.4, "text": "Practise a little every day and apply it to a small real task"},
+          {"id": "feedback", "share": 0.15, "text": "Get feedback, fix the weakest part and repeat"}]}
+    }
+  }
+}

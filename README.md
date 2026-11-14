@@ -1,4 +1,4 @@
-# AVOENIX v0.0.1 — Algorithmic Intelligence System
+# AVOENIX v0.1.0 — Algorithmic Intelligence System
 
 *Algorithmic Intelligence, Engineered to Evolve.*
 
@@ -6,7 +6,7 @@ AVOENIX is **not** a language-model chatbot. It is a deterministic, inspectable 
 representation (ACR), reasons over it with explicit algorithms, remembers and learns in controlled, reversible ways, and composes replies
 from structured facts. **No neural networks, pretrained models, or external AI APIs are used anywhere.**
 
-> **Status: v0.0.1 — Knowledge Integrity + Studio redesign on top of the v0.0.0 foundation; partially verified.** New in this release: user statements are stored as *claims* with provenance and a verification state and are never promoted to knowledge by being said (`docs/KNOWLEDGE_INTEGRITY.md`); Studio was redesigned (`docs/STUDIO.md`). See `docs/TESTING_REPORT.md` for what was and was not executed. Read `docs/CAPABILITY_ASSESSMENT.md` before relying on anything.
+> **Status: v0.1.0 — meaning layer (paraphrase-robust understanding, dialogue state, compositional replies, reasoning over understood content, licence-gated data ingestion); partially verified. See `docs/v0.1.0/`.** Previous status: v0.0.1 — Knowledge Integrity + Studio redesign on top of the v0.0.0 foundation; partially verified.** New in this release: user statements are stored as *claims* with provenance and a verification state and are never promoted to knowledge by being said (`docs/KNOWLEDGE_INTEGRITY.md`); Studio was redesigned (`docs/STUDIO.md`). See `docs/TESTING_REPORT.md` for what was and was not executed. Read `docs/CAPABILITY_ASSESSMENT.md` before relying on anything.
 
 ## What works (verified by tests in the build environment)
 - "What is the capital of the USA?" → Washington, D.C.; if you then say "The capital of the USA is New York.", AVOENIX records that *you said it* (unverified, contradicted by established knowledge), keeps your statement retrievable, and keeps answering Washington, D.C.
